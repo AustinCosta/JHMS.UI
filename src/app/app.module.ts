@@ -13,6 +13,8 @@ import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material.module';
+import { InventoryComponent } from './inventory/inventory.component';
+import { BounceHouseCreateComponent } from './bounce-house-create/bounce-house-create.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { MaterialModule } from './material.module';
     CustomerListComponent,
     AddCustomerComponent,
     EditCustomerComponent,
+    InventoryComponent,
+    BounceHouseCreateComponent,
   ],
   imports: [
     BrowserModule,
