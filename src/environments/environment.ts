@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  baseApiUrl: 'https://ec2-3-92-77-52.compute-1.amazonaws.com:7195'
+  baseApiUrl: 'https://localhost:7195'
+
+  //LocalHost URL : 'https://localhost:7195'
+  //API URL 'https://ec2-3-92-77-52.compute-1.amazonaws.com:7195'
 };
 
 /*
