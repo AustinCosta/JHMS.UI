@@ -11,7 +11,8 @@ export class EditCustomerComponent implements OnInit {
 
   customerDetails: any = {};
 
-  constructor(private route: ActivatedRoute, private customerSerivce: CustomersService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private customerSerivce:
+    CustomersService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe({
@@ -24,17 +25,24 @@ export class EditCustomerComponent implements OnInit {
           .subscribe({
             next: (response) => {
               this.customerDetails = response;
-              console.log(response);
             }
-          })
-
+          });
         }
       }
     })
   }
 
   updateCustomer() {
-    this.customerSerivce.updateCustomer(this.customerDetails.intCustomerID, this.customerDetails.strCustomerName)
+    this.customerSerivce.updateCustomer(this.customerDetails.intCustomerID, this.customerDetails)
+    .subscribe({
+      next: (response) => {
+        this.router.navigate(['customers']);
+      }
+    });
+  }
+
+  deleteCustomer(intCustomerID: string) {
+    this.customerSerivce.deleteCustomer(intCustomerID)
     .subscribe({
       next: (response) => {
         this.router.navigate(['customers']);

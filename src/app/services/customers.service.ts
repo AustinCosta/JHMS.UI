@@ -22,11 +22,15 @@ export class CustomersService {
   }
 
   getCustomer(intCustomerID: string): Observable<any> {
-    return this.http.get(this.baseApiUrl + '/api/customers/' + intCustomerID);
+    return this.http.get<any>(this.baseApiUrl + '/api/customers/' + intCustomerID);
   }
 
   updateCustomer(intCustomerID: string, updateCustomerRequest: any): Observable<any> {
     return this.http.put<any>(this.baseApiUrl + '/api/customers/' + intCustomerID, updateCustomerRequest);
+  }
+
+  deleteCustomer(intCustomerID: string): Observable<any> {
+    return this.http.delete<any>(this.baseApiUrl + '/api/customers/' + intCustomerID)
   }
 
 }
