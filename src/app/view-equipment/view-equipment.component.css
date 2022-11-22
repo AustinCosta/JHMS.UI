@@ -1,0 +1,116 @@
+table,
+table tr {
+  border: 0px solid #000000;
+}
+
+h1{
+    text-align: center;
+    margin-top: 0%;
+    font-family: "Helvetica Neue";
+
+}
+body {
+
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+
+}
+
+tr {
+  height: 100px;
+  width: 100%;
+  text-align: left;
+  vertical-align: middle;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table {
+
+    width: 100%;
+    vertical-align: middle;
+    max-width: 800px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    text-align: center;
+
+}
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+button {
+    background-color: #ffffff;
+    font-size: 19px;
+    border: 2px solid #000000;
+    padding: 15px 50px;
+    cursor: pointer;
+    font-family: "Helvetica Neue";
+}
+button:hover {
+    color: #000000;
+    background-color: #fbf4b0;
+}
+
+.background {
+
+    opacity: .8;
+
+}
+
+.middle {
+    vertical-align: middle;
+ }
+
+ .myDiv {
+    border: 5px outset red;
+    background-color: lightblue;
+    text-align: center;
+  }
+
+  section {
+    display: table;
+  }
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+    max-width: 600px;
+  }
+  
+  .example-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+  button{
+    margin-right: 1vw;
+    background: #4285F4;
+    color: white;
+    font-size: 18px;
+    line-height: 6px;
+    height: auto;
+    width: auto;
+  }

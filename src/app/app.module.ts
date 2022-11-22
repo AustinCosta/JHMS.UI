@@ -15,6 +15,16 @@ import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material.module';
 import { InventoryComponent } from './inventory/inventory.component';
 import { BounceHouseCreateComponent } from './bounce-house-create/bounce-house-create.component';
+import { MatTableModule } from '@angular/material/table'  ;
+import { ViewInflatablesComponent } from './view-inflatables/view-inflatables.component';
+import {MatSortModule} from '@angular/material/sort';
+import { EditInflatablesComponent } from './edit-inflatables/edit-inflatables.component';
+import { ViewEventsComponent } from './view-events/view-events.component';
+import { EditEventsComponent } from './edit-events/edit-events.component';
+import { AddEventComponent } from './add-event/add-event.component';
+import { ViewEquipmentComponent } from './view-equipment/view-equipment.component';
+import { EditEquipmentComponent } from './edit-equipment/edit-equipment.component';
+import { CreateEquipmentComponent } from './create-equipment/create-equipment.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +36,14 @@ import { BounceHouseCreateComponent } from './bounce-house-create/bounce-house-c
     EditCustomerComponent,
     InventoryComponent,
     BounceHouseCreateComponent,
+    ViewInflatablesComponent,
+    EditInflatablesComponent,
+    ViewEventsComponent,
+    EditEventsComponent,
+    AddEventComponent,
+    ViewEquipmentComponent,
+    EditEquipmentComponent,
+    CreateEquipmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +65,8 @@ import { BounceHouseCreateComponent } from './bounce-house-create/bounce-house-c
     HttpClientModule,
     FormsModule,
     MaterialModule,
+    MatTableModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
