@@ -13,7 +13,7 @@
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
           <div class="col-xlg-7 col-md-10">
-            <h1 class="display-2 text-white" style="text-align: center; vertical-align: top;">CREATE NEW EVENT</h1>
+            <h1 class="display-2 text-white" style="text-align: center; vertical-align: top;">Event on {{ dtmStart | date:'MM/dd/yyyy'}} - {{ dtmEnd | date:'MM/dd/yyyy' }} </h1>
           </div>
         </div>
 
@@ -47,12 +47,12 @@
                       <div class="form-group">
                         <label class="form-control-label" for="input-type">Event Type</label>
                         <select name="input-type" id="input-type" class="form-control form-control-alternative" placeholder="Bounce House">
-                            <option value="1">School</option>
-                            <option value="2">Gym</option>
-                            <option value="3">Church</option>
-                            <option value="4">Festival</option>
-                            <option value="5">Private Party</option>
-                            <option value="6">Other</option>
+                            <option value="School">School</option>
+                            <option value="Gym">Gym</option>
+                            <option value="Church">Church</option>
+                            <option value="Festival">Festival</option>
+                            <option value="Private Party">Private Party</option>
+                            <option value="Other">Other</option>
                           </select>
                       </div>
                     </div> 
@@ -70,19 +70,19 @@
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-name">Date of Rental</label>
-                          <input type="date" id="input-name" class="form-control form-control-alternative">
+                          <input (change) = 'onchange()'[formControl]="dateFormCtrl" type="date" class="form-control form-control-alternative">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-type">Number of Days Requested</label>
-                          <select name="input-type" id="input-type" class="form-control form-control-alternative" placeholder="Bounce House">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6+</option>
+                          <select (change) = 'onchange()'[formControl]="daysFormCtrl" name="days" class="form-control form-control-alternative" placeholder="Bounce House">
+                              <option value=0 selected>1</option>
+                              <option value=1>2</option>
+                              <option value=2>3</option>
+                              <option value=3>4</option>
+                              <option value=4>5</option>
+                              <option value=5>6+</option>
                             </select>
                         </div>
                       </div> 
@@ -106,6 +106,24 @@
                             <div class="form-group focused">
                               <label class="form-control-label" for="input-name">Setup Time</label>
                               <input type="time" id="input-name" class="form-control form-control-alternative">
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="form-group focused">
+                              <label class="form-control-label" for="input-name">Employees Needed to Staff Event/Run Inflatables</label>
+                              <select name="input-staff" id="input-staff" class="form-control form-control-alternative" placeholder="Bounce House">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                              </select>
                             </div>
                           </div>
                       </div>
@@ -139,13 +157,18 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-bounce">Bounce Houses</label>
-                        <label class="form-control-label" for="input-bounce">Giant Slides</label>
-                        <label class="form-control-label" for="input-bounce">Combos</label>
-                        <label class="form-control-label" for="input-bounce">Midway Rush Games</label>
-                        <label class="form-control-label" for="input-bounce">Fun & Games</label>
-                        <label class="form-control-label" for="input-bounce">Obstacles</label>
-                        <label class="form-control-label" for="input-bounce">Equipment</label>
+
+                        <div *ngFor="let bericht of berichten; let i = index" >
+                          <div>
+                            <input type="checkbox" [formControlName]="i">
+                          </div>
+                          <div>
+                            {{bericht.messageId}}
+                          </div>
+                        </div>
+                      
+                        <br/>
+
                       
                       </div>
                     </div>

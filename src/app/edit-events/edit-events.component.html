@@ -1,3 +1,5 @@
+
+
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
 <body>
@@ -6,18 +8,20 @@
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://jumphouseinflatables.com/wp-content/uploads/2021/06/bounce-180-Jr-Obstacle.jpg); background-size: cover; background-position: center top;">
       <!-- Mask -->
       <span class="mask bg-gradient-default opacity-8"></span>
+      
       <!-- Header container -->
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
           <div class="col-xlg-7 col-md-10">
-            <h1 class="display-2 text-white" style="text-align: center; vertical-align: top;">EVENT NAME GOES HERE</h1>
+            <h1 class="display-2 text-white" style="text-align: center; vertical-align: top;">CREATE NEW EVENT</h1>
           </div>
         </div>
 
     </div>
     <!-- Page content -->
+    
         <div class="col-xl-8 order-xl-1">
-          <div class="card bg-secondary shadow">
+                      <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
@@ -35,92 +39,136 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-name">Contact Name</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Name" value="180' Junior Obstacle">
+                        <label class="form-control-label" for="input-name">Event Name</label>
+                        <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="Name" value="EVENT NAME HERE">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-type">Type</label>
-                        <select name="input-type" id="input-type" class="form-control form-control-alternative" placeholder="Bounce house">
-                            <option value="1">Bounce House</option>
-                            <option value="2">Giant Slide</option>
-                            <option value="3">Combos</option>
-                            <option value="4">Midway Rush Games</option>
-                            <option value="5">Fun & Games</option>
-                            <option value="6">Obstacles</option>
+                        <label class="form-control-label" for="input-type">Event Type</label>
+                        <select name="input-type" id="input-type" class="form-control form-control-alternative" placeholder="Bounce House">
+                            <option value="School">School</option>
+                            <option value="Gym">Gym</option>
+                            <option value="Church">Church</option>
+                            <option value="Festival">Festival</option>
+                            <option value="Private Party">Private Party</option>
+                            <option value="Other">Other</option>
                           </select>
                       </div>
                     </div> 
                   </div>
-                  
                 </div>
                 <div class="pl-lg-4">
                     <div class="form-group focused">
                       <label>Description</label>
-                      <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">Obstacle course that has a 180 degree turn halfway through.</textarea>
+                      <textarea id="input-descript" name="input-descript" rows="3" class="form-control form-control-alternative" placeholder="A few words about you ...">DESCRIPTION GOES HERE</textarea>
                     </div>
                   </div>
-                <hr class="my-4">
+                <h6 class="heading-small text-muted mb-4">Date/Time Info</h6>
+                <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-name">Date of Rental</label>
+                          <input type="date" id="input-name" class="form-control form-control-alternative">
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-type">Number of Days Requested</label>
+                          <select name="input-type" id="input-type" class="form-control form-control-alternative" placeholder="Bounce House">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6+</option>
+                            </select>
+                        </div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-name">Event Start Time</label>
+                            <input type="time" id="input-name" class="form-control form-control-alternative">
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group focused">
+                              <label class="form-control-label" for="input-name">Event End Time</label>
+                              <input type="time" id="input-name" class="form-control form-control-alternative">
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="form-group focused">
+                              <label class="form-control-label" for="input-name">Setup Time</label>
+                              <input type="time" id="input-name" class="form-control form-control-alternative">
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="form-group focused">
+                              <label class="form-control-label" for="input-name">Employees Needed to Staff Event/Run Inflatables</label>
+                              <select name="input-staff" id="input-staff" class="form-control form-control-alternative" placeholder="Bounce House">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                              </select>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <h6 class="heading-small text-muted mb-4">Location Info</h6>
+                    <div class="pl-lg-4">
+                      <div class="form-group focused">
+                        <label>Address</label>
+                        <textarea id="input-address" name="input-address" rows="1" class="form-control form-control-alternative" placeholder="">ADDRESS GOES HERE</textarea>
+                      </div>
+                    </div>
+                    <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-name">City</label>
+                            <input type="text" id="input-address" class="form-control form-control-alternative" value="CITY HERE">
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="input-type">State</label>
+                            <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="Name" value="Ohio">
+                          </div>
+                        </div> 
+                      </div>
+                    </div>
                 <!-- Address -->
-                <h6 class="heading-small text-muted mb-4">Purchase Info</h6>
+                <h6 class="heading-small text-muted mb-4">Inflatables Needed</h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-address">Purchase Date</label>
-                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="" type="date">
+                        <label class="form-control-label" for="input-bounce">Bounce Houses</label>
+                        <label class="form-control-label" for="input-bounce">Giant Slides</label>
+                        <label class="form-control-label" for="input-bounce">Combos</label>
+                        <label class="form-control-label" for="input-bounce">Midway Rush Games</label>
+                        <label class="form-control-label" for="input-bounce">Fun & Games</label>
+                        <label class="form-control-label" for="input-bounce">Obstacles</label>
+                        <label class="form-control-label" for="input-bounce">Equipment</label>
                       </div>
                     </div>
                   </div>
                   </div>
-                  <h6 class="heading-small text-muted mb-4">Setup Info</h6>
-                  <div class="pl-lg-4">
-                  <div class="row">
-
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-city"># Employees Needed For Setup</label>
-                        <select name="input-type" id="input-type" class="form-control form-control-alternative" placeholder="Bounce house">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                          </select>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-country"># Stakes/Sandbags Needed</label>
-                        <select name="input-type" id="input-type" class="form-control form-control-alternative" placeholder="6">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                          </select>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-country"># Blowers Needed</label>
-                        <select name="input-type" id="input-type" class="form-control form-control-alternative" placeholder="6">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                          </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
+                <button class="btn btn-primary" type="submit">Submit</button>
               </form>
             </div>
           </div>
