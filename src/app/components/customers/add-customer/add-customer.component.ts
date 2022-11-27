@@ -10,7 +10,13 @@ import { CustomersService } from 'src/app/services/customers.service';
 export class AddCustomerComponent implements OnInit {
 
   addCustomerRequest: any = {
-    strCustomerName: ''
+    strFirstName: '',
+    strLastName: '',
+    strAddress: '',
+    strCity: '',
+    strState: '',
+    strZip: '',
+    strEmail: '',
   };
 
   constructor(private customersService: CustomersService, private router: Router) { }

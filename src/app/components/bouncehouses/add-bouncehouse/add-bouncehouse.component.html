@@ -1,0 +1,53 @@
+<div class="container my-5">
+  <h1 class="mb-3">Add New Bounce House</h1>
+
+  <div class="row">
+    <div class="col-6">
+      <form #form="ngForm" (ngSubmit)="addBounceHouse()">
+        <div class="mb-3">
+          <label for="intBounceHouseTypeID" class="form-label">Bounce House Type ID</label>
+          <input type="number" class="form-control" id="intBounceHouseTypeID"
+          name="intBounceHouseTypeID" [(ngModel)]="addBounceHouseRequest.intBounceHouseTypeID"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strBounceHouseName" class="form-label">Bounce House Name</label>
+          <input type="text" class="form-control" id="strBounceHouseName"
+          name="strBounceHouseName" [(ngModel)]="addBounceHouseRequest.strBounceHouseName"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strDescription" class="form-label">Description</label>
+          <input type="text" class="form-control" id="strDescription"
+          name="strDescription" [(ngModel)]="addBounceHouseRequest.strDescription"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="intEmployeesNeededForSetup" class="form-label">Employee's Needed For Setup</label>
+          <input type="number" class="form-control" id="intEmployeesNeededForSetup"
+          name="intEmployeesNeededForSetup" [(ngModel)]="addBounceHouseRequest.intEmployeesNeededForSetup"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="intNumberOfStakesRequired" class="form-label">Number Of Stakes Required</label>
+          <input type="number" class="form-control" id="intNumberOfStakesRequired"
+          name="intNumberOfStakesRequired" [(ngModel)]="addBounceHouseRequest.intNumberOfStakesRequired"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strDateOfLastPurchase" class="form-label">Last Date of Purchase</label>
+          <input type="text" class="form-control" id="strDateOfLastPurchase"
+          name="strDateOfLastPurchase" [(ngModel)]="addBounceHouseRequest.strDateOfLastPurchase"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strURL" class="form-label">URL</label>
+          <input type="text" class="form-control" id="strURL"
+          name="strURL" [(ngModel)]="addBounceHouseRequest.strURL"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="intPurchaseYear" class="form-label">Purchase Year</label>
+          <input type="number" class="form-control" id="intPurchaseYear"
+          name="intPurchaseYear" [(ngModel)]="addBounceHouseRequest.intPurchaseYear"> <!--Bind to property in ts file-->
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

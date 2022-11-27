@@ -17,7 +17,7 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { BounceHouseCreateComponent } from './bounce-house-create/bounce-house-create.component';
 import { MatTableModule } from '@angular/material/table'  ;
 import { ViewInflatablesComponent } from './view-inflatables/view-inflatables.component';
-import {MatSortModule} from '@angular/material/sort';
+import { MatSortModule} from '@angular/material/sort';
 import { EditInflatablesComponent } from './edit-inflatables/edit-inflatables.component';
 import { ViewEventsComponent } from './view-events/view-events.component';
 import { EditEventsComponent } from './edit-events/edit-events.component';
@@ -25,6 +25,18 @@ import { AddEventComponent } from './add-event/add-event.component';
 import { ViewEquipmentComponent } from './view-equipment/view-equipment.component';
 import { EditEquipmentComponent } from './edit-equipment/edit-equipment.component';
 import { CreateEquipmentComponent } from './create-equipment/create-equipment.component';
+import { EmployeeListComponent } from './components/employees/employee-list/employee-list.component';
+import { EditEmployeeComponent } from './components/employees/edit-employee/edit-employee.component';
+import { AddEmployeeComponent } from './components/employees/add-employee/add-employee.component';
+import { AddEquipmentComponent } from './components/equipments/add-equipment/add-equipment.component';
+import { EquipmentListComponent } from './components/equipments/equipment-list/equipment-list.component';
+import { EditEquipment2Component } from './components/equipments/edit-equipment2/edit-equipment2.component';
+import { AddBouncehouseComponent } from './components/bouncehouses/add-bouncehouse/add-bouncehouse.component';
+import { BouncehouseListComponent } from './components/bouncehouses/bouncehouse-list/bouncehouse-list.component';
+import { EditBouncehouseComponent } from './components/bouncehouses/edit-bouncehouse/edit-bouncehouse.component';
+import { AddVehicleComponent } from './components/vehicles/add-vehicle/add-vehicle.component';
+import { VehicleListComponent } from './components/vehicles/vehicle-list/vehicle-list.component';
+import { EditVehicleComponent } from './components/vehicles/edit-vehicle/edit-vehicle.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +56,18 @@ import { CreateEquipmentComponent } from './create-equipment/create-equipment.co
     ViewEquipmentComponent,
     EditEquipmentComponent,
     CreateEquipmentComponent,
+    EmployeeListComponent,
+    EditEmployeeComponent,
+    AddEmployeeComponent,
+    AddEquipmentComponent,
+    EquipmentListComponent,
+    EditEquipment2Component,
+    AddBouncehouseComponent,
+    BouncehouseListComponent,
+    EditBouncehouseComponent,
+    AddVehicleComponent,
+    VehicleListComponent,
+    EditVehicleComponent,
   ],
   imports: [
     BrowserModule,

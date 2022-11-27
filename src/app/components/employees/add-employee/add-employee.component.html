@@ -1,0 +1,68 @@
+<div class="container my-5">
+  <h1 class="mb-3">Add New Employee</h1>
+
+  <div class="row">
+    <div class="col-6">
+      <form #form="ngForm" (ngSubmit)="addEmployee()">
+        <div class="mb-3">
+          <label for="strFirstName" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="strFirstName"
+          name="strFirstName" [(ngModel)]="addEmployeeRequest.strFirstName"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strLastName" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="strLastName"
+          name="strLastName" [(ngModel)]="addEmployeeRequest.strLastName"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strPhoneNumber" class="form-label">Phone Number</label>
+          <input type="text" class="form-control" id="strPhoneNumber"
+          name="strPhoneNumber" [(ngModel)]="addEmployeeRequest.strPhoneNumber"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" id="strAddress"
+          name="strAddress" [(ngModel)]="addEmployeeRequest.strAddress"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strCity" class="form-label">City</label>
+          <input type="text" class="form-control" id="strCity"
+          name="strCity" [(ngModel)]="addEmployeeRequest.strCity"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strState" class="form-label">State</label>
+          <input type="text" class="form-control" id="strState"
+          name="strState" [(ngModel)]="addEmployeeRequest.strState"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strZip" class="form-label">Zip</label>
+          <input type="text" class="form-control" id="strZip"
+          name="strZip" [(ngModel)]="addEmployeeRequest.strZip"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strDateOfBirth" class="form-label">Date of Birth</label>
+          <input type="text" class="form-control" id="strDateOfBirth"
+          name="strDateOfBirth" [(ngModel)]="addEmployeeRequest.strDateOfBirth"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="strEmail"
+          name="strEmail" [(ngModel)]="addEmployeeRequest.strEmail"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strDrivingStatus" class="form-label">Driving Status</label>
+          <input type="text" class="form-control" id="strDrivingStatus"
+          name="strDrivingStatus" [(ngModel)]="addEmployeeRequest.strDrivingStatus"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strEmploymentTitle" class="form-label">Employment Title</label>
+          <input type="text" class="form-control" id="strEmploymentTitle"
+          name="strEmploymentTitle" [(ngModel)]="addEmployeeRequest.strEmploymentTitle"> <!--Bind to property in ts file-->
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
