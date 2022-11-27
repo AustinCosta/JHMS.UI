@@ -5,13 +5,25 @@
     <thead>
       <tr>
         <th>Customer ID</th>
-        <th>Name</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>Email</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let customer of customers">
         <td>{{customer.intCustomerID}}</td>
-        <td>{{customer.strCustomerName}}</td>
+        <td>{{customer.strFirstName}}</td>
+        <td>{{customer.strLastName}}</td>
+        <td>{{customer.strAddress}}</td>
+        <td>{{customer.strCity}}</td>
+        <td>{{customer.strState}}</td>
+        <td>{{customer.strZip}}</td>
+        <td>{{customer.strEmail}}</td>
         <td><a [routerLink]="['/customers', 'edit', customer.intCustomerID]">Edit</a></td>
       </tr>
     </tbody>

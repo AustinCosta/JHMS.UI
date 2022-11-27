@@ -1,0 +1,41 @@
+<div class="container my-5">
+  <h1 class="mb-3">Edit Equipment</h1>
+
+  <div class="row">
+    <div class="col-6">
+      <form #form="ngForm" (ngSubmit)="updateEquipment()">
+        <div class="mb-3">
+          <label for="id" class="form-label">Equipment ID</label>
+          <input type="text" class="form-control" id="id" readonly
+          name="id" [(ngModel)]="equipmentDetails.intEquipmentID"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strEquipmentName" class="form-label">Equipment Name</label>
+          <input type="text" class="form-control" id="strEquipmentName"
+          name="strEquipmentName" [(ngModel)]="equipmentDetails.strEquipmentName"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strDescription" class="form-label">Description</label>
+          <input type="text" class="form-control" id="strDescription"
+          name="strDescription" [(ngModel)]="equipmentDetails.strDescription"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="intQuantityOnHand" class="form-label">Quantity On Hand</label>
+          <input type="number" class="form-control" id="intQuantityOnHand"
+          name="intQuantityOnHand" [(ngModel)]="equipmentDetails.intQuantityOnHand"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="intExpectedQuantity" class="form-label">Expected Quantity</label>
+          <input type="number" class="form-control" id="intExpectedQuantity"
+          name="intExpectedQuantity" [(ngModel)]="equipmentDetails.intExpectedQuantity"> <!--Bind to property in ts file-->
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary mr-5">Save</button>
+        <button type="button" class="btn btn-danger"
+        (click)="deleteEquipment(equipmentDetails.intEquipmentID)">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>

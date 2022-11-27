@@ -1,0 +1,22 @@
+<div class="container my-5">
+  <h1 class="mb-3">Vehicles</h1>
+
+  <table class="table" *ngIf="vehicles && vehicles.length > 0">
+    <thead>
+      <tr>
+        <th>Vehicle ID</th>
+        <th>Vehicle Name</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vehicle of vehicles">
+        <td>{{vehicle.intVehicleID}}</td>
+        <td>{{vehicle.strVehicleName}}</td>
+        <td>{{vehicle.intQuantity}}</td>
+        <td><a [routerLink]="['/vehicles', 'edit', vehicle.intVehicleID]">Edit</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="!vehicles || vehicles.length <= 0">No Vehicles Found.</p>
+</div>

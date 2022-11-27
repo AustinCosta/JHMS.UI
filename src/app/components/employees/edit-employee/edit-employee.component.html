@@ -1,0 +1,75 @@
+<div class="container my-5">
+  <h1 class="mb-3">Edit Employee</h1>
+
+  <div class="row">
+    <div class="col-6">
+      <form #form="ngForm" (ngSubmit)="updateEmployee()">
+        <div class="mb-3">
+          <label for="id" class="form-label">Employee ID</label>
+          <input type="text" class="form-control" id="id" readonly
+          name="id" [(ngModel)]="employeeDetails.intEmployeeID"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strFirstName" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="strFirstName"
+          name="strFirstName" [(ngModel)]="employeeDetails.strFirstName"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strLastName" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="strLastName"
+          name="strLastName" [(ngModel)]="employeeDetails.strLastName"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strPhoneNumber" class="form-label">Phone Number</label>
+          <input type="text" class="form-control" id="strPhoneNumber"
+          name="strPhoneNumber" [(ngModel)]="employeeDetails.strPhoneNumber"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" id="strAddress"
+          name="strAddress" [(ngModel)]="employeeDetails.strAddress"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strCity" class="form-label">City</label>
+          <input type="text" class="form-control" id="strCity"
+          name="strCity" [(ngModel)]="employeeDetails.strCity"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strState" class="form-label">State</label>
+          <input type="text" class="form-control" id="strState"
+          name="strState" [(ngModel)]="employeeDetails.strState"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strZip" class="form-label">Zip</label>
+          <input type="text" class="form-control" id="strZip"
+          name="strZip" [(ngModel)]="employeeDetails.strZip"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strDateOfBirth" class="form-label">Date Of Birth</label>
+          <input type="text" class="form-control" id="strDateOfBirth"
+          name="strDateOfBirth" [(ngModel)]="employeeDetails.strDateOfBirth"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="strEmail"
+          name="strEmail" [(ngModel)]="employeeDetails.strEmail"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strDrivingStatus" class="form-label">Driving Status</label>
+          <input type="text" class="form-control" id="strDrivingStatus"
+          name="strDrivingStatus" [(ngModel)]="employeeDetails.strDrivingStatus"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strEmploymentTitle" class="form-label">Employment Title</label>
+          <input type="text" class="form-control" id="strEmploymentTitle"
+          name="strEmploymentTitle" [(ngModel)]="employeeDetails.strEmploymentTitle"> <!--Bind to property in ts file-->
+        </div>
+
+
+        <button type="submit" class="btn btn-primary mr-5">Save</button>
+        <button type="button" class="btn btn-danger"
+        (click)="deleteEmployee(employeeDetails.intEmployeeID)">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>

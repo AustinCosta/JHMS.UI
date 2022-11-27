@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { response } from 'express';
 import { CustomersService } from 'src/app/services/customers.service';
 
 @Component({

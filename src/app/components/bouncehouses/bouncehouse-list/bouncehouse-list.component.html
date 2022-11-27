@@ -1,0 +1,36 @@
+<div class="container my-5">
+  <h1 class="mb-3">Bounce Houses</h1>
+
+  <table class="table" *ngIf="bounceHouses && bounceHouses.length > 0">
+    <thead>
+      <tr>
+        <th>Bounce House ID</th>
+        <th>Bounce House Type ID</th>
+        <th>Bounce House Name</th>
+        <th>Description</th>
+        <th>Employee's Needed For Setup</th>
+        <th>Number Of Stakes Required</th>
+        <th>Number Of Blowers Required</th>
+        <th>Date Of Last Purchase</th>
+        <th>URL</th>
+        <th>Purchase Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bounceHouse of bounceHouses">
+        <td>{{bounceHouse.intBounceHouseID}}</td>
+        <td>{{bounceHouse.intBounceHouseTypeID}}</td>
+        <td>{{bounceHouse.strBounceHouseName}}</td>
+        <td>{{bounceHouse.strDescription}}</td>
+        <td>{{bounceHouse.intEmployeesNeededForSetup}}</td>
+        <td>{{bounceHouse.intNumberOfStakesRequired}}</td>
+        <td>{{bounceHouse.intNumberOfBlowersRequired}}</td>
+        <td>{{bounceHouse.strDateOfLastPurchase}}</td>
+        <td>{{bounceHouse.strURL}}</td>
+        <td>{{bounceHouse.intPurchaseYear}}</td>
+        <td><a [routerLink]="['/bouncehouses', 'edit', bounceHouse.intBounceHouseID]">Edit</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="!bounceHouses || bounceHouses.length <= 0">No Inflatables Found.</p>
+</div>

@@ -1,0 +1,59 @@
+<div class="container my-5">
+  <h1 class="mb-3">Edit Bounce House</h1>
+
+  <div class="row">
+    <div class="col-6">
+      <form #form="ngForm" (ngSubmit)="updateBounceHouse()">
+        <div class="mb-3">
+          <label for="id" class="form-label">Bounce House ID</label>
+          <input type="text" class="form-control" id="id" readonly
+          name="id" [(ngModel)]="bounceHouseDetails.intBounceHouseID"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="intBounceHouseTypeID" class="form-label">Bounce House Type ID</label>
+          <input type="number" class="form-control" id="intBounceHouseTypeID"
+          name="intBounceHouseTypeID" [(ngModel)]="bounceHouseDetails.intBounceHouseTypeID"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strBounceHouseName" class="form-label">Bounce House Name</label>
+          <input type="text" class="form-control" id="strBounceHouseName"
+          name="strBounceHouseName" [(ngModel)]="bounceHouseDetails.strBounceHouseName"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strDescription" class="form-label">Description</label>
+          <input type="text" class="form-control" id="strDescription"
+          name="strDescription" [(ngModel)]="bounceHouseDetails.strDescription"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="intEmployeesNeededForSetup" class="form-label">Employee's Needed For Setup</label>
+          <input type="number" class="form-control" id="intEmployeesNeededForSetup"
+          name="intEmployeesNeededForSetup" [(ngModel)]="bounceHouseDetails.intEmployeesNeededForSetup"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="intNumberOfStakesRequired" class="form-label">Number Of Stakes Required</label>
+          <input type="number" class="form-control" id="intNumberOfStakesRequired"
+          name="intNumberOfStakesRequired" [(ngModel)]="bounceHouseDetails.intNumberOfStakesRequired"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strDateOfLastPurchase" class="form-label">Date Of Last Purchase</label>
+          <input type="text" class="form-control" id="strDateOfLastPurchase"
+          name="strDateOfLastPurchase" [(ngModel)]="bounceHouseDetails.strDateOfLastPurchase"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strURL" class="form-label">URL</label>
+          <input type="text" class="form-control" id="strURL"
+          name="strURL" [(ngModel)]="bounceHouseDetails.strURL"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="intPurchaseYear" class="form-label">Purchase Year</label>
+          <input type="number" class="form-control" id="intPurchaseYear"
+          name="intPurchaseYear" [(ngModel)]="bounceHouseDetails.intPurchaseYear"> <!--Bind to property in ts file-->
+        </div>
+
+        <button type="submit" class="btn btn-primary mr-5">Save</button>
+        <button type="button" class="btn btn-danger"
+        (click)="deleteBounceHouse(bounceHouseDetails.intBounceHouseID)">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
