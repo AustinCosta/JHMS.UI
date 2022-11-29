@@ -5,7 +5,7 @@
 <body>
   <div class="main-content">
     <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://jumphouseinflatables.com/wp-content/uploads/2021/06/bounce-180-Jr-Obstacle.jpg); background-size: cover; background-position: center top;">
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://user-images.githubusercontent.com/79421698/204444597-27384cc7-f53c-48f1-8644-01e5712d1dfa.jpg); background-size: cover; background-position: center top;">
       <!-- Mask -->
       <span class="mask bg-gradient-default opacity-8"></span>
       
@@ -152,34 +152,185 @@
                       </div>
                     </div>
                 <!-- Address -->
+
+
+                
                 <h6 class="heading-small text-muted mb-4">Inflatables Needed</h6>
                 <div class="pl-lg-4">
                   <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-6">
                       <div class="form-group focused">
-
-                        <div *ngFor="let bericht of berichten; let i = index" >
-                          <div>
-                            <input type="checkbox" [formControlName]="i">
-                          </div>
-                          <div>
-                            {{bericht.messageId}}
-                          </div>
-                        </div>
-                      
-                        <br/>
-
-                      
+                        <label class="form-control-label" for="input-name">Bounce Houses</label>
+                        <br>
+                        <br>
+                        <div *ngFor="let data of arrBounce; let i = index" >
+                        <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="bounceCheck{{ i }}" >
+                        <label style="padding-left: 8px;"      class="form-check-label" for="bounceCheck{{ i }}">
+                          <p>  {{ data.strBounceHouseName }}</p>
+                        </label>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-name">Fun & Games</label>
+                        <br>
+                        <br>
+                        <div *ngFor="let data of arrFun; let i = index" >
+                        <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID  }}" id="funCheck{{ i }}" [disabled]="data.status">
+                        <label style="padding-left: 8px;"      class="form-check-label" for="funCheck{{ i }}">
+                          <p>  {{ data.strBounceHouseName }} </p>
+                        </label>
+                      </div>
                       </div>
                     </div>
                   </div>
                   </div>
-                  
-                <button class="btn btn-primary" type="submit">Submit</button>
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-name">Combos</label>
+                          <br>
+                          <br>
+                          <div *ngFor="let data of arrCombo; let i = index" >
+                          <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="comboCheck{{ i }}"  [disabled]="data.status">
+                          <label style="padding-left: 8px;"      class="form-check-label" for="comboCheck{{ i }}">
+                            <p>  {{ data.strBounceHouseName }}</p>
+                          </label>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-name">Midway Rush Games</label>
+                          <br>
+                          <br>
+                          <div *ngFor="let data of arrMidway; let i = index" >
+                          <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="midwayCheck{{ i }}"  [disabled]="data.status">
+                          <label style="padding-left: 8px;"      class="form-check-label" for="midwayCheck{{ i }}">
+                            <p>  {{ data.strBounceHouseName }}</p>
+                          </label>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-name">Slides</label>
+                            <br>
+                            <br>
+                            <div *ngFor="let data of arrSlide; let i = index" >
+                            <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="slideCheck{{ i }}"  [disabled]="data.status">
+                            <label style="padding-left: 8px;"      class="form-check-label" for="slideCheck{{ i }}">
+                              <p>  {{ data.strBounceHouseName }}</p>
+                            </label>
+                          </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-name">Obstacles</label>
+                            <br>
+                            <br>
+                            <div *ngFor="let data of arrObstacle; let i = index" >
+                            <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="obstacleCheck{{ i }}"  [disabled]="data.status">
+                            <label style="padding-left: 8px;"      class="form-check-label" for="obstacleCheck{{ i }}">
+                              <p>  {{ data.strBounceHouseName }}</p>
+                            </label>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      <h6 class="heading-small text-muted mb-4">Vehicle Info</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        
+                        <div class="col-lg-6">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-name">Vehicles</label>
+                            <br>
+                            <br>
+                            <div *ngFor="let data of vehicles; let i = index" >
+                            <input class="form-check-input" type="checkbox" value="{{ data.intVehicleID }}" id="vehicleCheck{{ i }}"  [disabled]="data.status">
+                            <label style="padding-left: 8px;"      class="form-check-label" for="vehicleCheck{{ i }}">
+                              <p>  {{ data.strVehicleName }}</p>
+                            </label>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+
+
+
+
+
+                <!-- <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group focused">
+                        <form [formGroup]="form" (ngSubmit)="submit()">
+                          <label formArrayName="orders" *ngFor="let order of ordersFormArray.controls; let i = index">
+                            <input type="checkbox" [formControlName]="i"> 
+                            {{webData[i].name}} 
+                          </label>
+                        
+                          <br/>
+                        </form>
+                        <br/>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                   -->
+                <button class="btn btn-primary" (click)="checkBoxes()" type="submit">Submit</button>
               </form>
             </div>
           </div>
         </div>
       </div>
       </div>
+      <!-- <table class="table" *ngIf="bounceHouses2 && bounceHouses2.length > 0">
+        <thead>
+          <tr>
+            <th>Bounce House ID</th>
+            <th>Bounce House Type ID</th>
+            <th>Bounce House Name</th>
+            <th>Description</th>
+            <th>Employee's Needed For Setup</th>
+            <th>Number Of Stakes Required</th>
+            <th>Number Of Blowers Required</th>
+            <th>Date Of Last Purchase</th>
+            <th>URL</th>
+            <th>Purchase Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bounceHouse of bounceHouses2">
+            <td>{{bounceHouse.intBounceHouseID}}</td>
+            <td>{{bounceHouse.intBounceHouseTypeID}}</td>
+            <td>{{bounceHouse.strBounceHouseName}}</td>
+            <td>{{bounceHouse.strDescription}}</td>
+            <td>{{bounceHouse.intEmployeesNeededForSetup}}</td>
+            <td>{{bounceHouse.intNumberOfStakesRequired}}</td>
+            <td>{{bounceHouse.intNumberOfBlowersRequired}}</td>
+            <td>{{bounceHouse.strDateOfLastPurchase}}</td>
+            <td>{{bounceHouse.strURL}}</td>
+            <td>{{bounceHouse.intPurchaseYear}}</td>
+            <td><a [routerLink]="['/bouncehouses', 'edit', bounceHouse.intBounceHouseID]">Edit</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="!bounceHouses2 || bounceHouses2.length <= 0">No Inflatables Found.</p> -->
+
 </body>

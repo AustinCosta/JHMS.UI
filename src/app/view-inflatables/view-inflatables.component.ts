@@ -2,6 +2,7 @@ import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { BouncehousesService } from '../services/bouncehouses.service';
 
 export interface PeriodicElement {
   name: string;
@@ -30,10 +31,23 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./view-inflatables.component.css']
 })
 export class ViewInflatablesComponent implements AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'name'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor(private _liveAnnouncer: LiveAnnouncer) {}
+  constructor(private _liveAnnouncer: LiveAnnouncer, private bounceHouseService: BouncehousesService) {}
+
+  bounceHouses: any = [];
+  ngOnInit(): void {
+    this.bounceHouseService.getAllBounceHouses()
+    .subscribe({
+      next: (bounceHouses) => {
+        this.bounceHouses = bounceHouses;
+      },
+      error: (response) => {
+        console.log(response);
+      }
+    });
+  }
 
   @ViewChild(MatSort) sort: MatSort;
 
