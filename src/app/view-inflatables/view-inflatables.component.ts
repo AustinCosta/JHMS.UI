@@ -3,6 +3,7 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { BouncehousesService } from '../services/bouncehouses.service';
+import { ActivatedRoute, Router} from '@angular/router';
 
 export interface PeriodicElement {
   name: string;
@@ -34,19 +35,68 @@ export class ViewInflatablesComponent implements AfterViewInit {
   displayedColumns: string[] = ['position', 'name'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private bounceHouseService: BouncehousesService) {}
-
+  constructor(private route: ActivatedRoute, private _liveAnnouncer: LiveAnnouncer, private bounceHouseService: BouncehousesService) {}
+  
+  intInflatableTypeID = 0;
   bounceHouses: any = [];
+  bounceHouses2: any = [];
+  bounceHouses3: any = [];
   ngOnInit(): void {
+
+    this.route.paramMap.subscribe({
+      next: (params) =>{
+      const inflatableID = params.get('type');
+      this.intInflatableTypeID = Number(inflatableID);
+
+      //alert(this.intInflatableTypeID);
+      }})
+
+
+
     this.bounceHouseService.getAllBounceHouses()
     .subscribe({
       next: (bounceHouses) => {
         this.bounceHouses = bounceHouses;
+
+        for (var i = 0; i < 100; i++) { 
+
+          if (this.bounceHouses[i]?.intBounceHouseTypeID == this.intInflatableTypeID){
+
+            //console.log(this.bounceHouses[i]?.intBounceHouseTypeID);
+            //console.log(this.intInflatableTypeID);
+            
+            this.bounceHouses2.push(this.bounceHouses[i]);
+          } else if (this.intInflatableTypeID == 0){
+
+              if (this.bounceHouses[i]?.intBounceHouseTypeID > 0){
+
+                this.bounceHouses2.push(this.bounceHouses[i]);
+
+              }
+
+
+            
+
+
+          }
+        
+        
+        
+        }
+        this.bounceHouses3 = this.bounceHouses2;
+
+
+
+
+
+
       },
       error: (response) => {
         console.log(response);
       }
     });
+    console.log(this.bounceHouses2);
+
   }
 
   @ViewChild(MatSort) sort: MatSort;
