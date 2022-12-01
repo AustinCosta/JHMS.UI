@@ -1,0 +1,77 @@
+<div class="container my-5">
+  <h1 class="mb-3">Add New Event</h1>
+
+  <div class="row">
+    <div class="col-6">
+      <form #form="ngForm" (ngSubmit)="addEvent()">
+        <div class="mb-3">
+          <label for="strEventType" class="form-label">Event Type</label>
+          <input type="text" class="form-control" id="strFirstName"
+          name="strEventType" [(ngModel)]="addEventRequest.strEventType"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="intCustomerID" class="form-label">Customer ID</label>
+          <input type="number" class="form-control" id="intCustomerID"
+          name="intCustomerID" [(ngModel)]="addEventRequest.intCustomerID"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="intEnvironmentTypeID" class="form-label">Environment Type ID</label>
+          <input type="number" class="form-control" id="intEnvironmentTypeID"
+          name="intEnvironmentTypeID" [(ngModel)]="addEventRequest.intEnvironmentTypeID"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="dteEventStartDate" class="form-label">Start Date</label>
+          <input type="date" class="form-control" id="dteEventStartDate"
+          name="dteEventStartDate" [(ngModel)]="addEventRequest.dteEventStartDate"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="dteEventEndDate" class="form-label">End Date</label>
+          <input type="date" class="form-control" id="dteEventEndDate"
+          name="dteEventEndDate" [(ngModel)]="addEventRequest.dteEventEndDate"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strEventName" class="form-label">Event Name</label>
+          <input type="text" class="form-control" id="strEventName"
+          name="strEventName" [(ngModel)]="addEventRequest.strEventName"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strEventStartTime" class="form-label">Start Time</label>
+          <input type="text" class="form-control" id="strEventStartTime"
+          name="strEventStartTime" [(ngModel)]="addEventRequest.strEventStartTime"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strEventEndTime" class="form-label">End Time</label>
+          <input type="text" class="form-control" id="strEventEndTime"
+          name="strEventEndTime" [(ngModel)]="addEventRequest.strEventEndTime"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strEventSetupTime" class="form-label">Setup Time</label>
+          <input type="text" class="form-control" id="strEventSetupTime"
+          name="strEventSetupTime" [(ngModel)]="addEventRequest.strEventSetupTime"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strEventDescription" class="form-label">Description</label>
+          <input type="text" class="form-control" id="strEventDescription"
+          name="strEventDescription" [(ngModel)]="addEventRequest.strEventDescription"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="intInflatablesNeeded" class="form-label">Inflatables Needed</label>
+          <input type="number" class="form-control" id="intInflatablesNeeded"
+          name="intInflatablesNeeded" [(ngModel)]="addEventRequest.intInflatablesNeeded"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="intEmployeesForTheEvent" class="form-label">Employee's For The Event</label>
+          <input type="number" class="form-control" id="intEmployeesForTheEvent"
+          name="intEmployeesForTheEvent" [(ngModel)]="addEventRequest.intEmployeesForTheEvent"> <!--Bind to property in ts file-->
+        </div>
+        <div class="mb-3">
+          <label for="strLocation" class="form-label">Location</label>
+          <input type="text" class="form-control" id="strLocation"
+          name="strLocation" [(ngModel)]="addEventRequest.strLocation"> <!--Bind to property in ts file-->
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

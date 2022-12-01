@@ -26,6 +26,8 @@ import { EditBouncehouseComponent } from './components/bouncehouses/edit-bounceh
 import { VehicleListComponent } from './components/vehicles/vehicle-list/vehicle-list.component';
 import { AddVehicleComponent } from './components/vehicles/add-vehicle/add-vehicle.component';
 import { EditVehicleComponent } from './components/vehicles/edit-vehicle/edit-vehicle.component';
+import { EventListComponent } from './components/events/event-list/event-list.component';
+import { EditEventComponent } from './components/events/edit-event/edit-event.component';
 
 
 const routes: Routes = [
@@ -45,6 +47,9 @@ const routes: Routes = [
   { path: 'vehicles', component: VehicleListComponent},
   { path: 'vehicles/add', component: AddVehicleComponent},
   { path: 'vehicles/edit/:id', component: EditVehicleComponent}, //2nd version/template
+  { path: 'events', component: EventListComponent},
+  { path: 'events/add', component: AddEventComponent},
+  { path: 'events/edit/:id', component: EditEventComponent}, //2nd version/template
 
 
   { path: 'Home', component: InventoryComponent},

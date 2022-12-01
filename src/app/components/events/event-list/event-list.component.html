@@ -1,0 +1,44 @@
+<div class="container my-5">
+  <h1 class="mb-3">Events</h1>
+
+  <table class="table" *ngIf="events && events.length > 0">
+    <thead>
+      <tr>
+        <th>Event ID</th>
+        <th>Event Type</th>
+        <th>Customer ID</th>
+        <th>Environment Type ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Event Name</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Setup Time</th>
+        <th>Description</th>
+        <th>Inflatables Needed</th>
+        <th>Employee's For The Event</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>{{event.intEventID}}</td>
+        <td>{{event.strEventType}}</td>
+        <td>{{event.intCustomerID}}</td>
+        <td>{{event.intEnvironmentTypeID}}</td>
+        <td>{{event.dteEventStartDate}}</td>
+        <td>{{event.dteEventEndDate}}</td>
+        <td>{{event.strEventName}}</td>
+        <td>{{event.strEventStartTime}}</td>
+        <td>{{event.strEventEndTime}}</td>
+        <td>{{event.strEventSetupTime}}</td>
+        <td>{{event.strEventDescription}}</td>
+        <td>{{event.intInflatablesNeeded}}</td>
+        <td>{{event.intEmployeesForTheEvent}}</td>
+        <td>{{event.strLocation}}</td>
+        <td><a [routerLink]="['/events', 'edit', event.intEventID]">Edit</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="!events || events.length <= 0">No Events Found.</p>
+</div>
