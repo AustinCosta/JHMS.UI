@@ -27,9 +27,6 @@
                 <div class="col-8">
                   <h3 class="mb-0">Event Info</h3>
                 </div>
-                <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">Edit</a>
-                </div>
               </div>
             </div>
             <div class="card-body">
@@ -40,13 +37,14 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-name">Event Name</label>
-                        <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="Name" value="EVENT NAME HERE">
+                        <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="Name" value="" required>
                       </div>
                     </div>
+                    
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-type">Event Type</label>
-                        <select name="input-type" id="input-type" class="form-control form-control-alternative" placeholder="Bounce House">
+                        <select name="input-type" id="input-type" class="form-control form-control-alternative" placeholder="Bounce House" required>
                             <option value="School">School</option>
                             <option value="Gym">Gym</option>
                             <option value="Church">Church</option>
@@ -56,12 +54,44 @@
                           </select>
                       </div>
                     </div> 
+                    </div></div>
+
+
+                <div class="pl-lg-4">
+                  <div class="row">
+                    
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-name">Customer Name</label>
+                        <input type="text" id="input-custName" class="form-control form-control-alternative" placeholder="Name" value="" required>
+                      </div>
+                      
+                    </div>
+                    
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-type">Environment Type</label>
+                        <select name="input-envType" id="input-envType" class="form-control form-control-alternative" required>
+                            <option value="Outdoor On Grass">Outdoor On Grass</option>
+                            <option value="Outdoor On Pavement">Outdoor On Pavement</option>
+                            <option value="Indoor In Gym">Indoor In Gym</option>
+                          </select>
+                      </div>
+                    </div> 
+                    
                   </div>
                 </div>
+
                 <div class="pl-lg-4">
                     <div class="form-group focused">
-                      <label>Description</label>
-                      <textarea id="input-descript" name="input-descript" rows="3" class="form-control form-control-alternative" placeholder="A few words about you ...">DESCRIPTION GOES HERE</textarea>
+                      <label class="form-control-label" for="input-name">Customer Email</label>
+                      <input type="text" id="input-custEmail" class="form-control form-control-alternative" placeholder="Name" value="" required>
+                    </div>
+                  </div>
+                  <div class="pl-lg-4">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-name">Description</label>
+                      <textarea id="input-descript" name="input-descript" rows="3" class="form-control form-control-alternative" placeholder="A few words about the event..." required></textarea>
                     </div>
                   </div>
                 <h6 class="heading-small text-muted mb-4">Date/Time Info</h6>
@@ -70,13 +100,13 @@
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-name">Date of Rental</label>
-                          <input (change) = 'onchange()'[formControl]="dateFormCtrl" type="date" class="form-control form-control-alternative">
+                          <input (change) = 'onchange()'[formControl]="dateFormCtrl" type="date" class="form-control form-control-alternative" required>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-type">Number of Days Requested</label>
-                          <select (change) = 'onchange()'[formControl]="daysFormCtrl" name="days" class="form-control form-control-alternative" placeholder="Bounce House">
+                          <select (change) = 'onchange()'[formControl]="daysFormCtrl" name="days" class="form-control form-control-alternative" placeholder="Bounce House" required>
                               <option value=0 selected>1</option>
                               <option value=1>2</option>
                               <option value=2>3</option>
@@ -92,25 +122,25 @@
                       <div class="row">
                         <div class="col-lg-6">
                           <div class="form-group focused">
-                            <label class="form-control-label" for="input-name">Event Start Time</label>
-                            <input type="time" id="input-name" class="form-control form-control-alternative">
+                            <label class="form-control-label" for="input-name" required>Event Start Time</label>
+                            <input type="time" id="input-startTime" class="form-control form-control-alternative">
                           </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group focused">
-                              <label class="form-control-label" for="input-name">Event End Time</label>
-                              <input type="time" id="input-name" class="form-control form-control-alternative">
+                              <label class="form-control-label" for="input-name" required>Event End Time</label>
+                              <input type="time" id="input-endTime" class="form-control form-control-alternative">
                             </div>
                           </div>
                           <div class="col-lg-6">
                             <div class="form-group focused">
-                              <label class="form-control-label" for="input-name">Setup Time</label>
-                              <input type="time" id="input-name" class="form-control form-control-alternative">
+                              <label class="form-control-label" for="input-name" required>Setup Time</label>
+                              <input type="time" id="input-setupTime" class="form-control form-control-alternative">
                             </div>
                           </div>
                           <div class="col-lg-6">
                             <div class="form-group focused">
-                              <label class="form-control-label" for="input-name">Employees Needed to Staff Event/Run Inflatables</label>
+                              <label class="form-control-label" for="input-name" required>Employees Needed to Staff Event/Run Inflatables</label>
                               <select name="input-staff" id="input-staff" class="form-control form-control-alternative" placeholder="Bounce House">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
@@ -132,7 +162,7 @@
                     <div class="pl-lg-4">
                       <div class="form-group focused">
                         <label>Address</label>
-                        <textarea id="input-address" name="input-address" rows="1" class="form-control form-control-alternative" placeholder="">ADDRESS GOES HERE</textarea>
+                        <textarea id="input-address" name="input-address" rows="1" class="form-control form-control-alternative" placeholder="" required></textarea>
                       </div>
                     </div>
                     <div class="pl-lg-4">
@@ -140,13 +170,19 @@
                         <div class="col-lg-6">
                           <div class="form-group focused">
                             <label class="form-control-label" for="input-name">City</label>
-                            <input type="text" id="input-address" class="form-control form-control-alternative" value="CITY HERE">
+                            <input type="text" id="input-city" class="form-control form-control-alternative" value="" required>
                           </div>
                         </div>
                         <div class="col-lg-6">
                           <div class="form-group">
                             <label class="form-control-label" for="input-type">State</label>
-                            <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="Name" value="Ohio">
+                            <input type="text" id="input-state" class="form-control form-control-alternative" placeholder="" value="Ohio" required>
+                          </div>
+                        </div> 
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="input-type">Zip</label>
+                            <input type="text" id="input-zip" class="form-control form-control-alternative" placeholder="" value="" required>
                           </div>
                         </div> 
                       </div>
@@ -293,7 +329,7 @@
                   </div>
                   </div>
                    -->
-                <button class="btn btn-primary" (click)="checkBoxes()" type="submit">Submit</button>
+                <button class="btn btn-primary" (click)="onSubmit()" type="submit">Submit</button>
               </form>
             </div>
           </div>

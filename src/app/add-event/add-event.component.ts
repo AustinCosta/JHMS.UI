@@ -2,6 +2,10 @@ import { Component, ViewChild, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { BouncehousesService } from '../services/bouncehouses.service';
 import { VehiclesService } from '../services/vehicles.service';
+import { AddEvent2Component } from '../components/events/add-event2/add-event2.component';
+import { CustomersService } from '../services/customers.service';
+import { EventsService } from '../services/events.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-event',
@@ -11,7 +15,7 @@ import { VehiclesService } from '../services/vehicles.service';
 export class AddEventComponent implements OnInit{
 
 
-  constructor(private formBuilder: FormBuilder, private bounceHouseService: BouncehousesService, private vehiclesService: VehiclesService) {};
+  constructor(private formBuilder: FormBuilder, private bounceHouseService: BouncehousesService, private vehiclesService: VehiclesService, private customersService: CustomersService, private eventsService: EventsService,  private router: Router) {};
   //////////// HERE IS EVERYTHING FOR DATES
   dtmDate: Date = new Date();
 
@@ -64,18 +68,68 @@ export class AddEventComponent implements OnInit{
   arrFun: any = [];
   arrObstacle: any = [];
   vehicles: any[] = [];
-  // arrObstacle: any = [{
-  //   intBounceHouseID: 0,
-  //   intBounceHouseTypeID: 0,
-  //   strBounceHouseName: '',
-  //   strDescription: '',
-  //   intEmployeesNeededForSetup: 0,
-  //   intNumberOfStakesRequired: 0,
-  //   intNumberOfBlowersRequired: 0,
-  //   strDateOfLastPurchase: '',
-  //   strURL: '',
-  //   intPurchaseYear: 0
-  // }];
+  customers: any[] = [];
+
+  addEventRequest: any = {
+    strEventType: '',
+    intCustomerID: 0,
+    intEnvironmentTypeID: 0,
+    dteEventStartDate: Date,
+    dteEventEndDate: Date,
+    strEventName: '',
+    strEventStartTime: '',
+    strEventEndTime: '',
+    strEventSetupTime: '',
+    strEventDescription: '',
+    intInflatablesNeeded: 0,
+    intEmployeesForTheEvent: 0,
+    strLocation: '',
+  };
+
+
+
+
+  //Variables for Submit button
+  subInflatableCount = 0;
+  subEventType = '';
+  subCustomerID = 0;
+  subCustomerName = '';
+  subEnvironmentTypeID = 0;
+  subEventStartDate: Date;
+  subEventEndDate: Date;
+  subEventName = '';
+  subEventStartTime = '';
+  subEventEndTime = '';
+  subEventSetupTime = '';
+  subEventDescription = '';
+  subInflatablesNeeded = 0;
+  subEmployeesForTheEvent = 0;
+  subLocation = '';
+  subEnvironmentTypeString = '';
+
+
+  //Info for Customers to be added
+  addCustomerRequest: any = {
+    strFirstName: '',
+    strLastName: '',
+    strAddress: '',
+    strCity: '',
+    strState: '',
+    strZip: '',
+    strEmail: '',
+  };
+
+  custFirst = '';
+  custLast = '';
+  custAddress = '';
+  custCity = '';
+  custState = '';
+  custZip = ''
+  custEmail = '';
+  arrNames: any = [];
+
+
+
   
 
   ngOnInit(): void {
@@ -149,6 +203,18 @@ export class AddEventComponent implements OnInit{
       }
     });
 
+    this.customersService.getAllCustomers()
+    .subscribe({
+      next: (customers) => {
+        this.customers = customers;
+      },
+      error: (response) => {
+        console.log(response);
+      }
+    });
+
+
+
 
     
 
@@ -197,23 +263,6 @@ export class AddEventComponent implements OnInit{
     /////EVERYTHING FOR POPULATING CHECKBOXES
     thisIsMyForm: FormGroup
 
-    webData = [
-      {name:"BounceHouse 1", id:"1", status: true},
-      {name:"BounceHouse 2", id:"2", status: false},
-      {name:"BounceHouse 3", id:"3", status: false},
-    ];
-
-    webData2 = [
-      {name:"Slide 1", id:"4", status: false},
-      {name:"Slide 2", id:"5", status: false},
-      {name:"Slide 3", id:"6", status: true},
-    ];
-
-    webData3 = [
-      {name:"combo 1", id:"7", status: true},
-      {name:"Combo 2", id:"8", status: false},
-      {name:"Combo 3", id:"9", status: true},
-    ];
 
     checkBoxes () {
 
@@ -320,6 +369,251 @@ export class AddEventComponent implements OnInit{
 
 
     };
+
+    onSubmit(){
+
+        //Variables for Submit button
+
+        //Event Type Input
+        try {
+          const tempObject2 = document.getElementById(
+            "input-type" 
+          ) as HTMLInputElement;
+              this.subEventType = tempObject2.value;
+        } catch (error) {
+          //console.log(error)
+        }
+
+        //CustomerID
+        try {
+          const tempObject2 = document.getElementById(
+            "input-custName" 
+          ) as HTMLInputElement;
+              this.subCustomerName = tempObject2.value;
+
+              this.arrNames = this.subCustomerName.split(" ");
+
+              this.custFirst = this.arrNames[0];
+              this.custLast = this.arrNames[1];
+
+
+
+        } catch (error) {
+          //console.log(error)
+        }
+
+        //logic for returning customers
+        for (var i = 0; i < 1000; i++) { 
+      
+          if(this.customers[i]?.strCustomerName === this.subCustomerName ) {
+    
+            this.subCustomerID = this.customers[i]?.intCustomerID;
+
+          }else {
+
+            this.subCustomerID = 0;
+          }
+        
+        }
+
+        //Enviornment Type ID
+        try {
+          const tempObject2 = document.getElementById(
+            "input-envType" 
+          ) as HTMLInputElement;
+
+            this.subEnvironmentTypeString = tempObject2.value;
+
+            if (this.subEnvironmentTypeString == 'Outdoor On Grass'){
+              this.subEnvironmentTypeID =1;
+            }else if (this.subEnvironmentTypeString == 'Outdoor On Pavement') {
+              this.subEnvironmentTypeID =2;
+            }else if (this.subEnvironmentTypeString == 'Indoor In Gym'){
+              this.subEnvironmentTypeID = 3;
+            }else {
+              this.subEnvironmentTypeID = 1;
+            }
+
+              
+        } catch (error) {
+          //console.log(error)
+        }
+
+        //start and end dates
+        this.subEventStartDate = this.dtmStart;
+        this.subEventEndDate = this.dtmEnd;
+
+        //Event Name
+        try {
+          const tempObject2 = document.getElementById(
+            "input-name" 
+          ) as HTMLInputElement;
+              this.subEventName = tempObject2.value;
+        } catch (error) {
+          //console.log(error)
+        }
+
+
+        //Start Time
+        try {
+          const tempObject2 = document.getElementById(
+            "input-startTime" 
+          ) as HTMLInputElement;
+              this.subEventStartTime = tempObject2.value;
+        } catch (error) {
+          //console.log(error)
+        }
+
+        //End time
+        try {
+          const tempObject2 = document.getElementById(
+            "input-endTime" 
+          ) as HTMLInputElement;
+              this.subEventEndTime = tempObject2.value;
+        } catch (error) {
+          //console.log(error)
+        }
+
+
+        //Setup time
+        try {
+          const tempObject2 = document.getElementById(
+            "input-setupTime" 
+          ) as HTMLInputElement;
+              this.subEventSetupTime = tempObject2.value;
+        } catch (error) {
+          //console.log(error)
+        }
+
+        //Description
+        try {
+          const tempObject2 = document.getElementById(
+            "input-descript" 
+          ) as HTMLInputElement;
+              this.subEventDescription = tempObject2.value;
+        } catch (error) {
+          //console.log(error)
+        }
+
+        //Location
+        this.subLocation = '';
+        try {
+          const tempObject2 = document.getElementById(
+            "input-address" 
+          ) as HTMLInputElement;
+              this.subLocation = tempObject2.value;
+              this.custAddress = tempObject2.value;
+        } catch (error) {
+          //console.log(error)
+        }
+
+        //City
+        try {
+          const tempObject2 = document.getElementById(
+            "input-city" 
+          ) as HTMLInputElement;
+              this.subLocation += (', ' + tempObject2.value);
+              this.custCity = tempObject2.value;
+        } catch (error) {
+          //console.log(error)
+        }
+
+        //State
+        try {
+          const tempObject2 = document.getElementById(
+            "input-state" 
+          ) as HTMLInputElement;
+            this.subLocation += (', ' + tempObject2.value);
+            this.custState = tempObject2.value;
+        } catch (error) {
+          //console.log(error)
+        }
+
+        //Num inflatables
+        for (var val of this.arrBounce) {
+          this.subInflatableCount += 1;
+        }
+        for (var val of this.arrSlide) {
+          this.subInflatableCount += 1;
+        }
+        for (var val of this.arrCombo) {
+          this.subInflatableCount += 1;
+        }
+        for (var val of this.arrMidway) {
+          this.subInflatableCount += 1;
+        }
+        for (var val of this.arrFun) {
+          this.subInflatableCount += 1;
+        }
+        for (var val of this.arrObstacle) {
+          this.subInflatableCount += 1;
+        }
+
+      //Employees
+      try {
+        const tempObject2 = document.getElementById(
+          "input-staff" 
+        ) as HTMLInputElement;
+          this.subEmployeesForTheEvent = Number(tempObject2.value);
+      } catch (error) {
+        //console.log(error)
+      }
+
+      //Cust Email
+      try {
+        const tempObject2 = document.getElementById(
+          "input-custEmail" 
+        ) as HTMLInputElement;
+          this.custEmail = tempObject2.value;
+      } catch (error) {
+        //console.log(error)
+      }
+
+      //Cust Zip
+      try {
+        const tempObject2 = document.getElementById(
+          "input-zip" 
+        ) as HTMLInputElement;
+          this.custZip = tempObject2.value;
+          this.subLocation += (' ' + tempObject2.value);
+      } catch (error) {
+        //console.log(error)
+      }
+
+      console.log("Event Type: " + this.subEventType);
+      console.log("Customer ID: " + this.subCustomerID);
+      console.log("Customer Name: " + this.subCustomerName);
+      console.log("Environment Type ID: " + this.subEnvironmentTypeID);
+      console.log("Event Start Date: " + this.subEventStartDate);
+      console.log("End Date: " + this.subEventEndDate);
+      console.log("Event Name: " + this.subEventName);
+      console.log("Start Time: " + this.subEventStartTime);
+      console.log("Setup Time: " + this.subEventSetupTime);
+      console.log("End Time: " + this.subEventEndTime);
+      console.log("Description: " + this.subEventDescription);
+      console.log("Inflatables Needed " + this.subInflatableCount);
+      console.log("Employees Needed: " + this.subEmployeesForTheEvent);
+      console.log("Location: " + this.subLocation);
+      console.log("  ");
+      console.log("Customer First Name is: " + this.custFirst);
+      console.log("Customer Last Name is: " + this.custLast);
+      console.log("Customer address is: " + this.custAddress);
+      console.log("Customer city is: " + this.custCity);
+      console.log("Customer state is: " + this.custState);
+      console.log("Customer zip is: " + this.custZip);
+      console.log("Customer email is: " + this.custEmail);
+      console.log()
+
+    }
+
+    addEvent() {
+      this.eventsService.addEvent(this.addEventRequest)
+      .subscribe({
+        next: (event) => {
+          this.router.navigate(['events']);
+        }
+      });
+    }
 
 
 
