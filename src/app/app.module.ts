@@ -40,6 +40,8 @@ import { EventListComponent } from './components/events/event-list/event-list.co
 import { EditEventComponent } from './components/events/edit-event/edit-event.component';
 import { AddEventComponent } from './add-event/add-event.component';
 import { AddEvent2Component } from './components/events/add-event2/add-event2.component';
+import { AddEventvehicleComponent } from './components/events/add-eventvehicle/add-eventvehicle.component';
+import { AddEventequipmentComponent } from './components/events/add-eventequipment/add-eventequipment.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,9 @@ import { AddEvent2Component } from './components/events/add-event2/add-event2.co
     EventListComponent,
     EditEventComponent,
     AddEventComponent,
-    AddEvent2Component
+    AddEvent2Component,
+    AddEventvehicleComponent,
+    AddEventequipmentComponent
   ],
   imports: [
     BrowserModule,

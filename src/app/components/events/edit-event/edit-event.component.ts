@@ -12,6 +12,9 @@ export class EditEventComponent implements OnInit {
   //TEvents
   eventDetails: any = {};
 
+  eventStartDate: any = {};
+  eventEndDate: any = {};
+
   //TEventBounceHouses
   eventBounceHouses: any[] = [];
 
@@ -41,7 +44,7 @@ export class EditEventComponent implements OnInit {
           this.eventsService.getEvent(eventID)
           .subscribe({
             next: (response) => {
-              this.eventDetails = response;
+              this.eventDetails = response[0];
             }
           });
 
@@ -111,6 +114,46 @@ export class EditEventComponent implements OnInit {
   removeBounceHouse(intEventBounceHouseID: string) {
     const id = this.route.snapshot.paramMap.get('id');
     this.eventsService.removeEventBounceHouse(intEventBounceHouseID)
+    .subscribe({
+      next: (response) => {
+        this.ngOnInit();
+      }
+    });
+  }
+
+  removeEventEnvironmentType(intEventEnvironmentTypeID: string) {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.eventsService.removeEventEnvironmentType(intEventEnvironmentTypeID)
+    .subscribe({
+      next: (response) => {
+        this.ngOnInit();
+      }
+    });
+  }
+
+  removeEventEmployee(intEventEmployeeID: string) {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.eventsService.removeEventEmployee(intEventEmployeeID)
+    .subscribe({
+      next: (response) => {
+        this.ngOnInit();
+      }
+    });
+  }
+
+  removeEventEquipment(intEventEquipmentID: string) {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.eventsService.removeEventEquipment(intEventEquipmentID)
+    .subscribe({
+      next: (response) => {
+        this.ngOnInit();
+      }
+    });
+  }
+
+  removeEventVehicle(intEventVehicleID: string) {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.eventsService.removeEventVehicle(intEventVehicleID)
     .subscribe({
       next: (response) => {
         this.ngOnInit();
