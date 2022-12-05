@@ -22,12 +22,12 @@
         <div class="mb-3">
           <label for="dteEventStartDate" class="form-label">Event Start Date</label>
           <input type="date" class="form-control" id="dteEventStartDate"
-          name="dteEventStartDate" [(ngModel)]="eventDetails.dteEventStartDate"> <!--Bind to property in ts file-->
+          name="dteEventStartDate" [(ngModel)]="eventDetails.strEventStartDate"> <!--Bind to property in ts file-->
         </div>
         <div class="mb-3">
           <label for="dteEventEndDate" class="form-label">Event End Date</label>
           <input type="date" class="form-control" id="dteEventStartDate"
-          name="dteEventEndDate" [(ngModel)]="eventDetails.dteEventEndDate"> <!--Bind to property in ts file-->
+          name="dteEventEndDate" [(ngModel)]="eventDetails.strEventEndDate"> <!--Bind to property in ts file-->
         </div>
         <div class="mb-3">
           <label for="strEventName" class="form-label">Event Name</label>
@@ -117,10 +117,13 @@
     <tbody>
       <tr *ngFor="let eventVehicle of eventVehicles">
         <td>{{eventVehicle.strVehicleName}}</td>
+        <td><button type="button" class="btn btn-danger"
+          (click)="removeEventVehicle(eventVehicle.intEventVehicleID)">Remove</button></td>
       </tr>
     </tbody>
   </table>
   <p *ngIf="!eventVehicles || eventVehicles.length <= 0">No Vehicles Found.</p>
+  <a [routerLink]="['/eventvehicles', eventDetails.intEventID, eventDetails.strEventStartDate, eventDetails.strEventEndDate]"><button type="button" class="btn btn-primary">Add Vehicles</button></a>
 </div>
 
 
@@ -138,10 +141,13 @@
       <tr *ngFor="let equipment of eventEquipments">
         <td>{{equipment.strEquipmentName}}</td>
         <td>{{equipment.strDescription}}</td>
+        <td><button type="button" class="btn btn-danger"
+          (click)="removeEventEquipment(equipment.intEventEquipmentID)">Remove</button></td>
       </tr>
     </tbody>
   </table>
   <p *ngIf="!eventEquipments || eventEquipments.length <= 0">No Equipment Found.</p>
+  <a [routerLink]="['/eventequipments', eventDetails.intEventID, eventDetails.strEventStartDate, eventDetails.strEventEndDate]"><button type="button" class="btn btn-primary">Add Equipment</button></a>
 </div>
 
 
@@ -165,6 +171,8 @@
         <td>{{employee.strPhoneNumber}}</td>
         <td>{{employee.strDrivingStatus}}</td>
         <td>{{employee.strEmploymentTitle}}</td>
+        <td><button type="button" class="btn btn-danger"
+          (click)="removeEventEmployee(employee.intEventEmployeeID)">Remove</button></td>
       </tr>
     </tbody>
   </table>
@@ -184,6 +192,8 @@
     <tbody>
       <tr *ngFor="let flooring of eventEnvironmentTypes">
         <td>{{flooring.strEnvironmentType}}</td>
+        <td><button type="button" class="btn btn-danger"
+          (click)="removeEventEnvironmentType(flooring.intEventEnvironmentTypeID)">Remove</button></td>
       </tr>
     </tbody>
   </table>

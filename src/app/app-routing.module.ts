@@ -28,6 +28,8 @@ import { AddVehicleComponent } from './components/vehicles/add-vehicle/add-vehic
 import { EditVehicleComponent } from './components/vehicles/edit-vehicle/edit-vehicle.component';
 import { EventListComponent } from './components/events/event-list/event-list.component';
 import { EditEventComponent } from './components/events/edit-event/edit-event.component';
+import { AddEventvehicleComponent } from './components/events/add-eventvehicle/add-eventvehicle.component';
+import { AddEventequipmentComponent } from './components/events/add-eventequipment/add-eventequipment.component';
 
 
 const routes: Routes = [
@@ -49,7 +51,11 @@ const routes: Routes = [
   { path: 'vehicles/edit/:id', component: EditVehicleComponent}, //2nd version/template
   { path: 'events', component: EventListComponent},
   { path: 'events/add', component: AddEventComponent},
-  { path: 'events/edit/:id', component: EditEventComponent}, //2nd version/template
+  { path: 'events/edit/:id', component: EditEventComponent},                   //2nd version/template
+
+  //Add to child tables
+  { path: 'eventvehicles/:id/:strStart/:strEnd', component: AddEventvehicleComponent}, //with dates
+  { path: 'eventequipments/:id/:strStart/:strEnd', component: AddEventequipmentComponent}, //with dates
 
 
   { path: 'Home', component: InventoryComponent},

@@ -22,7 +22,7 @@ export class EventsService {
   }
 
   getEvent(intEventID: string): Observable<any> {
-    return this.http.get<any>(this.baseApiUrl + '/api/events/' + intEventID);
+    return this.http.get<any[]>(this.baseApiUrl + '/api/events/' + intEventID);
   }
 
   updateEvent(intEventID: string, updateEventRequest: any): Observable<any> {
@@ -53,12 +53,20 @@ export class EventsService {
     return this.http.get<any[]>(this.baseApiUrl + '/api/eventenvironmenttypes/' + intEventID);
   }
 
+  removeEventEnvironmentType(intEventEnvironmentTypeID: string): Observable<any> {
+    return this.http.delete<any>(this.baseApiUrl + '/api/eventenvironmenttypes/' + intEventEnvironmentTypeID)
+  }
+
 
   //==================================//
   //      TEventEmployees             //
   //==================================//
   getAllEventEmployees(intEventID: string): Observable<any[]> {
     return this.http.get<any[]>(this.baseApiUrl + '/api/eventemployees/' + intEventID);
+  }
+
+  removeEventEmployee(intEventEmployeeID: string): Observable<any> {
+    return this.http.delete<any>(this.baseApiUrl + '/api/eventemployees/' + intEventEmployeeID)
   }
 
   //==================================//
@@ -68,11 +76,35 @@ export class EventsService {
     return this.http.get<any[]>(this.baseApiUrl + '/api/eventequipments/' + intEventID);
   }
 
+  removeEventEquipment(intEventEquipmentID: string): Observable<any> {
+    return this.http.delete<any>(this.baseApiUrl + '/api/eventequipments/' + intEventEquipmentID)
+  }
+
+  getAllEquipments(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/equipments');
+  }
+
+  addEventEquipment(addEquipmentRequest: any): Observable<any> {
+    return this.http.post<any>(this.baseApiUrl + '/api/eventequipments/', addEquipmentRequest);
+  }
+
   //==================================//
   //      TEventVehicles              //
   //==================================//
   getAllEventVehicles(intEventID: string): Observable<any[]> {
     return this.http.get<any[]>(this.baseApiUrl + '/api/eventvehicles/' + intEventID);
+  }
+
+  removeEventVehicle(intEventVehicleID: string): Observable<any> {
+    return this.http.delete<any>(this.baseApiUrl + '/api/eventvehicles/' + intEventVehicleID)
+  }
+
+  getAvailableVehicles(intEventID: string, strEventStartDate: string, strEventEndDate: string): Observable<any[]> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/eventvehicles/' + intEventID + '/' + strEventStartDate + '/' + strEventEndDate);
+  }
+
+  addEventVehicle(addVehicleRequest: any): Observable<any> {
+    return this.http.post<any>(this.baseApiUrl + '/api/eventvehicles/', addVehicleRequest);
   }
 
 }
