@@ -40,6 +40,7 @@ export class ViewEventsComponent implements AfterViewInit {
   
   events: any[] = [];
   events2: any[] = [];
+  events3: any[] = [];
 
   intInflatableTypeID = 0;
   bounceHouses: any = [];
@@ -59,13 +60,17 @@ export class ViewEventsComponent implements AfterViewInit {
             this.events2.push(this.events[i]);
 
           }
+
+          this.events3 = events;
+          console.log(this.events3);
         },
         error: (response) => {
           console.log(response);
         }
+
       });
 
-console.log(this.events2);
+      console.log(this.events);
 
 
   }

@@ -67,21 +67,10 @@ export class ViewInflatablesComponent implements AfterViewInit {
             
             this.bounceHouses2.push(this.bounceHouses[i]);
           } else if (this.intInflatableTypeID == 0){
-
               if (this.bounceHouses[i]?.intBounceHouseTypeID > 0){
-
                 this.bounceHouses2.push(this.bounceHouses[i]);
-
               }
-
-
-            
-
-
           }
-        
-        
-        
         }
         this.bounceHouses3 = this.bounceHouses2;
 

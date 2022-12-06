@@ -64,6 +64,7 @@ const routes: Routes = [
   { path: 'ViewInflatables/edit/:id', component:EditInflatablesComponent},
   { path: 'ViewEvents', component:ViewEventsComponent},
   { path: 'ViewEvents/edit/:id', component:EditEventsComponent},
+  { path: 'ViewEvents/edit/:id/:strStart/:strEnd', component:EditEventsComponent},
   { path: 'addEvent', component:AddEventComponent},
   { path: 'ViewInflatables/type/:type', component: ViewInflatablesComponent},
   { path: 'ViewEquipment', component: ViewEquipmentComponent},

@@ -1,7 +1,12 @@
 import { Component, ViewChild, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { BouncehousesService } from '../services/bouncehouses.service';
+import { EventsService } from '../services/events.service';
 import { VehiclesService } from '../services/vehicles.service';
+import { ActivatedRoute, Router} from '@angular/router';
+import {Location} from '@angular/common'; 
+import { TransitionCheckState } from '@angular/material/checkbox';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-edit-events',
@@ -11,7 +16,8 @@ import { VehiclesService } from '../services/vehicles.service';
 export class EditEventsComponent implements OnInit{
 
 
-  constructor(private formBuilder: FormBuilder, private bounceHouseService: BouncehousesService, private vehiclesService: VehiclesService) {};
+  constructor(private formBuilder: FormBuilder, private bounceHouseService: BouncehousesService, private vehiclesService: VehiclesService,
+     private eventsService: EventsService, private route: ActivatedRoute, private location: Location) {};
   //////////// HERE IS EVERYTHING FOR DATES
   dtmDate: Date = new Date();
 
@@ -20,6 +26,10 @@ export class EditEventsComponent implements OnInit{
 
   intDays: number = 0;
   intDays2: number = 0;
+
+  intLength = 0;
+
+  chkEventID = 0;
 
 
   tempObject: Object = new Object();
@@ -35,7 +45,46 @@ export class EditEventsComponent implements OnInit{
   strStart: String = new String(); //STRING VERSION NEEDED FOR API
   strEnd: String = new String(); //STRING VERSION NEEDED FOR API
 
+  events: any = [];
+  events2: any = [];
 
+  intEventID = 0;
+  strEventType = '';
+  intCustomerID = 0;
+  intEnvironmentTypeID = 0;
+  dteEventStartDate = '';
+  dteEventEndDate = '';
+  strEventName = '';
+  strEventStartTime = '';
+  strEventEndTime = '';
+  strEventSetupTime = '';
+  strEventDescription = '';
+  intInflatablesNeeded = 0;
+  intEmployeesForTheEvent = 0;
+  strLocation = "";
+
+  arrLocation: any = [];
+  arrState: any = [];
+
+  arrStart: any = [];
+  arrEnd: any[];
+
+  availableBounceHouses: any[] = [];
+  usedBounceHouses: any[] = [];
+  arrBuffer: any = [];
+  arrBuffer2: any = [];
+  arrBuffer3: any = [];
+  arrBuffer4: any = [];
+  arrBuffer5: any = [];
+
+
+  strAddress = "";
+  strCity = "";
+  strState1 = "";
+  strState2 = "";
+  strZip = "";
+
+  arrBounceBuffer: any [] = [];
 
 
   newDate = this.dateFormCtrl.value!;
@@ -55,8 +104,11 @@ export class EditEventsComponent implements OnInit{
     intNumberOfBlowersRequired: 0,
     strDateOfLastPurchase: '',
     strURL: '',
-    intPurchaseYear: 0
+    intPurchaseYear: 0,
+    strStatus: ""
   }];
+
+  
   arrBounce: any = [];
   arrSlide: any = [];
   arrCombo: any = [];
@@ -80,64 +132,431 @@ export class EditEventsComponent implements OnInit{
 
   ngOnInit(): void {
 
-    
-    this.bounceHouseService.getAllBounceHouses()
+
+    this.route.paramMap.subscribe({
+      next: (params) =>{
+      const eventID = params.get('id');
+      this.chkEventID = Number(eventID);
+
+      //alert(this.intInflatableTypeID);
+      }})
+
+
+    this.eventsService.getAllEventBounceHouses(String(this.chkEventID))
     .subscribe({
-      next: (bounceHouses) => {
-        this.bounceHouses2 = bounceHouses;
+      next: (response) => {
+        this.usedBounceHouses = response;
+        //console.log(response);
+        console.log("here");
+        console.log(this.usedBounceHouses);
 
-        for (var i = 0; i < 50; i++) { 
-      
-          if(this.bounceHouses2[i]?.intBounceHouseTypeID == 1) {
-    
-            this.arrBounce.push(this.bounceHouses2[i]);
-            console.log(String(i) + " iteration")
-            console.log(this.arrBounce);
 
-          } else if (this.bounceHouses2[i]?.intBounceHouseTypeID == 2){
-    
-            this.arrSlide.push(this.bounceHouses2[i]);
-    
-          } else if (this.bounceHouses2[i]?.intBounceHouseTypeID == 3){
-    
-            this.arrCombo.push(this.bounceHouses2[i]);
-    
-          } else if (this.bounceHouses2[i]?.intBounceHouseTypeID == 4){
-    
-            this.arrMidway.push(this.bounceHouses2[i]);
-    
-          } else if (this.bounceHouses2[i]?.intBounceHouseTypeID == 5){
-    
-            this.arrFun.push(this.bounceHouses2[i]);
-    
-          } else if (this.bounceHouses2[i]?.intBounceHouseTypeID == 6){
-    
-            this.arrObstacle.push(this.bounceHouses2[i]);
-            console.log(String(i) + " iteration")
-            console.log(this.arrObstacle);
-    
-          }else {
-            
-           // alert("NOT RUNNING");
+          
+      this.usedBounceHouses.forEach((element, index) => {
+        // 👇️ one 0, two 1, three 2
+        //console.log(element, index);
+
+
+        console.log("ASDasd");
+
+        console.log(this.usedBounceHouses[index]?.intBounceHouseID)
+
+        this.arrBuffer.push(this.usedBounceHouses[index]?.intBounceHouseID);
+
+      })
+
+      this.eventsService.getEvent(String(this.chkEventID))
+      .subscribe({
+        next: (events) => {
+          this.events = events;
+  
+          console.log(this.events);
+  
+          for (var i = 0; i < 100; i++) { 
+  
+            if (this.events[i]?.intEventID == this.chkEventID){
+  
+  
+              this.intEventID = this.events[i]?.intEventID;
+              this.strEventType = this.events[i]?.strEventType;
+              this.intCustomerID = this.events[i]?.intCustomerID ;
+              this.intEnvironmentTypeID = this.events[i]?.intEnvironmentTypeID;
+              this.dteEventStartDate = this.events[i]?.strEventStartDate;
+              this.dteEventEndDate = this.events[i]?.strEventEndDate;
+              this.strEventName = this.events[i]?.strEventName;
+              this.strEventStartTime = this.events[i]?.strEventStartTime;
+              this.strEventEndTime = this.events[i]?.strEventEndTime;
+              this.strEventSetupTime = this.events[i]?.strEventSetupTime;
+              this.strEventDescription = this.events[i]?.strEventDescription;
+              this.intInflatablesNeeded = this.events[i]?.intInflatablesNeeded;
+              this.intEmployeesForTheEvent = this.events[i]?.intEmployeesForTheEvent;
+              this.strLocation = this.events[i]?.strLocation;
+  
+              this.arrLocation = (this.strLocation).split(",", 3);
+  
+              this.strAddress = this.arrLocation[0];
+              this.strCity = (this.arrLocation[1].trim());
+              this.strState1 = (this.arrLocation[2].trim());
+  
+              this.arrState = (this.strState1).split(" ", 2);
+  
+              this.strState2 = this.arrState[0];
+              this.strZip = this.arrState[1];
+  
+  
+              console.log(this.strAddress);
+              console.log(this.strCity);
+              console.log(this.strState2);
+              console.log(this.strZip);
+  
+  
+  
+  
+              console.log(this.intEventID);
+              console.log(this.strEventType);
+  
+  
+  
+            }
+  
+  
+            //console.log(this.dteEventStartDate);
+  
+            this.arrStart = (this.dteEventStartDate).split("T", 1);
+            this.arrEnd = (this.dteEventEndDate).split("T", 1);
+  
+            this.dteEventEndDate = this.arrEnd[0];
+            this.dteEventStartDate = this.arrStart[0];
+  
+            this.location.replaceState("/ViewEvents/" + this.chkEventID + "/" + this.dteEventStartDate + "/" + this.dteEventEndDate);
+  
+  
           }
+  
+        
+      
+              //Store event ID to pass later
+  
+              for (let i = 0; i < 50; i++) {
+                //Bounce Houses
+                try {
+                  const tempObject2 = document.getElementById(
+                    'bounceCheck' + String(i)
+                  ) as HTMLInputElement;
+                    if (this.arrBuffer3.includes(tempObject2.value)){
+                      tempObject2.disabled = true;
+                    }
+                } catch (error) {
+                  //console.log(error)
+                }
+        
+                //Giant Slides
+                try {
+                  const tempObject2 = document.getElementById(
+                    'slideCheck' + String(i)
+                  ) as HTMLInputElement;
+                  if (this.arrBuffer3.includes(tempObject2.value)){
+                    tempObject2.disabled = true;
+    
+                  }
+                } catch (error) {
+                  //console.log(error)
+                }
+        
+                //Combos
+                try {
+                  const tempObject2 = document.getElementById(
+                    'comboCheck' + String(i)
+                  ) as HTMLInputElement;
+                  if (this.arrBuffer3.includes(tempObject2.value)){
+                    tempObject2.disabled = true;
+    
+                  }
+                } catch (error) {
+                  //console.log(error)
+                }
+        
+                //Midway Fun & GAmes
+                try {
+                  const tempObject2 = document.getElementById(
+                    'midwayCheck' + String(i)
+                  ) as HTMLInputElement;
+                  if (this.arrBuffer3.includes(tempObject2.value)){
+                    tempObject2.disabled = true;
+    
+                  }
+                } catch (error) {
+                  //console.log(error)
+                }
+        
+        
+                //Fun & Games
+                try {
+                  const tempObject2 = document.getElementById(
+                    'funCheck' + String(i)
+                  ) as HTMLInputElement;
+                  if (this.arrBuffer3.includes(tempObject2.value)){
+                    tempObject2.disabled = true;
+    
+                  }
+                } catch (error) {
+                  //console.log(error)
+                }
+        
+                //Obstacles
+                try {
+                  const tempObject2 = document.getElementById(
+                    'obstacleCheck' + String(i)
+                  ) as HTMLInputElement;
+                  if (this.arrBuffer3.includes(tempObject2.value)){
+                    tempObject2.disabled = true;
+    
+                  }
+                } catch (error) {
+                  //console.log(error)
+                }
+                
+        
+                
+        
+            }
+  
+  
+              
+            this.eventsService.getAvailableBounceHouses(String(this.chkEventID), this.dteEventStartDate, this.dteEventEndDate)
+            .subscribe({
+              next: (response) => {
+                this.availableBounceHouses = response;
+                //console.log(response);
+      
+                this.availableBounceHouses.forEach((element, index) => {
+      
+                  this.arrBuffer3.push(this.availableBounceHouses[index]?.intBounceHouseID)
+      
+      
+      
+                })
+      
+              
 
-          // this.arrBounce.shift();
-          // this.arrSlide.shift();
-          // this.arrCombo.shift();
-          // this.arrMidway.shift();
-          // this.arrFun.shift();
-          // this.arrObstacle.shift();
+      
+      
+      
+                this.bounceHouseService.getAllBounceHouses()
+                .subscribe({
+                    next: (bounceHouses) => {
+                      this.bounceHouses2 = bounceHouses;
+              
+                      this.bounceHouses2.strStatus = '';
+              
+                      console.log(this.arrBuffer2[0]);
+
+
+                      this.usedBounceHouses.forEach((element, index) => {
+                        // 👇️ one 0, two 1, three 2
+                        //console.log(element, index);
+                
+                
+                        console.log("ASDasd");
+                
+                        console.log(this.usedBounceHouses[index]?.intBounceHouseID)
+                
+                        this.arrBuffer5.push(this.usedBounceHouses[index]?.intBounceHouseID);
+                
+                      })
+              
+                      for (var i = 0; i < 50; i++) { 
+              
+                        if (this.bounceHouses2[i]?.intBounceHouseTypeID > 0) {
+
+                          if (this.arrBuffer3.includes(this.bounceHouses2[i]?.intBounceHouseID) == false){
+
+                            this.arrBuffer4.push(this.bounceHouses2[i]?.intBounceHouseID);
+
+                            console.log(this.arrBuffer4);
+
+                          }
 
 
 
+              
+                            this.arrBounceBuffer.push(this.bounceHouses2[i]?.intBounceHouseID);
+              
+                            if (this.arrBuffer.includes(this.bounceHouses2[i]?.intBounceHouseID)){
+              
+                              this.bounceHouses2[i].strStatus = "checked";
+                  
+                            }else {
+                  
+                              this.bounceHouses2[i].strStatus = "";
+                  
+                            }
+      
+                            if (this.arrBuffer3.includes(this.bounceHouses2[i]?.intBounceHouseID)){
+      
+                              this.bounceHouses2[i].status = "disabled";
+      
+      
+      
+                            }else {
+      
+                              this.bounceHouses2[i].status = "";
+      
+      
+                            }
 
+                            console.log("ahjuslkdh");
+                            console.log(this.usedBounceHouses);
+                            console.log(this.arrBuffer5);
+                            console.log("aaaaaaaaa");
+                            console.log(this.arrBuffer4);
+
+
+
+                            for (var j = 0; j < 50; j++) { 
+
+                              
+
+                              if (this.arrBuffer5.includes(this.arrBuffer4[j]))
+                                    {
+
+                                      console.log("Number");
+                                      console.log(this.arrBuffer4[j]);
+                                      delete this.arrBuffer4[j];
+                                    }
+                            }
+
+                            if (this.arrBuffer4.includes(this.bounceHouses2[i]?.intBounceHouseID)){
+
+                                delete this.bounceHouses2[i];
+
+                            }
+
+                            if (this.usedBounceHouses[i]?.intBounceHouseID > 0) {
+
+                              console.log(this.usedBounceHouses[i]);
+                              this.bounceHouses2.push(this.usedBounceHouses[i]);
+
+
+                            }
+
+                            
+                  
+              
+                        }
+                    
+                        if(this.bounceHouses2[i]?.intBounceHouseTypeID == 1) {
+                  
+                          //console.log("HEREHRE");
+              
+                          this.arrBounce.push(this.bounceHouses2[i]);
+              
+                        } else if (this.bounceHouses2[i]?.intBounceHouseTypeID == 2){
+                          
+                  
+                          this.arrSlide.push(this.bounceHouses2[i]);
+                  
+                        } else if (this.bounceHouses2[i]?.intBounceHouseTypeID == 3){
+                  
+                          this.arrCombo.push(this.bounceHouses2[i]);
+                  
+                        } else if (this.bounceHouses2[i]?.intBounceHouseTypeID == 4){
+                  
+                          this.arrMidway.push(this.bounceHouses2[i]);
+                  
+                        } else if (this.bounceHouses2[i]?.intBounceHouseTypeID == 5){
+                  
+                          this.arrFun.push(this.bounceHouses2[i]);
+                  
+                        } else if (this.bounceHouses2[i]?.intBounceHouseTypeID == 6){
+              
+                          this.arrObstacle.push(this.bounceHouses2[i]);
+                          //console.log(String(i) + " iteration")
+                          //console.log(this.arrObstacle);
+                  
+                        }else {
+                          
+                         // alert("NOT RUNNING");
+                        }
+              
+                        // this.arrBounce.shift();
+                        // this.arrSlide.shift();
+                        // this.arrCombo.shift();
+                        // this.arrMidway.shift();
+                        // this.arrFun.shift();
+                        // this.arrObstacle.shift();
+          
+                        
+              
+              
+                      }
+              
+                    },
+                    error: (response) => {
+                      console.log(response);
+                    }
+                  });
+              
+      
+      
+      
+      
+              },
+              error: (response) => {
+                console.log(response);
+              }
+            });
+  
+            
+                
+  
+          
+        },
+        error: (response) => {
+          console.log(response);
         }
+  
+        
+        
+  
+  
+  
+      });
 
-      },
-      error: (response) => {
-        console.log(response);
+
+
+      // this.route.paramMap.subscribe({
+      //   next: (params) => {
+      //     const eventID = params.get('id');
+      //     const strStartDate = params.get('strStart');
+      //     const strEndDate = params.get('strEnd');
+
+      //     this.dteEventStartDate = String(params.get('strStart'));
+      //     this.dteEventEndDate = String(params.get('strEnd'));
+
+      //     console.log(this.chkEventID);
+    
+      
+    
+
+
+      
+    
+
+      
       }
+
+
+
+
+
+
+
+      
     });
+
+    
+    
 
     this.vehiclesService.getAllVehicles()
     .subscribe({
@@ -150,7 +569,8 @@ export class EditEventsComponent implements OnInit{
     });
 
 
-    
+
+
 
   }
     onchange(){
@@ -219,7 +639,7 @@ export class EditEventsComponent implements OnInit{
 
       this.arrSelected = [0];
 
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 50; i++) {
         //Bounce Houses
         try {
           const tempObject2 = document.getElementById(
@@ -307,6 +727,7 @@ export class EditEventsComponent implements OnInit{
         }
         
 
+        
 
     }
 

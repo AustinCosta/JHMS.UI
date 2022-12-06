@@ -10,7 +10,7 @@
 
           <br>
           <br>
-        <table mat-table [dataSource]="events2" matSort (matSortChange)="announceSortChange($event)"
+        <table mat-table [dataSource]="events3" matSort (matSortChange)="announceSortChange($event)"
        class="mat-elevation-z8">
 
   <!-- Position Column -->
@@ -26,7 +26,7 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
       Name
     </th>
-    <td mat-cell *matCellDef="let element"><a href="/ViewInflatables/edit/{{element.intBounceHouseID}}">{{element.strEventDescription}}</a> </td>
+    <td mat-cell *matCellDef="let element"><a href="/ViewEvents/edit/{{element.intEventID}}">{{element.strEventDescription}}</a> </td>
   </ng-container>
 
 

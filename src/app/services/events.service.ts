@@ -46,6 +46,11 @@ export class EventsService {
     return this.http.delete<any>(this.baseApiUrl + '/api/eventbouncehouses/' + intEventBounceHouseID)
   }
 
+  getAvailableBounceHouses(intEventID: string, strEventStartDate: string, strEventEndDate: string): Observable<any[]> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/eventbouncehouses/' + intEventID + '/' + strEventStartDate + '/' + strEventEndDate);
+  }
+
+
   //==================================//
   //      TEventEnvironmentTypes      //
   //==================================//
