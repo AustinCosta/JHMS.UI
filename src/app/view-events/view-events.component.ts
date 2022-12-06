@@ -2,6 +2,9 @@ import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { BouncehousesService } from '../services/bouncehouses.service';
+import { ActivatedRoute, Router} from '@angular/router';
+import { EventsService } from '../services/events.service';
 
 export interface PeriodicElement {
   name: string;
@@ -30,10 +33,42 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./view-events.component.css']
 })
 export class ViewEventsComponent implements AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'name'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor(private _liveAnnouncer: LiveAnnouncer) {}
+  constructor(private route: ActivatedRoute, private _liveAnnouncer: LiveAnnouncer, private bounceHouseService: BouncehousesService, private eventsService: EventsService) {}
+  
+  events: any[] = [];
+  events2: any[] = [];
+
+  intInflatableTypeID = 0;
+  bounceHouses: any = [];
+  bounceHouses2: any = [];
+  bounceHouses3: any = [];
+  ngOnInit(): void {
+
+      this.eventsService.getAllEvents()
+      .subscribe({
+        next: (events) => {
+          this.events = events;
+
+          for (var i = 0; i < 100; i++) { 
+
+            if (this.events[i]?.intEventID > 0)
+
+            this.events2.push(this.events[i]);
+
+          }
+        },
+        error: (response) => {
+          console.log(response);
+        }
+      });
+
+console.log(this.events2);
+
+
+  }
 
   @ViewChild(MatSort) sort: MatSort;
 

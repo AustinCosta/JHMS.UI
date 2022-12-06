@@ -5,32 +5,20 @@
             View Events
         </h1>
         <div class="center">
-            <div>
-        <tr style="width: 100%;">
-            <td style="width: 20%; vertical-align: center;">
-                <button class="my-class" mat-raised-button color="primary" onclick="location.href='addEvent'">Add Event</button>
-                <button class="my-class" mat-raised-button color="primary" onclick="location.href='ViewEvents/edit/:id'">View Edit Page</button>
+          <button class="my-class" mat-raised-button color="primary" onclick="location.href='addEvent'">Add Event</button>
+          <button class="my-class" mat-raised-button color="primary" onclick="location.href='ViewEvents/edit/:id'">View Edit Page</button>
 
-              </td>
-            <td style="width: 20%; vertical-align: sub;">
-                <form>
-                        <label class="form-control-label" for="input-address">Filter By Date</label>
-                        <input style="font-size: 19px"     id="filter-date" class="form-control form-control-alternative" value="" type="date">
-
-                </form>
-            </td>
-        </tr>
-
-          </div>
-        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+          <br>
+          <br>
+        <table mat-table [dataSource]="events2" matSort (matSortChange)="announceSortChange($event)"
        class="mat-elevation-z8">
 
   <!-- Position Column -->
   <ng-container matColumnDef="position">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
-      No.
+      ID
     </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.intEventID}} </td>
   </ng-container>
 
   <!-- Name Column -->
@@ -38,24 +26,9 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
       Name
     </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <td mat-cell *matCellDef="let element"><a href="/ViewInflatables/edit/{{element.intBounceHouseID}}">{{element.strEventDescription}}</a> </td>
   </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
-      Weight
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
-      Symbol
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-  </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
