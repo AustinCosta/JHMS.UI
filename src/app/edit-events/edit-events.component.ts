@@ -7,17 +7,20 @@ import { ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common'; 
 import { TransitionCheckState } from '@angular/material/checkbox';
 import { ThisReceiver } from '@angular/compiler';
+import { DatePipe } from '@angular/common';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-edit-events',
   templateUrl: './edit-events.component.html',
-  styleUrls: ['./edit-events.component.css']
+  styleUrls: ['./edit-events.component.css'],
+  providers: [DatePipe]
 })
 export class EditEventsComponent implements OnInit{
 
 
   constructor(private formBuilder: FormBuilder, private bounceHouseService: BouncehousesService, private vehiclesService: VehiclesService,
-     private eventsService: EventsService, private route: ActivatedRoute, private location: Location) {};
+     private eventsService: EventsService, private route: ActivatedRoute, private location: Location, private datePipe: DatePipe) {};
   //////////// HERE IS EVERYTHING FOR DATES
   dtmDate: Date = new Date();
 
@@ -29,7 +32,16 @@ export class EditEventsComponent implements OnInit{
 
   intLength = 0;
 
+  intDays3: number = 0;
+
   chkEventID = 0;
+
+  intTime = 0;
+  strTimeBuffer = '';
+  strTimeBuffer2 = '';
+
+  dteStartBuffer: Date;
+  dteEndBuffer: Date;
 
 
   tempObject: Object = new Object();
@@ -76,6 +88,10 @@ export class EditEventsComponent implements OnInit{
   arrBuffer3: any = [];
   arrBuffer4: any = [];
   arrBuffer5: any = [];
+
+  arrStartTime: any = [];
+  arrEndTime: any = [];
+  arrSetupTime: any = [];
 
 
   strAddress = "";
@@ -146,20 +162,20 @@ export class EditEventsComponent implements OnInit{
     .subscribe({
       next: (response) => {
         this.usedBounceHouses = response;
-        //console.log(response);
-        console.log("here");
-        console.log(this.usedBounceHouses);
+        //////console.log(response);
+        ////console.log("here");
+        ////console.log(this.usedBounceHouses);
 
 
           
       this.usedBounceHouses.forEach((element, index) => {
         // 👇️ one 0, two 1, three 2
-        //console.log(element, index);
+        //////console.log(element, index);
 
 
-        console.log("ASDasd");
+        ////console.log("ASDasd");
 
-        console.log(this.usedBounceHouses[index]?.intBounceHouseID)
+        ////console.log(this.usedBounceHouses[index]?.intBounceHouseID)
 
         this.arrBuffer.push(this.usedBounceHouses[index]?.intBounceHouseID);
 
@@ -170,7 +186,7 @@ export class EditEventsComponent implements OnInit{
         next: (events) => {
           this.events = events;
   
-          console.log(this.events);
+          ////console.log(this.events);
   
           for (var i = 0; i < 100; i++) { 
   
@@ -193,6 +209,155 @@ export class EditEventsComponent implements OnInit{
               this.strLocation = this.events[i]?.strLocation;
   
               this.arrLocation = (this.strLocation).split(",", 3);
+
+
+              console.log(this.dteEventStartDate);
+              console.log(this.dteEventEndDate);
+
+              this.dteStartBuffer = new Date(this.dteEventStartDate);
+              this.dteEndBuffer = new Date(this.dteEventEndDate);
+
+              console.log(this.dteEventStartDate);
+              console.log(this.dteEventEndDate);
+
+              var diff = Math.abs(this.dteEndBuffer.getTime() - this.dteEndBuffer.getTime());
+              var diffDays = Math.ceil(diff / (1000 * 3600 * 24));  
+
+              this.intDays3 = diffDays;
+
+              //console.log(this.intDays3);
+
+              this.dteStartBuffer.setDate(this.dteStartBuffer.getDate());
+              //console.log(this.dteStartBuffer);
+
+              this.dteEventStartDate =  (new Date(this.dteStartBuffer).toISOString().split('T')[0]);
+
+              //console.log(this.dteStartBuffer); 
+
+              const datePicker = new FormControl(new Date() || this.dteStartBuffer);
+
+              // Send to back with your specific format
+              const dateBack: string = moment(this.dteStartBuffer).format('yyyy-MM-DD');
+
+              (this.daysFormCtrl as any) = new FormControl(this.intDays3);
+              (this.dateFormCtrl as any) = new FormControl(dateBack);
+
+             // (this.daysFormCtrl.value as any) = this.dteStartBuffer;
+
+              //HH:mm
+              //this.strEventStartTime = '';
+
+              
+              ////console.log(this.strEventStartTime);
+              this.arrStartTime = this.strEventStartTime.split(" ", 2);
+              this.strEventStartTime = this.arrStartTime[0];
+
+              if (this.strEventStartTime.length == 4){
+
+                this.strEventStartTime = "0" + this.strEventStartTime;
+
+                this.strTimeBuffer = this.strEventStartTime.substring(0, 2);
+                ////console.log(this.strTimeBuffer);
+
+                this.intTime = Number(this.strTimeBuffer);
+
+                if (this.arrStartTime[1] == "a.m."){
+
+                }else {
+
+                  this.intTime += 12;
+
+                  ////console.log(this.intTime);
+                  this.strTimeBuffer2 = String(this.intTime);
+
+                  ////console.log(":ehre");
+                  ////console.log(this.strTimeBuffer2);
+
+                  this.strEventStartTime = this.strEventStartTime.slice(2);
+
+                  ////console.log(this.strEventStartTime);
+
+                  this.strEventStartTime = this.strTimeBuffer2 + this.strEventStartTime;
+
+                  ////console.log(this.strEventStartTime);
+
+                }
+              }
+
+
+              ////console.log(this.strEventEndTime);
+              this.arrEndTime = this.strEventEndTime.split(" ", 2);
+              this.strEventEndTime = this.arrEndTime[0];
+
+              if (this.strEventEndTime.length == 4){
+
+                this.strEventEndTime = "0" + this.strEventEndTime;
+
+                this.strTimeBuffer = this.strEventEndTime.substring(0, 2);
+                ////console.log(this.strTimeBuffer);
+
+                this.intTime = Number(this.strTimeBuffer);
+
+                if (this.arrEndTime[1] == "a.m."){
+
+                }else {
+
+                  this.intTime += 12;
+
+                  ////console.log(this.intTime);
+                  this.strTimeBuffer2 = String(this.intTime);
+
+                  ////console.log(":ehre");
+                  ////console.log(this.strTimeBuffer2);
+
+                  this.strEventEndTime = this.strEventEndTime.slice(2);
+
+                  ////console.log(this.strEventEndTime);
+
+                  this.strEventEndTime = this.strTimeBuffer2 + this.strEventEndTime;
+
+                  ////console.log(this.strEventEndTime);
+
+                }
+              }
+ 
+
+              
+              //////console.log(this.strEventSetupTime);
+              this.arrSetupTime = this.strEventSetupTime.split(" ", 2);
+              this.strEventSetupTime = this.arrSetupTime[0];
+
+              if (this.strEventSetupTime.length == 4){
+
+                this.strEventSetupTime = "0" + this.strEventSetupTime;
+
+                this.strTimeBuffer = this.strEventSetupTime.substring(0, 2);
+                //////console.log(this.strTimeBuffer);
+
+                this.intTime = Number(this.strTimeBuffer);
+
+                if (this.arrSetupTime[1] == "a.m."){
+
+                }else {
+
+                  this.intTime += 12;
+
+                  //////console.log(this.intTime);
+                  this.strTimeBuffer2 = String(this.intTime);
+
+                  //////console.log(":ehre");
+                  //////console.log(this.strTimeBuffer2);
+
+                  this.strEventSetupTime = this.strEventSetupTime.slice(2);
+
+                  //////console.log(this.strEventSetupTime);
+
+                  this.strEventSetupTime = this.strTimeBuffer2 + this.strEventSetupTime;
+
+                  //////console.log(this.strEventSetupTime);
+
+                }
+              }
   
               this.strAddress = this.arrLocation[0];
               this.strCity = (this.arrLocation[1].trim());
@@ -204,23 +369,24 @@ export class EditEventsComponent implements OnInit{
               this.strZip = this.arrState[1];
   
   
-              console.log(this.strAddress);
-              console.log(this.strCity);
-              console.log(this.strState2);
-              console.log(this.strZip);
+              ////console.log(this.strAddress);
+              ////console.log(this.strCity);
+              ////console.log(this.strState2);
+              ////console.log(this.strZip);
+              ////console.log(this.strEventStartTime);
   
   
   
   
-              console.log(this.intEventID);
-              console.log(this.strEventType);
+              ////console.log(this.intEventID);
+              ////console.log(this.strEventType);
   
   
   
             }
   
   
-            //console.log(this.dteEventStartDate);
+            //////console.log(this.dteEventStartDate);
   
             this.arrStart = (this.dteEventStartDate).split("T", 1);
             this.arrEnd = (this.dteEventEndDate).split("T", 1);
@@ -247,7 +413,7 @@ export class EditEventsComponent implements OnInit{
                       tempObject2.disabled = true;
                     }
                 } catch (error) {
-                  //console.log(error)
+                  //////console.log(error)
                 }
         
                 //Giant Slides
@@ -260,7 +426,7 @@ export class EditEventsComponent implements OnInit{
     
                   }
                 } catch (error) {
-                  //console.log(error)
+                  //////console.log(error)
                 }
         
                 //Combos
@@ -273,7 +439,7 @@ export class EditEventsComponent implements OnInit{
     
                   }
                 } catch (error) {
-                  //console.log(error)
+                  //////console.log(error)
                 }
         
                 //Midway Fun & GAmes
@@ -286,7 +452,7 @@ export class EditEventsComponent implements OnInit{
     
                   }
                 } catch (error) {
-                  //console.log(error)
+                  //////console.log(error)
                 }
         
         
@@ -300,7 +466,7 @@ export class EditEventsComponent implements OnInit{
     
                   }
                 } catch (error) {
-                  //console.log(error)
+                  //////console.log(error)
                 }
         
                 //Obstacles
@@ -313,7 +479,7 @@ export class EditEventsComponent implements OnInit{
     
                   }
                 } catch (error) {
-                  //console.log(error)
+                  //////console.log(error)
                 }
                 
         
@@ -321,13 +487,14 @@ export class EditEventsComponent implements OnInit{
         
             }
   
-  
+            console.log(this.dteEventStartDate);
+            console.log(this.dteEventEndDate);
               
             this.eventsService.getAvailableBounceHouses(String(this.chkEventID), this.dteEventStartDate, this.dteEventEndDate)
             .subscribe({
               next: (response) => {
                 this.availableBounceHouses = response;
-                //console.log(response);
+                //////console.log(response);
       
                 this.availableBounceHouses.forEach((element, index) => {
       
@@ -338,7 +505,7 @@ export class EditEventsComponent implements OnInit{
                 })
       
               
-
+                console.log(this.arrBuffer3);
       
       
       
@@ -349,17 +516,17 @@ export class EditEventsComponent implements OnInit{
               
                       this.bounceHouses2.strStatus = '';
               
-                      console.log(this.arrBuffer2[0]);
+                      ////console.log(this.arrBuffer2[0]);
 
 
                       this.usedBounceHouses.forEach((element, index) => {
                         // 👇️ one 0, two 1, three 2
-                        //console.log(element, index);
+                        //////console.log(element, index);
                 
                 
-                        console.log("ASDasd");
+                        //////console.log("ASDasd");
                 
-                        console.log(this.usedBounceHouses[index]?.intBounceHouseID)
+                        //////console.log(this.usedBounceHouses[index]?.intBounceHouseID)
                 
                         this.arrBuffer5.push(this.usedBounceHouses[index]?.intBounceHouseID);
                 
@@ -373,7 +540,7 @@ export class EditEventsComponent implements OnInit{
 
                             this.arrBuffer4.push(this.bounceHouses2[i]?.intBounceHouseID);
 
-                            console.log(this.arrBuffer4);
+                           console.log(this.arrBuffer4);
 
                           }
 
@@ -405,11 +572,11 @@ export class EditEventsComponent implements OnInit{
       
                             }
 
-                            console.log("ahjuslkdh");
-                            console.log(this.usedBounceHouses);
-                            console.log(this.arrBuffer5);
-                            console.log("aaaaaaaaa");
-                            console.log(this.arrBuffer4);
+                            // ////console.log("ahjuslkdh");
+                            // ////console.log(this.usedBounceHouses);
+                            // ////console.log(this.arrBuffer5);
+                            // ////console.log("aaaaaaaaa");
+                            // ////console.log(this.arrBuffer4);
 
 
 
@@ -420,21 +587,25 @@ export class EditEventsComponent implements OnInit{
                               if (this.arrBuffer5.includes(this.arrBuffer4[j]))
                                     {
 
-                                      console.log("Number");
-                                      console.log(this.arrBuffer4[j]);
+                                      //////console.log("Number");
+                                      //////console.log(this.arrBuffer4[j]);
                                       delete this.arrBuffer4[j];
                                     }
                             }
 
+
+                            console.log(this.arrBuffer4);
                             if (this.arrBuffer4.includes(this.bounceHouses2[i]?.intBounceHouseID)){
 
                                 delete this.bounceHouses2[i];
 
                             }
 
+                            console.log(this.bounceHouses2);
+
                             if (this.usedBounceHouses[i]?.intBounceHouseID > 0) {
 
-                              console.log(this.usedBounceHouses[i]);
+                              //////console.log(this.usedBounceHouses[i]);
                               this.bounceHouses2.push(this.usedBounceHouses[i]);
 
 
@@ -447,7 +618,7 @@ export class EditEventsComponent implements OnInit{
                     
                         if(this.bounceHouses2[i]?.intBounceHouseTypeID == 1) {
                   
-                          //console.log("HEREHRE");
+                          //////console.log("HEREHRE");
               
                           this.arrBounce.push(this.bounceHouses2[i]);
               
@@ -471,8 +642,8 @@ export class EditEventsComponent implements OnInit{
                         } else if (this.bounceHouses2[i]?.intBounceHouseTypeID == 6){
               
                           this.arrObstacle.push(this.bounceHouses2[i]);
-                          //console.log(String(i) + " iteration")
-                          //console.log(this.arrObstacle);
+                          //////console.log(String(i) + " iteration")
+                          //////console.log(this.arrObstacle);
                   
                         }else {
                           
@@ -493,7 +664,7 @@ export class EditEventsComponent implements OnInit{
               
                     },
                     error: (response) => {
-                      console.log(response);
+                      ////console.log(response);
                     }
                   });
               
@@ -503,7 +674,7 @@ export class EditEventsComponent implements OnInit{
       
               },
               error: (response) => {
-                console.log(response);
+                ////console.log(response);
               }
             });
   
@@ -513,7 +684,7 @@ export class EditEventsComponent implements OnInit{
           
         },
         error: (response) => {
-          console.log(response);
+          ////console.log(response);
         }
   
         
@@ -534,7 +705,7 @@ export class EditEventsComponent implements OnInit{
       //     this.dteEventStartDate = String(params.get('strStart'));
       //     this.dteEventEndDate = String(params.get('strEnd'));
 
-      //     console.log(this.chkEventID);
+      //     ////console.log(this.chkEventID);
     
       
     
@@ -564,7 +735,7 @@ export class EditEventsComponent implements OnInit{
         this.vehicles = vehicles;
       },
       error: (response) => {
-        console.log(response);
+        ////console.log(response);
       }
     });
 
@@ -576,7 +747,7 @@ export class EditEventsComponent implements OnInit{
     onchange(){
 
       this.intDays = this.daysFormCtrl.value!;
-      console.log(this.intDays);
+      ////console.log(this.intDays);
 
       this.newDate = this.dateFormCtrl.value!;
       this.dtmStart = new Date((this.dateFormCtrl.value!)); //gives dtmStart - date object
@@ -601,10 +772,10 @@ export class EditEventsComponent implements OnInit{
         this.dtmEnd = this.addDays(this.dtmStart, 5);
       }
 
-      console.log('Start Date is ');
-      console.log(this.dtmStart);
-      console.log('End date is ');
-      console.log(this.dtmEnd );
+      ////console.log('Start Date is ');
+      ////console.log(this.dtmStart);
+      ////console.log('End date is ');
+      ////console.log(this.dtmEnd );
 
       this.strStart = String(this.dtmStart);
       this.strEnd = String(this.dtmEnd);
@@ -651,7 +822,7 @@ export class EditEventsComponent implements OnInit{
               this.arrSelected.push(Number(value));
             }
         } catch (error) {
-          //console.log(error)
+          //////console.log(error)
         }
 
         //Giant Slides
@@ -666,7 +837,7 @@ export class EditEventsComponent implements OnInit{
               this.arrSelected.push(Number(value));
             }
         } catch (error) {
-          //console.log(error)
+          //////console.log(error)
         }
 
         //Combos
@@ -680,7 +851,7 @@ export class EditEventsComponent implements OnInit{
               this.arrSelected.push(Number(value));
             }
         } catch (error) {
-          //console.log(error)
+          //////console.log(error)
         }
 
         //Midway Fun & GAmes
@@ -694,7 +865,7 @@ export class EditEventsComponent implements OnInit{
               this.arrSelected.push(Number(value));
             }
         } catch (error) {
-          //console.log(error)
+          //////console.log(error)
         }
 
 
@@ -709,7 +880,7 @@ export class EditEventsComponent implements OnInit{
               this.arrSelected.push(Number(value));
             }
         } catch (error) {
-          //console.log(error)
+          //////console.log(error)
         }
 
         //Obstacles
@@ -723,7 +894,7 @@ export class EditEventsComponent implements OnInit{
               this.arrSelected.push(Number(value));
             }
         } catch (error) {
-          //console.log(error)
+          //////console.log(error)
         }
         
 
@@ -736,7 +907,7 @@ export class EditEventsComponent implements OnInit{
     
 
 
-    for (var i = 0; i < this.arrSelected.length; i++) { console.log(this.arrSelected[i]) }
+    for (var i = 0; i < this.arrSelected.length; i++) { ////console.log(this.arrSelected[i]) }
 
 
 
@@ -745,4 +916,4 @@ export class EditEventsComponent implements OnInit{
 
 
 
-}
+}}

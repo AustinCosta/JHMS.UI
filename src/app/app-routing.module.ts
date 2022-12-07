@@ -30,6 +30,7 @@ import { EventListComponent } from './components/events/event-list/event-list.co
 import { EditEventComponent } from './components/events/edit-event/edit-event.component';
 import { AddEventvehicleComponent } from './components/events/add-eventvehicle/add-eventvehicle.component';
 import { AddEventequipmentComponent } from './components/events/add-eventequipment/add-eventequipment.component';
+import { PickDateComponent } from './pick-date/pick-date.component';
 
 
 const routes: Routes = [
@@ -69,7 +70,9 @@ const routes: Routes = [
   { path: 'ViewInflatables/type/:type', component: ViewInflatablesComponent},
   { path: 'ViewEquipment', component: ViewEquipmentComponent},
   { path: 'ViewEquipment/edit/:id', component: EditEquipmentComponent},
-  { path: 'CreateEquipment', component: CreateEquipmentComponent}
+  { path: 'CreateEquipment', component: CreateEquipmentComponent},
+  {path: 'pickDate', component: PickDateComponent},
+  { path: 'addEvent/:id/:strStart/:strEnd', component: AddEventComponent}
 ];
 
 @NgModule({

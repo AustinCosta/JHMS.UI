@@ -33,6 +33,15 @@ export class EditEventComponent implements OnInit {
   constructor(private route: ActivatedRoute, private eventsService:
     EventsService, private router: Router) { }
 
+
+
+
+
+
+
+
+
+
   ngOnInit(): void {
     //Map Event Details
     this.route.paramMap.subscribe({

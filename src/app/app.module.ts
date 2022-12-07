@@ -42,6 +42,7 @@ import { AddEventComponent } from './add-event/add-event.component';
 import { AddEvent2Component } from './components/events/add-event2/add-event2.component';
 import { AddEventvehicleComponent } from './components/events/add-eventvehicle/add-eventvehicle.component';
 import { AddEventequipmentComponent } from './components/events/add-eventequipment/add-eventequipment.component';
+import { PickDateComponent } from './pick-date/pick-date.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { AddEventequipmentComponent } from './components/events/add-eventequipme
     AddEventComponent,
     AddEvent2Component,
     AddEventvehicleComponent,
-    AddEventequipmentComponent
+    AddEventequipmentComponent,
+    PickDateComponent
   ],
   imports: [
     BrowserModule,

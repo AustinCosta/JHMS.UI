@@ -40,13 +40,13 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-name">Event Name</label>
-                        <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="Name" value="EVENT NAME HERE">
+                        <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="Name" value="">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-type">Event Type</label>
-                        <select name="input-type" id="input-type" class="form-control form-control-alternative" placeholder="Bounce House">
+                        <select name="input-type" id="input-type" class="form-control form-control-alternative" placeholder="Bounce House" value = "">
                             <option value="School">School</option>
                             <option value="Gym">Gym</option>
                             <option value="Church">Church</option>
@@ -61,7 +61,7 @@
                 <div class="pl-lg-4">
                     <div class="form-group focused">
                       <label>Description</label>
-                      <textarea id="input-descript" name="input-descript" rows="3" class="form-control form-control-alternative" placeholder="A few words about you ...">DESCRIPTION GOES HERE</textarea>
+                      <textarea id="input-descript" name="input-descript" rows="3" class="form-control form-control-alternative" placeholder="A few words about you ..."></textarea>
                     </div>
                   </div>
                 <h6 class="heading-small text-muted mb-4">Date/Time Info</h6>
@@ -70,13 +70,13 @@
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-name">Date of Rental</label>
-                          <input (change) = 'onchange()'[formControl]="dateFormCtrl" type="date" class="form-control form-control-alternative">
+                          <input (change) = 'onchange()'[formControl]="dateFormCtrl"  type="date" class="form-control form-control-alternative" placeholder = "dteEventStartDate">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-type">Number of Days Requested</label>
-                          <select (change) = 'onchange()'[formControl]="daysFormCtrl" name="days" class="form-control form-control-alternative" placeholder="Bounce House">
+                          <select (change) = 'onchange()'[formControl]="daysFormCtrl" name="days" class="form-control form-control-alternative" placeholder="Bounce House" value = "intDays3">
                               <option value=0 selected>1</option>
                               <option value=1>2</option>
                               <option value=2>3</option>
@@ -93,25 +93,25 @@
                         <div class="col-lg-6">
                           <div class="form-group focused">
                             <label class="form-control-label" for="input-name">Event Start Time</label>
-                            <input type="time" id="input-name" class="form-control form-control-alternative">
+                            <input type="time" id="input-name" class="form-control form-control-alternative" value = "">
                           </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group focused">
                               <label class="form-control-label" for="input-name">Event End Time</label>
-                              <input type="time" id="input-name" class="form-control form-control-alternative">
+                              <input type="time" id="input-name" class="form-control form-control-alternative" value = "">
                             </div>
                           </div>
                           <div class="col-lg-6">
                             <div class="form-group focused">
                               <label class="form-control-label" for="input-name">Setup Time</label>
-                              <input type="time" id="input-name" class="form-control form-control-alternative">
+                              <input type="time" id="input-name" class="form-control form-control-alternative" value = "">
                             </div>
                           </div>
                           <div class="col-lg-6">
                             <div class="form-group focused">
                               <label class="form-control-label" for="input-name">Employees Needed to Staff Event/Run Inflatables</label>
-                              <select name="input-staff" id="input-staff" class="form-control form-control-alternative" placeholder="Bounce House">
+                              <select name="input-staff" id="input-staff" class="form-control form-control-alternative" placeholder="Bounce House" value = "">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -132,7 +132,7 @@
                     <div class="pl-lg-4">
                       <div class="form-group focused">
                         <label>Address</label>
-                        <textarea id="input-address" name="input-address" rows="1" class="form-control form-control-alternative" placeholder="">ADDRESS GOES HERE</textarea>
+                        <textarea id="input-address" name="input-address" rows="1" class="form-control form-control-alternative" placeholder=""></textarea>
                       </div>
                     </div>
                     <div class="pl-lg-4">
@@ -140,13 +140,19 @@
                         <div class="col-lg-6">
                           <div class="form-group focused">
                             <label class="form-control-label" for="input-name">City</label>
-                            <input type="text" id="input-address" class="form-control form-control-alternative" value="CITY HERE">
+                            <input type="text" id="input-address" class="form-control form-control-alternative" value="">
                           </div>
                         </div>
                         <div class="col-lg-6">
                           <div class="form-group">
                             <label class="form-control-label" for="input-type">State</label>
-                            <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="Name" value="Ohio">
+                            <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="Name" value="">
+                          </div>
+                        </div> 
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="input-type">Zip</label>
+                            <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="" value="">
                           </div>
                         </div> 
                       </div>
@@ -164,7 +170,7 @@
                         <br>
                         <br>
                         <div *ngFor="let data of arrBounce; let i = index" >
-                        <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="bounceCheck{{ i }}" >
+                        <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="bounceCheck{{ i }}">
                         <label style="padding-left: 8px;"      class="form-check-label" for="bounceCheck{{ i }}">
                           <p>  {{ data.strBounceHouseName }}</p>
                         </label>
@@ -177,7 +183,7 @@
                         <br>
                         <br>
                         <div *ngFor="let data of arrFun; let i = index" >
-                        <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID  }}" id="funCheck{{ i }}" [disabled]="data.status">
+                        <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID  }}" id="funCheck{{ i }}"  >
                         <label style="padding-left: 8px;"      class="form-check-label" for="funCheck{{ i }}">
                           <p>  {{ data.strBounceHouseName }} </p>
                         </label>
@@ -194,7 +200,7 @@
                           <br>
                           <br>
                           <div *ngFor="let data of arrCombo; let i = index" >
-                          <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="comboCheck{{ i }}"  [disabled]="data.status">
+                          <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="comboCheck{{ i }}" >
                           <label style="padding-left: 8px;"      class="form-check-label" for="comboCheck{{ i }}">
                             <p>  {{ data.strBounceHouseName }}</p>
                           </label>
@@ -207,7 +213,7 @@
                           <br>
                           <br>
                           <div *ngFor="let data of arrMidway; let i = index" >
-                          <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="midwayCheck{{ i }}"  [disabled]="data.status">
+                          <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="midwayCheck{{ i }}"  >
                           <label style="padding-left: 8px;"      class="form-check-label" for="midwayCheck{{ i }}">
                             <p>  {{ data.strBounceHouseName }}</p>
                           </label>
@@ -224,7 +230,7 @@
                             <br>
                             <br>
                             <div *ngFor="let data of arrSlide; let i = index" >
-                            <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="slideCheck{{ i }}"  [disabled]="data.status">
+                            <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="slideCheck{{ i }}" >
                             <label style="padding-left: 8px;"      class="form-check-label" for="slideCheck{{ i }}">
                               <p>  {{ data.strBounceHouseName }}</p>
                             </label>
@@ -237,7 +243,7 @@
                             <br>
                             <br>
                             <div *ngFor="let data of arrObstacle; let i = index" >
-                            <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="obstacleCheck{{ i }}"  [disabled]="data.status">
+                            <input class="form-check-input" type="checkbox" value="{{ data.intBounceHouseID }}" id="obstacleCheck{{ i }}"  >
                             <label style="padding-left: 8px;"      class="form-check-label" for="obstacleCheck{{ i }}">
                               <p>  {{ data.strBounceHouseName }}</p>
                             </label>
@@ -258,7 +264,7 @@
                             <br>
                             <br>
                             <div *ngFor="let data of vehicles; let i = index" >
-                            <input class="form-check-input" type="checkbox" value="{{ data.intVehicleID }}" id="vehicleCheck{{ i }}"  [disabled]="data.status">
+                            <input class="form-check-input" type="checkbox" value="{{ data.intVehicleID }}" id="vehicleCheck{{ i }}"  [disabled]="">
                             <label style="padding-left: 8px;"      class="form-check-label" for="vehicleCheck{{ i }}">
                               <p>  {{ data.strVehicleName }}</p>
                             </label>
