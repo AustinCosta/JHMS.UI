@@ -9,6 +9,7 @@ import { TransitionCheckState } from '@angular/material/checkbox';
 import { ThisReceiver } from '@angular/compiler';
 import { DatePipe } from '@angular/common';
 import * as moment from 'moment';
+import { CustomersService } from '../services/customers.service';
 
 @Component({
   selector: 'app-add-event',
@@ -20,7 +21,7 @@ export class AddEventComponent implements OnInit{
 
 
   constructor(private formBuilder: FormBuilder, private bounceHouseService: BouncehousesService, private vehiclesService: VehiclesService,
-     private eventsService: EventsService, private route: ActivatedRoute, private location: Location, private datePipe: DatePipe) {};
+     private eventsService: EventsService, private route: ActivatedRoute, private location: Location, private datePipe: DatePipe, private customersService: CustomersService, private router: Router) {};
   //////////// HERE IS EVERYTHING FOR DATES
   dtmDate: Date = new Date();
 
@@ -43,8 +44,26 @@ export class AddEventComponent implements OnInit{
   dteStartBuffer: Date;
   dteEndBuffer: Date;
 
+  customers: any[] = [];
+
 
   tempObject: Object = new Object();
+
+  addEventRequest: any = {
+    strEventType: '',
+    intCustomerID: 0,
+    intEnvironmentTypeID: 0,
+    dteEventStartDate: Date,
+    dteEventEndDate: Date,
+    strEventName: '',
+    strEventStartTime: '',
+    strEventEndTime: '',
+    strEventSetupTime: '',
+    strEventDescription: '',
+    intInflatablesNeeded: 0,
+    intEmployeesForTheEvent: 0,
+    strLocation: '',
+  };
 
   v = 0;
 
@@ -62,7 +81,9 @@ export class AddEventComponent implements OnInit{
 
   intEventID = 0;
   strEventType = '';
+  strEventType2 = 0;
   intCustomerID = 0;
+  strEnvironmentType = '';
   intEnvironmentTypeID = 0;
   dteEventStartDate = '';
   dteEventEndDate = '';
@@ -148,6 +169,14 @@ export class AddEventComponent implements OnInit{
 
   ngOnInit(): void {
 
+
+    //populate customers select box
+    this.customersService.getAllCustomers()
+    .subscribe({
+      next: (response) => {
+        this.customers = response;
+      }
+    });
 
 
       this.route.paramMap.subscribe({
@@ -916,23 +945,160 @@ export class AddEventComponent implements OnInit{
           //////console.log(error)
         }
         
+        const tempObject3 = document.getElementById(
+          "input-name"
+        ) as HTMLInputElement;
+        this.strEventName = tempObject3.value;
+
+        const tempObject4 = document.getElementById(
+          "input-type"
+        ) as HTMLInputElement;
+        this.strEventType = tempObject4.value;
+
+        if (this.strEventType == "School") {
+          this.strEventType2 = 1;
+        }else if (this.strEventType == "Gym"){
+          this.strEventType2 = 2;
+        }else if (this.strEventType == "Church"){
+          this.strEventType2 = 3;
+        }
+        else if (this.strEventType == "Festival"){
+          this.strEventType2 = 4;
+        }
+        else if (this.strEventType == "Private Party"){
+          this.strEventType2 = 5;
+        }else {
+          this.strEventType2 = 6;
+        }
+
+        const tempObject5 = document.getElementById(
+          "input-descript"
+        ) as HTMLInputElement;
+        this.strEventDescription = tempObject5.value;
+
+        const tempObject6 = document.getElementById(
+          "input-startTime"
+        ) as HTMLInputElement;
+        this.strEventStartTime = tempObject6.value;
+
+        const tempObject7 = document.getElementById(
+          "input-endTime"
+        ) as HTMLInputElement;
+        this.strEventEndTime = tempObject7.value;
+
+        const tempObject8 = document.getElementById(
+          "input-setupTime"
+        ) as HTMLInputElement;
+        this.strEventSetupTime = tempObject8.value;
+
+        const tempObject9 = document.getElementById(
+          "input-flooring"
+        ) as HTMLInputElement;
+        this.strEnvironmentType = tempObject9.value;
+
+          if (this.strEnvironmentType == "Outdoor On Grass"){
+            this.intEnvironmentTypeID = 1;
+          }else if (this.strEnvironmentType == "Outdoor On Pavement"){
+            this.intEnvironmentTypeID = 2;
+          }else {
+            this.intEnvironmentTypeID = 3;
+          }
+
+
+
+        this.intInflatablesNeeded = 1;
+
+        for (let l = 0; l < 50; l++) {
+
+          if (this.arrSelected[l] > 0) {
+            this.intInflatablesNeeded += 1;
+          }
+
+        }
+
+        const tempObject10 = document.getElementById(
+          "input-staff"
+        ) as HTMLInputElement;
+        this.intEmployeesForTheEvent = Number(tempObject10.value);
+
+        const tempObject11 = document.getElementById(
+          "input-address"
+        ) as HTMLInputElement;
+        this.strLocation = tempObject11.value;
+
+        const tempObject12 = document.getElementById(
+          "input-city"
+        ) as HTMLInputElement;
+        this.strLocation += ", " + tempObject12.value;
+
+        const tempObject13 = document.getElementById(
+          "input-state"
+        ) as HTMLInputElement;
+        this.strLocation += ", " + tempObject13.value;
+
+        const tempObject14 = document.getElementById(
+          "input-zip"
+        ) as HTMLInputElement;
+        this.strLocation += " " + tempObject14.value;
+
+
+        console.log("Event Type: " + this.strEventType2);
+        console.log("Customer ID: " + this.intCustomerID);
+        //console.log("Customer Name: " + this.subCustomerName);
+        console.log("Environment Type ID: " + this.intEnvironmentTypeID);
+        console.log("Event Start Date: " + this.dteEventStartDate);
+        console.log("End Date: " + this.dteEventEndDate);
+        console.log("Event Name: " + this.strEventName);
+        console.log("Start Time: " + this.strEventStartTime);
+        console.log("Setup Time: " + this.strEventSetupTime);
+        console.log("End Time: " + this.strEventEndTime);
+        console.log("Description: " + this.strEventDescription);
+        console.log("Inflatables Needed " + this.intInflatablesNeeded);
+        console.log("Employees Needed: " + this.intEmployeesForTheEvent);
+        console.log("Location: " + this.strLocation);
+        console.log("  ");
+        // console.log("Customer First Name is: " + this.custFirst);
+        // console.log("Customer Last Name is: " + this.custLast);
+        // console.log("Customer address is: " + this.custAddress);
+        // console.log("Customer city is: " + this.custCity);
+        // console.log("Customer state is: " + this.custState);
+        // console.log("Customer zip is: " + this.custZip);
+        // console.log("Customer email is: " + this.custEmail);
+        console.log()
+
+
+        
+        this.addEventRequest.strEventType = String(this.strEventType);
+        this.addEventRequest.intCustomerID = this.intCustomerID;
+        this.addEventRequest.intEnvironmentTypeID = this.intEnvironmentTypeID;
+        this.addEventRequest.dteEventStartDate = this.dteEventStartDate;
+        this.addEventRequest.dteEventEndDate = this.dteEventEndDate;
+        this.addEventRequest.strEventName = this.strEventName;
+        this.addEventRequest.strEventStartTime = this.strEventStartTime;
+        this.addEventRequest.strEventEndTime = this.strEventEndTime;
+        this.addEventRequest.strEventSetupTime = this.strEventSetupTime;
+        this.addEventRequest.strEventDescription = this.strEventDescription;
+        this.addEventRequest.intInflatablesNeeded = this.intInflatablesNeeded;
+        this.addEventRequest.intEmployeesForTheEvent = this.intEmployeesForTheEvent;
+        this.addEventRequest.strLocation = this.strLocation;
 
         
 
     }
 
     this.arrSelected.shift();
+    this.addEvent();
+  
 
-    
+}
 
-
-    for (var i = 0; i < this.arrSelected.length; i++) { ////console.log(this.arrSelected[i]) }
-
-
-
-    };
-
-
+addEvent() {
+  this.eventsService.addEvent(this.addEventRequest)
+  .subscribe({
+    next: (event) => {
+      this.router.navigate(['events']);
+    }
+  });
 
 
 }}
