@@ -1,6 +1,7 @@
 <html style="background-color:#ced3d6; font-family: Arial, Helvetica, sans-serif;">
     <body style="background-color:#ced3d6; font-family: Arial, Helvetica, sans-serif;">
 
+<button class="myButton"><a [routerLink]="['/equipments', 'add']">Add Equipment</a></button>
 <div class="container my-5">
   <h1 class="mb-3">Equipment</h1>
 
@@ -24,7 +25,6 @@
       </tr>
     </tbody>
   </table>
-  <p *ngIf="!equipments || equipments.length <= 0">No Equipment Found.</p>
 </div>
 </body>
-</html> 
+</html>
