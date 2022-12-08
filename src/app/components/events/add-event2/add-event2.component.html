@@ -9,16 +9,24 @@
           <input type="text" class="form-control" id="strFirstName"
           name="strEventType" [(ngModel)]="addEventRequest.strEventType"> <!--Bind to property in ts file-->
         </div>
+        
         <div class="mb-3">
-          <label for="intCustomerID" class="form-label">Customer ID</label>
-          <input type="number" class="form-control" id="intCustomerID"
-          name="intCustomerID" [(ngModel)]="addEventRequest.intCustomerID"> <!--Bind to property in ts file-->
+          <label for="eventCustomer" class="form-label">Choose a Customer:</label>
+          <select class="form-control" id="eventCustomer" name="eventCustomer" [(ngModel)]="addEventRequest.intCustomerID">
+            <option *ngFor="let customer of customers" [value]="customer.intCustomerID">
+              {{customer.strFirstName}} {{customer.strLastName}}
+            </option>
+          </select>
         </div>
         <div class="mb-3">
-          <label for="intEnvironmentTypeID" class="form-label">Environment Type ID</label>
-          <input type="number" class="form-control" id="intEnvironmentTypeID"
-          name="intEnvironmentTypeID" [(ngModel)]="addEventRequest.intEnvironmentTypeID"> <!--Bind to property in ts file-->
+          <label for="eventEnvironment" class="form-label">Choose Environment Type:</label>
+          <select class="form-control" id="eventEnvironment" name="eventEnvironment" [(ngModel)]="addEventRequest.intEnvironmentTypeID">
+            <option *ngFor="let environmentType of environmentTypes" [value]="environmentType.intEnvironmentTypeID">
+              {{environmentType.strEnvironmentType}}
+            </option>
+          </select>
         </div>
+
         <div class="mb-3">
           <label for="dteEventStartDate" class="form-label">Start Date</label>
           <input type="date" class="form-control" id="dteEventStartDate"

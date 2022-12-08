@@ -24,6 +24,7 @@
     "@angular/router": "^14.2.0",
     "bootstrap": "^5.2.2",
     "firebase": "^9.14.0",
+    "loader-utils": "^3.2.1",
     "mdb-angular-ui-kit": "^3.0.0",
     "moment": "^2.29.4",
     "popper.js": "^1.16.1",
