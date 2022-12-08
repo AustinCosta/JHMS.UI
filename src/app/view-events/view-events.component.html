@@ -5,7 +5,7 @@
             View Events
         </h1>
         <div class="center">
-          <button class="my-class" mat-raised-button color="primary" onclick="location.href='pickDate'">Add Event</button>
+          <button class="my-class" mat-raised-button color="primary" onclick="location.href='events/add2'">Add Event</button>
           <button class="my-class" mat-raised-button color="primary" onclick="location.href='ViewEvents/edit/:id'">View Edit Page</button>
 
           <br>
@@ -35,6 +35,53 @@
 </table>
 </div>
     </div>
-</body>
 
+    <div class="container my-5">
+      <h1 class="mb-3">Events</h1>
+
+      <table class="table" *ngIf="events && events.length > 0">
+        <thead>
+          <tr>
+            <th>Event ID</th>
+            <th>Event Type</th>
+            <th>Customer ID</th>
+            <th>Environment Type ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Event Name</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Setup Time</th>
+            <th>Description</th>
+            <th>Inflatables Needed</th>
+            <th>Employee's For The Event</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let event of events">
+            <td>{{event.intEventID}}</td>
+            <td>{{event.strEventType}}</td>
+            <td>{{event.intCustomerID}}</td>
+            <td>{{event.intEnvironmentTypeID}}</td>
+            <td>{{event.dteEventStartDate}}</td>
+            <td>{{event.dteEventEndDate}}</td>
+            <td>{{event.strEventName}}</td>
+            <td>{{event.strEventStartTime}}</td>
+            <td>{{event.strEventEndTime}}</td>
+            <td>{{event.strEventSetupTime}}</td>
+            <td>{{event.strEventDescription}}</td>
+            <td>{{event.intInflatablesNeeded}}</td>
+            <td>{{event.intEmployeesForTheEvent}}</td>
+            <td>{{event.strLocation}}</td>
+            <td><a [routerLink]="['/events', 'edit2', event.intEventID]">Edit Event Information</a></td>
+            <td><a [routerLink]="['/events', 'stuff', event.intEventID]">Add Event Equipment</a></td>
+            <td><a [routerLink]="['/events','stuff', 'edit', event.intEventID]">View/Remove Event Equipment</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="!events || events.length <= 0">No Events Found.</p>
+    </div>
+
+</body>
 </html>

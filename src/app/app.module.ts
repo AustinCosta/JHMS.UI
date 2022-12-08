@@ -43,6 +43,10 @@ import { AddEvent2Component } from './components/events/add-event2/add-event2.co
 import { AddEventvehicleComponent } from './components/events/add-eventvehicle/add-eventvehicle.component';
 import { AddEventequipmentComponent } from './components/events/add-eventequipment/add-eventequipment.component';
 import { PickDateComponent } from './pick-date/pick-date.component';
+import { Addevent3Component } from './components/events/addevent3/addevent3.component';
+import { Editevent3Component } from './components/events/editevent3/editevent3.component';
+import { EditeventstuffComponent } from './components/events/editeventstuff/editeventstuff.component';
+import { RemoveeventstuffComponent } from './components/events/removeeventstuff/removeeventstuff.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +83,11 @@ import { PickDateComponent } from './pick-date/pick-date.component';
     AddEvent2Component,
     AddEventvehicleComponent,
     AddEventequipmentComponent,
-    PickDateComponent
+    PickDateComponent,
+    Addevent3Component,
+    Editevent3Component,
+    EditeventstuffComponent,
+    RemoveeventstuffComponent
   ],
   imports: [
     BrowserModule,

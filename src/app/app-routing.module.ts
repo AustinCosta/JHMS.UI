@@ -31,6 +31,11 @@ import { EditEventComponent } from './components/events/edit-event/edit-event.co
 import { AddEventvehicleComponent } from './components/events/add-eventvehicle/add-eventvehicle.component';
 import { AddEventequipmentComponent } from './components/events/add-eventequipment/add-eventequipment.component';
 import { PickDateComponent } from './pick-date/pick-date.component';
+import { AddEvent2Component } from './components/events/add-event2/add-event2.component';
+import { Addevent3Component } from './components/events/addevent3/addevent3.component';
+import { Editevent3Component } from './components/events/editevent3/editevent3.component';
+import { EditeventstuffComponent } from './components/events/editeventstuff/editeventstuff.component';
+import { RemoveeventstuffComponent } from './components/events/removeeventstuff/removeeventstuff.component';
 
 
 const routes: Routes = [
@@ -51,7 +56,7 @@ const routes: Routes = [
   { path: 'vehicles/add', component: AddVehicleComponent},
   { path: 'vehicles/edit/:id', component: EditVehicleComponent}, //2nd version/template
   { path: 'events', component: EventListComponent},
-  { path: 'events/add', component: AddEventComponent},
+  { path: 'events/add', component: AddEvent2Component},
   { path: 'events/edit/:id', component: EditEventComponent},                   //2nd version/template
 
   //Add to child tables
@@ -71,8 +76,17 @@ const routes: Routes = [
   { path: 'ViewEquipment', component: ViewEquipmentComponent},
   { path: 'ViewEquipment/edit/:id', component: EditEquipmentComponent},
   { path: 'CreateEquipment', component: CreateEquipmentComponent},
-  {path: 'pickDate', component: PickDateComponent},
-  { path: 'addEvent/:id/:strStart/:strEnd', component: AddEventComponent}
+  { path: 'pickDate', component: PickDateComponent},
+  { path: 'addEvent/:strStart/:strEnd', component: AddEventComponent},
+
+
+  //Final???
+  { path: 'events/add2', component: Addevent3Component},
+  { path: 'events/edit2/:id', component: Editevent3Component},
+  { path: 'events/stuff/:id', component: EditeventstuffComponent},
+  { path: 'events/stuff/edit/:id', component: RemoveeventstuffComponent},
+
+
 ];
 
 @NgModule({

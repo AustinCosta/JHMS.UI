@@ -4,7 +4,7 @@ import { BouncehousesService } from '../services/bouncehouses.service';
 import { EventsService } from '../services/events.service';
 import { VehiclesService } from '../services/vehicles.service';
 import { ActivatedRoute, Router} from '@angular/router';
-import {Location} from '@angular/common'; 
+import {Location} from '@angular/common';
 import { TransitionCheckState } from '@angular/material/checkbox';
 import { ThisReceiver } from '@angular/compiler';
 import { DatePipe } from '@angular/common';
@@ -91,6 +91,10 @@ export class PickDateComponent implements OnInit {
   arrEndTime: any = [];
   arrSetupTime: any = [];
 
+  selectedDates: any = {
+    strStart: '',
+    strEnd: '',
+  }
 
   strAddress = "";
   strCity = "";
@@ -117,7 +121,7 @@ export class PickDateComponent implements OnInit {
 
   }
 
-  
+
 
   onchange(){
 
@@ -154,6 +158,10 @@ export class PickDateComponent implements OnInit {
 
     this.strStart = String(this.dtmStart);
     this.strEnd = String(this.dtmEnd);
+
+    //Parse the dates for redirect/url passing
+    this.selectedDates.strStart = String(this.dtmStart);
+    this.selectedDates.strEnd = String(this.dtmEnd);
 
     this.strStart = moment(this.dtmStart).format('yyyy-MM-DD');
     this.strEnd = moment(this.dtmEnd).format('yyyy-MM-DD');

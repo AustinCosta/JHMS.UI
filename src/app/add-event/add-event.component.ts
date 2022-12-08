@@ -4,7 +4,7 @@ import { BouncehousesService } from '../services/bouncehouses.service';
 import { EventsService } from '../services/events.service';
 import { VehiclesService } from '../services/vehicles.service';
 import { ActivatedRoute, Router} from '@angular/router';
-import {Location} from '@angular/common'; 
+import {Location} from '@angular/common';
 import { TransitionCheckState } from '@angular/material/checkbox';
 import { ThisReceiver } from '@angular/compiler';
 import { DatePipe } from '@angular/common';
@@ -145,7 +145,7 @@ export class AddEventComponent implements OnInit{
     strStatus: ""
   }];
 
-  
+
   arrBounce: any = [];
   arrSlide: any = [];
   arrCombo: any = [];
@@ -165,10 +165,9 @@ export class AddEventComponent implements OnInit{
   //   strURL: '',
   //   intPurchaseYear: 0
   // }];
-  
+
 
   ngOnInit(): void {
-
 
     //populate customers select box
     this.customersService.getAllCustomers()
@@ -177,7 +176,6 @@ export class AddEventComponent implements OnInit{
         this.customers = response;
       }
     });
-
 
       this.route.paramMap.subscribe({
         next: (params) => {
@@ -195,7 +193,7 @@ export class AddEventComponent implements OnInit{
           ////console.log(this.chkEventID);
 
         }})
-        this.eventsService.getAvailableBounceHouses(String(this.chkEventID), this.dteEventStartDate, this.dteEventEndDate)
+        this.eventsService.getAvailableBounceHouses(this.dteEventStartDate, this.dteEventEndDate)
         .subscribe({
           next: (response) => {
             this.bounceHouses2 = response;
@@ -213,7 +211,7 @@ export class AddEventComponent implements OnInit{
         ////console.log(this.usedBounceHouses);
 
 
-          
+
       this.usedBounceHouses.forEach((element, index) => {
         // 👇️ one 0, two 1, three 2
         //////console.log(element, index);
@@ -231,14 +229,14 @@ export class AddEventComponent implements OnInit{
       .subscribe({
         next: (events) => {
           this.events = events;
-  
+
           ////console.log(this.events);
-  
-          for (var i = 0; i < 100; i++) { 
-  
+
+          for (var i = 0; i < 100; i++) {
+
             if (this.events[i]?.intEventID == this.chkEventID){
-  
-  
+
+
               this.intEventID = this.events[i]?.intEventID;
               this.strEventType = this.events[i]?.strEventType;
               this.intCustomerID = this.events[i]?.intCustomerID ;
@@ -249,7 +247,7 @@ export class AddEventComponent implements OnInit{
               this.intInflatablesNeeded = this.events[i]?.intInflatablesNeeded;
               this.intEmployeesForTheEvent = this.events[i]?.intEmployeesForTheEvent;
               this.strLocation = this.events[i]?.strLocation;
-  
+
               this.arrLocation = (this.strLocation).split(",", 3);
 
 
@@ -265,18 +263,18 @@ export class AddEventComponent implements OnInit{
               console.log(this.dteEndBuffer);
 
               var diff = Math.abs(this.dteEndBuffer.getTime() - this.dteEndBuffer.getTime());
-              var diffDays = Math.ceil(diff / (1000 * 3600 * 24));  
+              var diffDays = Math.ceil(diff / (1000 * 3600 * 24));
 
               this.intDays3 = diffDays;
 
               //console.log(this.intDays3);
 
-              this.dteStartBuffer.setDate(this.dteStartBuffer.getDate() + 1);
+              this.dteStartBuffer.setDate(this.dteStartBuffer.getDate());
               //console.log(this.dteStartBuffer);
 
               this.dteEventStartDate =  (new Date(this.dteStartBuffer).toISOString().split('T')[0]);
 
-              //console.log(this.dteStartBuffer); 
+              //console.log(this.dteStartBuffer);
 
               const datePicker = new FormControl(new Date() || this.dteStartBuffer);
 
@@ -293,7 +291,7 @@ export class AddEventComponent implements OnInit{
               //HH:mm
               //this.strEventStartTime = '';
 
-              
+
               ////console.log(this.strEventStartTime);
               this.arrStartTime = this.strEventStartTime.split(" ", 2);
               this.strEventStartTime = this.arrStartTime[0];
@@ -366,9 +364,9 @@ export class AddEventComponent implements OnInit{
 
                 }
               }
- 
 
-              
+
+
               //////console.log(this.strEventSetupTime);
               this.arrSetupTime = this.strEventSetupTime.split(" ", 2);
               this.strEventSetupTime = this.arrSetupTime[0];
@@ -404,51 +402,51 @@ export class AddEventComponent implements OnInit{
 
                 }
               }
-  
+
               this.strAddress = this.arrLocation[0];
               this.strCity = (this.arrLocation[1].trim());
               this.strState1 = (this.arrLocation[2].trim());
-  
+
               this.arrState = (this.strState1).split(" ", 2);
-  
+
               this.strState2 = this.arrState[0];
               this.strZip = this.arrState[1];
-  
-  
+
+
               ////console.log(this.strAddress);
               ////console.log(this.strCity);
               ////console.log(this.strState2);
               ////console.log(this.strZip);
               ////console.log(this.strEventStartTime);
-  
-  
-  
-  
+
+
+
+
               ////console.log(this.intEventID);
               ////console.log(this.strEventType);
-  
-  
-  
+
+
+
             }
-  
-  
+
+
             //////console.log(this.dteEventStartDate);
-  
+
             this.arrStart = (this.dteEventStartDate).split("T", 1);
             this.arrEnd = (this.dteEventEndDate).split("T", 1);
-  
+
             this.dteEventEndDate = this.arrEnd[0];
             this.dteEventStartDate = this.arrStart[0];
-  
-            this.location.replaceState("/ViewEvents/" + this.chkEventID + "/" + this.dteEventStartDate + "/" + this.dteEventEndDate);
-  
-  
+
+            this.location.replaceState("/ViewEvents/" + this.dteEventStartDate + "/" + this.dteEventEndDate);
+
+
           }
-  
-        
-      
+
+
+
               //Store event ID to pass later
-  
+
               for (let i = 0; i < 50; i++) {
                 //Bounce Houses
                 try {
@@ -461,7 +459,7 @@ export class AddEventComponent implements OnInit{
                 } catch (error) {
                   //////console.log(error)
                 }
-        
+
                 //Giant Slides
                 try {
                   const tempObject2 = document.getElementById(
@@ -469,12 +467,12 @@ export class AddEventComponent implements OnInit{
                   ) as HTMLInputElement;
                   if (this.arrBuffer3.includes(tempObject2.value)){
                     tempObject2.disabled = true;
-    
+
                   }
                 } catch (error) {
                   //////console.log(error)
                 }
-        
+
                 //Combos
                 try {
                   const tempObject2 = document.getElementById(
@@ -482,12 +480,12 @@ export class AddEventComponent implements OnInit{
                   ) as HTMLInputElement;
                   if (this.arrBuffer3.includes(tempObject2.value)){
                     tempObject2.disabled = true;
-    
+
                   }
                 } catch (error) {
                   //////console.log(error)
                 }
-        
+
                 //Midway Fun & GAmes
                 try {
                   const tempObject2 = document.getElementById(
@@ -495,13 +493,13 @@ export class AddEventComponent implements OnInit{
                   ) as HTMLInputElement;
                   if (this.arrBuffer3.includes(tempObject2.value)){
                     tempObject2.disabled = true;
-    
+
                   }
                 } catch (error) {
                   //////console.log(error)
                 }
-        
-        
+
+
                 //Fun & Games
                 try {
                   const tempObject2 = document.getElementById(
@@ -509,12 +507,12 @@ export class AddEventComponent implements OnInit{
                   ) as HTMLInputElement;
                   if (this.arrBuffer3.includes(tempObject2.value)){
                     tempObject2.disabled = true;
-    
+
                   }
                 } catch (error) {
                   //////console.log(error)
                 }
-        
+
                 //Obstacles
                 try {
                   const tempObject2 = document.getElementById(
@@ -522,63 +520,63 @@ export class AddEventComponent implements OnInit{
                   ) as HTMLInputElement;
                   if (this.arrBuffer3.includes(tempObject2.value)){
                     tempObject2.disabled = true;
-    
+
                   }
                 } catch (error) {
                   //////console.log(error)
                 }
-                
-        
-                
-        
+
+
+
+
             }
-  
-  
-              
-            this.eventsService.getAvailableBounceHouses(String(this.chkEventID), this.dteEventStartDate, this.dteEventEndDate)
+
+
+
+            this.eventsService.getAvailableBounceHouses(this.dteEventStartDate, this.dteEventEndDate)
             .subscribe({
               next: (response) => {
                 this.availableBounceHouses = response;
                 //////console.log(response);
-      
-                this.availableBounceHouses.forEach((element, index) => {
-      
-                  this.arrBuffer3.push(this.availableBounceHouses[index]?.intBounceHouseID)
-      
-      
-      
-                })
-      
-              
 
-      
-      
-      
+                this.availableBounceHouses.forEach((element, index) => {
+
+                  this.arrBuffer3.push(this.availableBounceHouses[index]?.intBounceHouseID)
+
+
+
+                })
+
+
+
+
+
+
                 this.bounceHouseService.getAllBounceHouses()
                 .subscribe({
                     next: (bounceHouses) => {
                       //this.bounceHouses2 = bounceHouses;
-              
+
                       //this.bounceHouses2.strStatus = '';
-              
+
                       ////console.log(this.arrBuffer2[0]);
 
 
                       this.usedBounceHouses.forEach((element, index) => {
                         // 👇️ one 0, two 1, three 2
                         //////console.log(element, index);
-                
-                
+
+
                         //////console.log("ASDasd");
-                
+
                         //////console.log(this.usedBounceHouses[index]?.intBounceHouseID)
-                
+
                         this.arrBuffer5.push(this.usedBounceHouses[index]?.intBounceHouseID);
-                
+
                       })
-              
-                      for (var i = 0; i < 50; i++) { 
-              
+
+                      for (var i = 0; i < 50; i++) {
+
                         if (this.bounceHouses2[i]?.intBounceHouseTypeID > 0) {
 
                           if (this.arrBuffer3.includes(this.bounceHouses2[i]?.intBounceHouseID) == false){
@@ -591,30 +589,30 @@ export class AddEventComponent implements OnInit{
 
 
 
-              
+
                             this.arrBounceBuffer.push(this.bounceHouses2[i]?.intBounceHouseID);
-              
+
                             if (this.arrBuffer.includes(this.bounceHouses2[i]?.intBounceHouseID)){
-              
+
                               this.bounceHouses2[i].strStatus = "checked";
-                  
+
                             }else {
-                  
+
                               this.bounceHouses2[i].strStatus = "";
-                  
+
                             }
-      
+
                             if (this.arrBuffer3.includes(this.bounceHouses2[i]?.intBounceHouseID)){
-      
+
                               this.bounceHouses2[i].status = "disabled";
-      
-      
-      
+
+
+
                             }else {
-      
+
                               this.bounceHouses2[i].status = "";
-      
-      
+
+
                             }
 
                             // ////console.log("ahjuslkdh");
@@ -625,9 +623,9 @@ export class AddEventComponent implements OnInit{
 
 
 
-                            for (var j = 0; j < 50; j++) { 
+                            for (var j = 0; j < 50; j++) {
 
-                              
+
 
                               if (this.arrBuffer5.includes(this.arrBuffer4[j]))
                                     {
@@ -652,56 +650,56 @@ export class AddEventComponent implements OnInit{
 
                             }
 
-                            
-                  
-              
+
+
+
                         }
-                    
+
                         //console.log(this.bounceHouses2);
                         if(this.bounceHouses2[i]?.strBounceHouseType == 1) {
-                  
+
                           //////console.log("HEREHRE");
-              
+
                           this.arrBounce.push(this.bounceHouses2[i]);
-              
+
                         } else if (this.bounceHouses2[i]?.strBounceHouseType == 2){
-                          
-                  
+
+
                           this.arrSlide.push(this.bounceHouses2[i]);
-                  
+
                         } else if (this.bounceHouses2[i]?.strBounceHouseType == 3){
-                  
+
                           this.arrCombo.push(this.bounceHouses2[i]);
-                  
+
                         } else if (this.bounceHouses2[i]?.strBounceHouseType == 4){
-                  
+
                           this.arrMidway.push(this.bounceHouses2[i]);
-                  
+
                         } else if (this.bounceHouses2[i]?.strBounceHouseType == 5){
-                  
+
                           this.arrFun.push(this.bounceHouses2[i]);
-                  
+
                         } else if (this.bounceHouses2[i]?.strBounceHouseType == 6){
-              
+
                           this.arrObstacle.push(this.bounceHouses2[i]);
                           //////console.log(String(i) + " iteration")
                           //////console.log(this.arrObstacle);
-                  
+
                         }else {
-                          
+
                          // alert("NOT RUNNING");
                         }
-              
+
                         // this.arrBounce.shift();
                         // this.arrSlide.shift();
                         // this.arrCombo.shift();
                         // this.arrMidway.shift();
                         // this.arrFun.shift();
                         // this.arrObstacle.shift();
-          
-                        
-              
-              
+
+
+
+
                       }
 
                       console.log("bounceHouse");
@@ -709,37 +707,37 @@ export class AddEventComponent implements OnInit{
                       console.log("fun");
                       console.log(this.arrFun);
 
-              
+
                     },
                     error: (response) => {
                       ////console.log(response);
                     }
                   });
-              
-      
-      
-      
-      
+
+
+
+
+
               },
               error: (response) => {
                 ////console.log(response);
               }
             });
-  
-            
-                
-  
-          
+
+
+
+
+
         },
         error: (response) => {
           ////console.log(response);
         }
-  
-        
-        
-  
-  
-  
+
+
+
+
+
+
       });
 
 
@@ -754,15 +752,15 @@ export class AddEventComponent implements OnInit{
       //     this.dteEventEndDate = String(params.get('strEnd'));
 
       //     ////console.log(this.chkEventID);
-    
-      
-    
 
 
-      
-    
 
-      
+
+
+
+
+
+
       }
 
 
@@ -771,11 +769,11 @@ export class AddEventComponent implements OnInit{
 
 
 
-      
+
     });
 
-    
-    
+
+
 
     this.vehiclesService.getAllVehicles()
     .subscribe({
@@ -787,16 +785,11 @@ export class AddEventComponent implements OnInit{
       }
     });
 
-
-
-
-
   }
     onchange(){
 
       this.intDays = this.daysFormCtrl.value!;
       ////console.log(this.intDays);
-
       this.newDate = this.dateFormCtrl.value!;
       this.dtmStart = new Date((this.dateFormCtrl.value!)); //gives dtmStart - date object
       this.dtmStart = this.addDays(this.dtmStart, 1); //corrects the -1 discrepancy between date picker and irl
@@ -831,6 +824,7 @@ export class AddEventComponent implements OnInit{
 
       //PULL dtmStart for start date
       //PULL dtmEnd for end date
+
     }
 
     /////EVERYTHING FOR POPULATING CHECKBOXES
@@ -895,7 +889,7 @@ export class AddEventComponent implements OnInit{
           ) as HTMLInputElement;
             if (tempObject2.checked == true){
               const value = tempObject2?.value;
- 
+
               this.arrSelected.push(Number(value));
             }
         } catch (error) {
@@ -944,7 +938,7 @@ export class AddEventComponent implements OnInit{
         } catch (error) {
           //////console.log(error)
         }
-        
+
         const tempObject3 = document.getElementById(
           "input-name"
         ) as HTMLInputElement;
@@ -1067,7 +1061,7 @@ export class AddEventComponent implements OnInit{
         console.log()
 
 
-        
+
         this.addEventRequest.strEventType = String(this.strEventType);
         this.addEventRequest.intCustomerID = this.intCustomerID;
         this.addEventRequest.intEnvironmentTypeID = this.intEnvironmentTypeID;
@@ -1082,13 +1076,13 @@ export class AddEventComponent implements OnInit{
         this.addEventRequest.intEmployeesForTheEvent = this.intEmployeesForTheEvent;
         this.addEventRequest.strLocation = this.strLocation;
 
-        
+
 
     }
 
     this.arrSelected.shift();
     this.addEvent();
-  
+
 
 }
 

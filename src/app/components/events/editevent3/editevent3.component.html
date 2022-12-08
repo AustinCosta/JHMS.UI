@@ -1,0 +1,187 @@
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<body>
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://user-images.githubusercontent.com/79421698/204444597-27384cc7-f53c-48f1-8644-01e5712d1dfa.jpg); background-size: cover; background-position: center top;">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
+
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-xlg-7 col-md-10" *ngIf="eventDetails.strEventStartDate != null"> <!--Only show event if selected-->
+            <h1 class="display-2 text-white" style="text-align: center; vertical-align: top;">Event on {{ eventDetails.dteEventStartDate | date:'MM/dd/yyyy'}} - {{ eventDetails.dteEventEndDate | date:'MM/dd/yyyy' }} </h1>
+          </div>
+        </div>
+
+    </div>
+    <!-- Page content -->
+        <div class="col-xl-8 order-xl-1">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Event Info</h3>
+                </div>
+                <div class="col-4 text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">Home</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form #form="ngForm" (ngSubmit)="updateEvent()">
+                <h6 class="heading-small text-muted mb-4">General Info</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                                      <!-- Event Name -->
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-name">Event Name</label>
+                        <input type="text" id="input-name"
+                        class="form-control form-control-alternative"
+                        placeholder="Name" name="input-name" [(ngModel)]="eventDetails.strEventName">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-type">Event Type</label>
+                        <select name="input-type" id="input-type" class="form-control form-control-alternative" placeholder="Bounce House" [(ngModel)]="eventDetails.strEventType">
+                            <option value="School">School</option>
+                            <option value="Gym">Gym</option>
+                            <option value="Church">Church</option>
+                            <option value="Festival">Festival</option>
+                            <option value="Private Party">Private Party</option>
+                            <option value="Other">Other</option>
+                          </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="pl-lg-4">
+                    <div class="form-group focused">
+                      <label name="strDescription">Description</label>
+                      <textarea
+                        id="strDescription" name="strDescription" rows="3"
+                        class="form-control form-control-alternative"
+                        placeholder="A few words about the event ..."
+                        [(ngModel)]="eventDetails.strEventDescription">
+                      </textarea>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="intEnvironmentTypeID">Flooring Type</label>
+                      <select name="intEnvironmentTypeID" id="intEnvironmentTypeID"
+                        class="form-control form-control-alternative" placeholder="Bounce House"
+                        [(ngModel)]="eventDetails.intEnvironmentTypeID">
+                          <option value="1">Outdoor On Grass</option>
+                          <option value="2">Outdoor On Pavement</option>
+                          <option value="3">Indoor In Gym</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="eventCustomer" class="form-label">Choose a Customer:</label>
+                    <select class="form-control" id="eventCustomer" name="eventCustomer" [(ngModel)]="eventDetails.intCustomerID">
+                      <option *ngFor="let customer of customers" [value]="customer.intCustomerID">
+                        {{customer.strFirstName}} {{customer.strLastName}}
+                      </option>
+                    </select>
+                  </div>
+                <h6 class="heading-small text-muted mb-4">Date/Time Info</h6>
+                <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group focused">
+                          <div>
+                            <label class="form-control-label" for="dteEventStartDate">Event Start Date</label>
+                            <input type="date" class="form-control" id="dteEventStartDate"
+                            name="dteEventStartDate" [(ngModel)]="eventDetails.dteEventStartDate"> <!--Bind to property in ts file-->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="dteEventEndDate">Event End Date</label>
+                            <input type="date" class="form-control" id="dteEventStartDate"
+                            name="dteEventEndDate" [(ngModel)]="eventDetails.dteEventEndDate"> <!--Bind to property in ts file-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="strEventStartTime">Event Start Time</label>
+                            <input type="text" id="strEventStartTime"
+                              class="form-control form-control-alternative" name="strEventStartTime"
+                              [(ngModel)]="eventDetails.strEventStartTime"
+                            >
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group focused">
+                              <label class="form-control-label" for="strEventEndTime">Event End Time</label>
+                              <input type="text" id="strEventEndTime"
+                              class="form-control form-control-alternative" name="strEventEndTime"
+                              [(ngModel)]="eventDetails.strEventEndTime"
+                            >
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="form-group focused">
+                              <label class="form-control-label" for="strEventSetupTime">Setup Time</label>
+                              <input type="text" id="strEventSetupTime"
+                              class="form-control form-control-alternative" name="strEventSetupTime"
+                              [(ngModel)]="eventDetails.strEventSetupTime"
+                            >
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="form-group focused">
+                              <label class="form-control-label" for="intEmployeesNeededForSetup">Employees Needed to Staff Event/Run Inflatables</label>
+                              <select name="input-staff" id="intEmployeesNeededForSetup" class="form-control form-control-alternative"
+                              placeholder="Bounce House" name="intEmployeesNeededForSetup"
+                              [(ngModel)]="eventDetails.intEmployeesForTheEvent">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                              </select>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <h6 class="heading-small text-muted mb-4">Location Info</h6>
+                    <div class="pl-lg-4">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="strLocation">Address</label>
+                        <textarea
+                          id="strLocation" name="strLocation"
+                          rows="1" class="form-control form-control-alternative"
+                          placeholder="Event Location" [(ngModel)]="eventDetails.strLocation"
+                        >
+                        </textarea>
+                      </div>
+                    </div>
+
+                <button type="submit" class="btn btn-primary">Update Event</button>
+                <button
+                  type="button" class="btn btn-danger"
+                  (click)="deleteEvent(eventDetails.intEventID)">Delete Event
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+</body>
