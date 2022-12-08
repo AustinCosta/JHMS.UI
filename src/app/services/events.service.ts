@@ -46,14 +46,64 @@ export class EventsService {
     return this.http.delete<any>(this.baseApiUrl + '/api/eventbouncehouses/' + intEventBounceHouseID)
   }
 
-  getAvailableBounceHouses(intEventID: string, strEventStartDate: string, strEventEndDate: string): Observable<any[]> {
-    return this.http.get<any[]>(this.baseApiUrl + '/api/eventbouncehouses/' + intEventID + '/' + strEventStartDate + '/' + strEventEndDate);
+  getAvailableBounceHouses(strEventStartDate: string, strEventEndDate: string): Observable<any[]> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/eventbouncehouses/' + strEventStartDate + '/' + strEventEndDate);
   }
+
+  //This method is similar to getEventBounceHouses but only gets event bouncehouses of typeID 1
+  getEventBounceHouses2(intEventID: string): Observable<any> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/eventbh2/' + intEventID);
+  }
+
+  getAvailableSlides(strEventStartDate: string, strEventEndDate: string): Observable<any[]> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/slides/' + strEventStartDate + '/' + strEventEndDate);
+  }
+
+  getEventSlides(intEventID: string): Observable<any> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/slides/' + intEventID);
+  }
+
+  getAvailableCombos(strEventStartDate: string, strEventEndDate: string): Observable<any[]> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/combos/' + strEventStartDate + '/' + strEventEndDate);
+  }
+
+  getEventCombos(intEventID: string): Observable<any> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/combos/' + intEventID);
+  }
+
+  getAvailableRushes(strEventStartDate: string, strEventEndDate: string): Observable<any[]> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/rush/' + strEventStartDate + '/' + strEventEndDate);
+  }
+
+  getEventRushes(intEventID: string): Observable<any> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/rush/' + intEventID);
+  }
+
+  getAvailableGames(strEventStartDate: string, strEventEndDate: string): Observable<any[]> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/games/' + strEventStartDate + '/' + strEventEndDate);
+  }
+
+  getEventGames(intEventID: string): Observable<any> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/games/' + intEventID);
+  }
+
+  getAvailableObstacles(strEventStartDate: string, strEventEndDate: string): Observable<any[]> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/obstacle/' + strEventStartDate + '/' + strEventEndDate);
+  }
+
+  getEventObstacles(intEventID: string): Observable<any> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/obstacle/' + intEventID);
+  }
+
 
 
   //==================================//
   //      TEventEnvironmentTypes      //
   //==================================//
+  getEnvironmentTypes(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseApiUrl + '/api/eventenvironmenttypes/');
+  }
+
   getAllEventEnvironmentTypes(intEventID: string): Observable<any[]> {
     return this.http.get<any[]>(this.baseApiUrl + '/api/eventenvironmenttypes/' + intEventID);
   }
@@ -62,6 +112,12 @@ export class EventsService {
     return this.http.delete<any>(this.baseApiUrl + '/api/eventenvironmenttypes/' + intEventEnvironmentTypeID)
   }
 
+  //==================================//
+  //      TEventBounceHouses          //
+  //==================================//
+  addEventBounceHouse(addBounceHouseRequest: any): Observable<any> {
+    return this.http.post<any>(this.baseApiUrl + '/api/eventbouncehouses/', addBounceHouseRequest);
+  }
 
   //==================================//
   //      TEventEmployees             //
@@ -72,6 +128,10 @@ export class EventsService {
 
   removeEventEmployee(intEventEmployeeID: string): Observable<any> {
     return this.http.delete<any>(this.baseApiUrl + '/api/eventemployees/' + intEventEmployeeID)
+  }
+
+  addEventEmployee(addEmployeeRequest: any): Observable<any> {
+    return this.http.post<any>(this.baseApiUrl + '/api/eventemployees/', addEmployeeRequest);
   }
 
   //==================================//
