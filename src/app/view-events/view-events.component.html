@@ -1,10 +1,9 @@
 <html style="background-color:#ced3d6; font-family: Arial, Helvetica, sans-serif;">
     <body style="background-color:#ced3d6; font-family: Arial, Helvetica, sans-serif;">
 
-
+      <button class="myButton"><a [routerLink]="['/events', 'add2']">Add Event</a></button>
     <div class="container my-5">
       <h1 class="mb-3">Events</h1>
-
       <table class="table" *ngIf="events && events.length > 0">
         <thead>
           <tr>
@@ -39,7 +38,6 @@
           </tr>
         </tbody>
       </table>
-      <p *ngIf="!events || events.length <= 0">No Events Found.</p>
     </div>
 
 </body>

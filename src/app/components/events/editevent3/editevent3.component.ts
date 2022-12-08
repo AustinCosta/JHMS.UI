@@ -67,7 +67,7 @@ export class Editevent3Component implements OnInit {
     this.eventsService.updateEvent(this.eventDetails.intEventID, this.eventDetails)
     .subscribe({
       next: (response) => {
-        this.router.navigate(['events']);
+        this.router.navigate(['ViewEvents']);
       }
     });
   }
@@ -76,7 +76,7 @@ export class Editevent3Component implements OnInit {
     this.eventsService.deleteEvent(intEventID)
     .subscribe({
       next: (response) => {
-        this.router.navigate(['events']);
+        this.router.navigate(['ViewEvents']);
       }
     });
   }
