@@ -72,4 +72,12 @@ this.loginForm = this.formBuilder.group({
     this.visible = !this.visible;
     this.changetype = !this.changetype;
   }
+
+  // signInWithGoogle() {
+  //   this.firebaseService.googleSignIn();
+  // }
+
+    forgotPassword() {
+    this.firebaseService.forgotPassword("nastkaefff@mail.ru");
+  }
 }

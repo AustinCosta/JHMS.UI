@@ -1,74 +1,75 @@
-
-    <!-- NOTES -->
-<!-- href now equals routerLink="" -->
-<!-- Generating a new component use "ng g c {component name} --module app "-->
-
 <html>
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-</head>
-<body>
+  <body>
+    <!-- Sign Up form for Regester -->
 
-  <div *ngIf="!isSignedIn">
-    <h2>Sign up</h2>
-    <input type="text" #emailSignup/>
-    <input type="text" #passwordSignup/>
+    <!-- <div *ngIf="!isSignedIn">
+      <h2>Sign up</h2>
+      <input type="text" #emailSignup/>
+      <input type="text" #passwordSignup/>
+      <button (click)="onSignup(emailSignup.value,passwordSignup.value)">Sign Up</button>
+  </div> -->
 
-    <button (click)="onSignup(emailSignup.value,passwordSignup.value)">Sign Up</button>
-</div>
+  <section  class="Signin" fxLayout fxLayoutAlign="center">
+      <form *ngIf="!isSignedIn" #postForm="ngForm">    
+        <div class="main-div">
+        <mat-card fxFlex.xs="100%" fxFlex="400px">
+          <mat-card-title fxLayoutAlign="center center">Sign In</mat-card-title>
+            <mat-card-content fxLayout="column" fxLayoutAlign="center center">
 
+              <mat-form-field>
+                <input
+                matInput
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                ngModel
+                required
+                #email="ngModel">
+                <mat-error *ngIf="email.invalid">Invalid or missing email</mat-error>
+              </mat-form-field>
 
-<section  class="Signin" fxLayout fxLayoutAlign="center">
-    
-    <form *ngIf="!isSignedIn" #postForm="ngForm">
-      <mat-card fxFlex.xs="100%" fxFlex="400px">
-        <mat-card-title fxLayoutAlign="center center">Sign In</mat-card-title>
-          <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+              <mat-form-field>
+                <input
+                matInput
+                name="password"
+                placeholder="Password"
+                ngModel
+                required
+                #password="ngModel"
+                id="password"
+                [type]="hide ? 'password' : 'text'">
+                <i class="material-icons" matSuffix (click) = "hide = !hide">
+                  {{hide ? 'visibility' : 'visibility_off'}}</i>
+                <mat-error *ngIf="password.invalid">Invalid or missing password</mat-error>
+              </mat-form-field>
+            </mat-card-content>
 
-            <mat-form-field>
-              <input
-              matInput
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              ngModel
-              required
-              #email="ngModel">
-              <mat-error *ngIf="email.invalid">Invalid or missing email</mat-error>
-            </mat-form-field> 
-            <mat-form-field>
-
-              <input
-              matInput
-              name="password"
-              placeholder="Password"
-              ngModel
-              required
-              #password="ngModel"
-              id="password"
-              [type]="hide ? 'password' : 'text'">
-              <i class="material-icons" matSuffix (click) = "hide = !hide">
-                {{hide ? 'visibility' : 'visibility_off'}}</i>
-              <mat-error *ngIf="password.invalid">Invalid or missing password</mat-error>
-            </mat-form-field> 
-          </mat-card-content>
-            <mat-card-actions fxLayoutAlign="center"> 
-        <a routerLink="">Forgot your password?</a> 
+            <mat-card-actions fxLayoutAlign="center">
+              <button type="submit" mat-raised-button [disabled]="postForm.invalid" color="primary" (click)="onSignin(email.value,password.value)" >Sign In</button>      
             </mat-card-actions>
-          <mat-card-actions fxLayoutAlign="center">            
-            <button type="submit" mat-raised-button [disabled]="postForm.invalid" color="primary" (click)="onSignin(email.value,password.value)" >Sign In</button>
-        </mat-card-actions>
-      </mat-card>
-      
-    </form>   
-      
+
+            <mat-card-actions fxLayoutAlign="center">
+              <h4 type="submit" (click)="forgotPassword()" style="text-decoration: underline;cursor: pointer; color: rgb(47, 47, 198)" >Reset Password</h4>
+            </mat-card-actions>
+
+              <!-- <mat-card-actions fxLayoutAlign="center">
+                <a (click)="signInWithGoogle()" style="text-decoration: none;cursor: pointer;">
+                    <div class="card shadow text-center">
+                        <div class="card-body">
+                            <img src="../../../assets/icons8-google-48.png" alt="" height="24px" width="24px"> Sign In with Google
+                        </div>
+                    </div>
+                </a>
+              </mat-card-actions> -->
+  
+        </mat-card>
+      </div>
+    </form>
   </section>
-
-
 
   <app-header-bar *ngIf="isSignedIn" (isLogout)="handleLogout()"></app-header-bar>
   <router-outlet *ngIf="isSignedIn" (isLogout)="handleLogout()"></router-outlet>
 
-
-</body>
+  </body>
 </html>
+
