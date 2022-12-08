@@ -82,7 +82,7 @@ export class EditeventstuffComponent implements OnInit {
               //-------------------------------//
               //  Get available bouncehouses
               //-------------------------------//
-              this.eventsService.getAvailableBounceHouses(this.eventDetails.strEventStartDate, this.eventDetails.strEventEndDate)
+              this.eventsService.getAvailableBounceHouses(this.eventDetails.dteEventStartDate, this.eventDetails.dteEventEndDate)
               .subscribe({
                 next: (response) => {
                   this.availableBounceHouses = response;
@@ -93,7 +93,7 @@ export class EditeventstuffComponent implements OnInit {
               //-------------------------------//
               //  Get available combos
               //-------------------------------//
-              this.eventsService.getAvailableCombos(this.eventDetails.strEventStartDate, this.eventDetails.strEventEndDate)
+              this.eventsService.getAvailableCombos(this.eventDetails.dteEventStartDate, this.eventDetails.dteEventEndDate)
               .subscribe({
                 next: (response) => {
                   this.availableCombos = response;
@@ -113,7 +113,7 @@ export class EditeventstuffComponent implements OnInit {
               //-------------------------------//
               //  Get available rushes
               //-------------------------------//
-              this.eventsService.getAvailableRushes(this.eventDetails.strEventStartDate, this.eventDetails.strEventEndDate)
+              this.eventsService.getAvailableRushes(this.eventDetails.dteEventStartDate, this.eventDetails.dteEventEndDate)
               .subscribe({
                 next: (response) => {
                   this.availableMidwayRushGames = response;
@@ -123,7 +123,7 @@ export class EditeventstuffComponent implements OnInit {
               //-------------------------------//
               //  Get available games
               //-------------------------------//
-              this.eventsService.getAvailableGames(this.eventDetails.strEventStartDate, this.eventDetails.strEventEndDate)
+              this.eventsService.getAvailableGames(this.eventDetails.dteEventStartDate, this.eventDetails.dteEventEndDate)
               .subscribe({
                 next: (response) => {
                   this.availableFunAndGames = response;
@@ -133,7 +133,7 @@ export class EditeventstuffComponent implements OnInit {
               //-------------------------------//
               //  Get available obstacles
               //-------------------------------//
-              this.eventsService.getAvailableObstacles(this.eventDetails.strEventStartDate, this.eventDetails.strEventEndDate)
+              this.eventsService.getAvailableObstacles(this.eventDetails.dteEventStartDate, this.eventDetails.dteEventEndDate)
               .subscribe({
                 next: (response) => {
                   this.availableObstacles = response;
