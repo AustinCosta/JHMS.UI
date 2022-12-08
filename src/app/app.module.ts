@@ -47,6 +47,7 @@ import { Addevent3Component } from './components/events/addevent3/addevent3.comp
 import { Editevent3Component } from './components/events/editevent3/editevent3.component';
 import { EditeventstuffComponent } from './components/events/editeventstuff/editeventstuff.component';
 import { RemoveeventstuffComponent } from './components/events/removeeventstuff/removeeventstuff.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { RemoveeventstuffComponent } from './components/events/removeeventstuff/
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyCZ30nJV86YNwb4tJugNk110dZenMffLBU",
       authDomain: "vernal-design-313916.firebaseapp.com",
