@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  baseApiUrl: 'https://localhost:7195'
+  baseApiUrl: 'https://rpryor13-001-site1.btempurl.com'
 
   //LocalHost URL : 'https://localhost:7195'
-  //API URL 'https://ec2-3-92-77-52.compute-1.amazonaws.com:7195'
+  //API URL 'https://ec2-44-203-49-54.compute-1.amazonaws.com:7195'
 };
 
 /*

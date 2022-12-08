@@ -95,8 +95,8 @@ import { PickDateComponent } from './pick-date/pick-date.component';
       projectId: "vernal-design-313916",
       storageBucket: "vernal-design-313916.appspot.com",
       messagingSenderId: "174449647637",
-      appId: "1:174449647637:web:092bc08da262e4cd1d2e1c",
-      measurementId: "G-81XNEJE3PG"
+      appId: "1:174449647637:web:7c1aa6ce3d5571781d2e1c",
+      measurementId: "G-9GJMSFZ79R"
     }),
     HttpClientModule,
     FormsModule,

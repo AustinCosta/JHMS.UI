@@ -271,7 +271,7 @@ export class AddEventComponent implements OnInit{
 
               //console.log(this.intDays3);
 
-              this.dteStartBuffer.setDate(this.dteStartBuffer.getDate() + 1);
+              this.dteStartBuffer.setDate(this.dteStartBuffer.getDate() );
               //console.log(this.dteStartBuffer);
 
               this.dteEventStartDate =  (new Date(this.dteStartBuffer).toISOString().split('T')[0]);
