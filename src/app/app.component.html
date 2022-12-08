@@ -1,5 +1,5 @@
 <html>
-  <body>
+  <body class = "new">
     <!-- Sign Up form for Regester -->
 
     <!-- <div *ngIf="!isSignedIn">
@@ -66,7 +66,8 @@
       </div>
     </form>
   </section>
-
+  </body>
+  <body class = "new">
   <app-header-bar *ngIf="isSignedIn" (isLogout)="handleLogout()"></app-header-bar>
   <router-outlet *ngIf="isSignedIn" (isLogout)="handleLogout()"></router-outlet>
 

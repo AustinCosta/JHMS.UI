@@ -6,17 +6,8 @@
       <!-- Mask -->
       <span class="mask bg-gradient-default opacity-8"></span>
 
-      <!-- Header container -->
-      <div class="container-fluid d-flex align-items-center">
-        <div class="row">
-          <div class="col-xlg-7 col-md-10" *ngIf="eventDetails.strEventStartDate != null"> <!--Only show event if selected-->
-            <h1 class="display-2 text-white" style="text-align: center; vertical-align: top;">Event on {{ eventDetails.dteEventStartDate | date:'MM/dd/yyyy'}} - {{ eventDetails.dteEventEndDate | date:'MM/dd/yyyy' }} </h1>
-          </div>
-        </div>
-
-    </div>
     <!-- Page content -->
-        <div class="col-xl-8 order-xl-1">
+        <div class="col-xl-8 order-xl-1" style="border: 0px; width:800px; margin:0 auto;">
           <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">

@@ -1,55 +1,77 @@
-<div class="container my-5">
-  <h1 class="mb-3">Edit Customer</h1>
 
-  <div class="row">
-    <div class="col-6">
-      <form #form="ngForm" (ngSubmit)="updateCustomer()">
-        <div class="mb-3">
-          <label for="id" class="form-label">Customer ID</label>
-          <input type="text" class="form-control" id="id" readonly
-          name="id" [(ngModel)]="customerDetails.intCustomerID"> <!--Bind to property in ts file-->
-        </div>
-        <div class="mb-3">
-          <label for="strFirstName" class="form-label">First Name</label>
-          <input type="text" class="form-control" id="strFirstName"
-          name="strFirstName" [(ngModel)]="customerDetails.strFirstName"> <!--Bind to property in ts file-->
-        </div>
-        <div class="mb-3">
-          <label for="strLastName" class="form-label">Last Name</label>
-          <input type="text" class="form-control" id="strLastName"
-          name="strLastName" [(ngModel)]="customerDetails.strLastName"> <!--Bind to property in ts file-->
-        </div>
-        <div class="mb-3">
-          <label for="strAddress" class="form-label">Address</label>
-          <input type="text" class="form-control" id="strAddress"
-          name="strAddress" [(ngModel)]="customerDetails.strAddress"> <!--Bind to property in ts file-->
-        </div>
-        <div class="mb-3">
-          <label for="strCity" class="form-label">City</label>
-          <input type="text" class="form-control" id="strCity"
-          name="strCity" [(ngModel)]="customerDetails.strCity"> <!--Bind to property in ts file-->
-        </div>
-        <div class="mb-3">
-          <label for="strState" class="form-label">State</label>
-          <input type="text" class="form-control" id="strState"
-          name="strState" [(ngModel)]="customerDetails.strState"> <!--Bind to property in ts file-->
-        </div>
-        <div class="mb-3">
-          <label for="strZip" class="form-label">Zip</label>
-          <input type="text" class="form-control" id="strZip"
-          name="strZip" [(ngModel)]="customerDetails.strZip"> <!--Bind to property in ts file-->
-        </div>
-        <div class="mb-3">
-          <label for="strEmail" class="form-label">Email</label>
-          <input type="email" class="form-control" id="strEmail"
-          name="strEmail" [(ngModel)]="customerDetails.strEmail"> <!--Bind to property in ts file-->
-        </div>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<body style="min-height: 1500px;">
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://user-images.githubusercontent.com/79421698/204444597-27384cc7-f53c-48f1-8644-01e5712d1dfa.jpg); background-size: cover; background-position: center top;">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
 
+    <!-- Page content -->
+        <div class="col-xl-8 order-xl-1" style="border: 0px; width:800px; margin:0 auto;">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Customer Info</h3>
+                </div>
+                <div class="col-4 text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">Home</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form #form="ngForm" (ngSubmit)="updateCustomer()">
+                <div class="mb-3">
+                  <label for="id" class="form-label">Customer ID</label>
+                  <input type="text" class="form-control" id="id" readonly
+                  name="id" [(ngModel)]="customerDetails.intCustomerID"> <!--Bind to property in ts file-->
+                </div>
+                <div class="mb-3">
+                  <label for="strFirstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="strFirstName"
+                  name="strFirstName" [(ngModel)]="customerDetails.strFirstName"> <!--Bind to property in ts file-->
+                </div>
+                <div class="mb-3">
+                  <label for="strLastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="strLastName"
+                  name="strLastName" [(ngModel)]="customerDetails.strLastName"> <!--Bind to property in ts file-->
+                </div>
+                <div class="mb-3">
+                  <label for="strAddress" class="form-label">Address</label>
+                  <input type="text" class="form-control" id="strAddress"
+                  name="strAddress" [(ngModel)]="customerDetails.strAddress"> <!--Bind to property in ts file-->
+                </div>
+                <div class="mb-3">
+                  <label for="strCity" class="form-label">City</label>
+                  <input type="text" class="form-control" id="strCity"
+                  name="strCity" [(ngModel)]="customerDetails.strCity"> <!--Bind to property in ts file-->
+                </div>
+                <div class="mb-3">
+                  <label for="strState" class="form-label">State</label>
+                  <input type="text" class="form-control" id="strState"
+                  name="strState" [(ngModel)]="customerDetails.strState"> <!--Bind to property in ts file-->
+                </div>
+                <div class="mb-3">
+                  <label for="strZip" class="form-label">Zip</label>
+                  <input type="text" class="form-control" id="strZip"
+                  name="strZip" [(ngModel)]="customerDetails.strZip"> <!--Bind to property in ts file-->
+                </div>
+                <div class="mb-3">
+                  <label for="strEmail" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="strEmail"
+                  name="strEmail" [(ngModel)]="customerDetails.strEmail"> <!--Bind to property in ts file-->
+                </div>
+        
+        
+                <button type="submit" class="btn btn-primary mr-5">Save</button>
+                <button type="button" class="btn btn-danger"
+                (click)="deleteCustomer(customerDetails.intCustomerID)">Delete</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+</body>
 
-        <button type="submit" class="btn btn-primary mr-5">Save</button>
-        <button type="button" class="btn btn-danger"
-        (click)="deleteCustomer(customerDetails.intCustomerID)">Delete</button>
-      </form>
-    </div>
-  </div>
-</div>

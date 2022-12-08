@@ -1,6 +1,6 @@
 table,
 table tr {
-  border: 0px solid #000000;
+  border: collapse
 }
 
 img{
@@ -18,10 +18,12 @@ h1{
 td {
 
     text-align: left;
+    border: collapse
 
 
 
-}
+
+  }
 body {
 
   padding-top: 20px;
@@ -579,11 +581,19 @@ body {
   .col-xl-4,
   .col-xl-6,
   .col-xl-8 {
-    position: relative;
-    width: 100%;
+    width: auto;
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
+    border-radius: 10px 10px 10px 10px;
+    overflow: auto;
+    background-size: 90%;
+    margin-top:5px;
+    margin-bottom: 90px;
+    border: 3px solid white; 
+    
+
+
   }
 
   .col {
@@ -1838,9 +1848,10 @@ body {
   }
 
   .form-control-label {
-    font-size: .875rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: #525f7f;
+    padding-top: 15px;
   }
 
   .form-control {

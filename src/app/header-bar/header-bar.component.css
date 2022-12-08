@@ -6,7 +6,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #3b0444;
+    background-color: white;
     color: #fff;
     display: flex;
     padding: 0 16px;
@@ -18,6 +18,10 @@
   .navbar-custom {
 
     background-color: #4b0b3b;  
+}
+
+.topNav {
+  background-color: rgba(0, 0, 0, 0);
 }
 
 /* Dropdown Button */
@@ -48,3 +52,4 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+

@@ -5,52 +5,34 @@
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://user-images.githubusercontent.com/79421698/204444597-27384cc7-f53c-48f1-8644-01e5712d1dfa.jpg); background-size: cover; background-position: center top;">
       <!-- Mask -->
       <span class="mask bg-gradient-default opacity-8"></span>
-
-      <!-- Header container -->
-      <div class="container-fluid d-flex align-items-center">
-        <div class="row">
-          <div class="col-xlg-7 col-md-10" *ngIf="eventDetails.strEventStartDate!= null"> <!--Only show event if selected-->
-            <h1 class="display-2 text-white" style="text-align: center; vertical-align: top;">Event on {{ eventDetails.strEventStartDate | date:'MM/dd/yyyy'}} - {{ eventDetails.strEventEndDate | date:'MM/dd/yyyy' }} </h1>
-          </div>
-        </div>
-
-    </div>
     <!-- Page content -->
-        <div class="col-xl-8 order-xl-1">
+        <div class="col-xl-8 order-xl-1" style="border: 0px; width:800px; margin:0 auto;">
           <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
-                <div class="col-8">
-                  <h3 class="mb-0">Add Event Equipment For - {{eventDetails.strEventName}}</h3>
+                <div >
+                  <h1>Add Event Equipment For - {{eventDetails.strEventName}}</h1>
                 </div>
               </div>
             </div>
             <div class="card-body">
               <form>
-                <h6 class="heading-small text-muted mb-4">Dates</h6>
                 <div class="pl-lg-4">
                   <div class="row">
-                    <div class="col-lg-6">
+                    <div >
                                       <!-- Event Name -->
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-name">Start Date</label>
+                        <label class="form-control-label" for="input-name">Event Date</label>
                         <h2>{{eventDetails.dteEventStartDate}}</h2>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-type">End Date</label>
-                        <h2>{{eventDetails.dteEventEndDate}}</h2>
                       </div>
                     </div>
                   </div>
                 </div>
-                <h6 class="heading-small text-muted mb-4">Select Equipment</h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-name">Bounce Houses</label>
+                      <div class="form-group focused" style="margin-right:1px">
+                        <label class="form-control-label" for="input-name" >Bounce Houses</label>
                         <br>
                         <br>
                         <div>
@@ -171,8 +153,7 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
-                        <div class="col-lg-6">
-                          <div class="form-group focused">
+
                             <label class="form-control-label" for="input-name">Vehicles</label>
                             <br>
                             <br>
@@ -186,26 +167,7 @@
                                   </tr>
                                 </tbody>
                               </table>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-6">
-                          <div class="form-group focused">
-                            <label class="form-control-label" for="input-name">Employees</label>
-                            <br>
-                            <br>
-                            <div>
-                              <table class="table" *ngIf="availableEmployees && availableEmployees.length > 0">
-                                <tbody>
-                                  <tr *ngFor="let employee of availableEmployees">
-                                    <td>{{employee.strFirstName}} {{employee.strLastName}}</td>
-                                    <td><button type="button" class="btn btn-primary"
-                                      (click)="addEventEmployee(employee.intEmployeeID)">Add</button></td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
+                        
                         </div>
                       </div>
                     </div>
