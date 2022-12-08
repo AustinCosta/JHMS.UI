@@ -1,12 +1,19 @@
+
+<html style="background-color:#ced3d6; font-family: Arial, Helvetica, sans-serif;">
+  <body style="background-color:#ced3d6; font-family: Arial, Helvetica, sans-serif;">
+
+
+
 <div class="container my-5">
   <h1 class="mb-3">Vehicles</h1>
 
-  <table class="table" *ngIf="vehicles && vehicles.length > 0">
+  <table class="center" *ngIf="vehicles && vehicles.length > 0">
     <thead>
       <tr>
         <th>Vehicle ID</th>
         <th>Vehicle Name</th>
         <th>Quantity</th>
+        <th>Edit</th>
       </tr>
     </thead>
     <tbody>
@@ -14,9 +21,11 @@
         <td>{{vehicle.intVehicleID}}</td>
         <td>{{vehicle.strVehicleName}}</td>
         <td>{{vehicle.intQuantity}}</td>
-        <td><a [routerLink]="['/vehicles', 'edit', vehicle.intVehicleID]">Edit</a></td>
+        <td><a [routerLink]="['/vehicles', 'edit', vehicle.intVehicleID]"><button class="myButton">Edit</button></a></td>
       </tr>
     </tbody>
   </table>
   <p *ngIf="!vehicles || vehicles.length <= 0">No Vehicles Found.</p>
 </div>
+  </body>
+  </html>

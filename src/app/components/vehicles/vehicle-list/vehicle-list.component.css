@@ -1,0 +1,204 @@
+table,
+table tr {
+  border: 0px solid #000000;
+}
+
+h1{
+    text-align: center;
+    margin-top: 0%;
+    font-family: sans-serif;
+    font-weight: 100;
+    color: white;
+
+}
+body {
+
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+
+}
+
+tr {
+  height: 100px;
+  width: 100%;
+  text-align: left;
+  vertical-align: middle;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table {
+
+    width: 200%;
+    vertical-align: middle;
+    max-width: 800px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    text-align: center;
+
+}
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+button {
+    background-color: #ffffff;
+    font-size: 19px;
+    border: 2px solid #000000;
+    padding: 15px 50px;
+    cursor: pointer;
+    font-family: "Helvetica Neue";
+}
+button:hover {
+    color: #000000;
+    background-color: #fbf4b0;
+}
+
+.background {
+
+    opacity: .8;
+
+}
+
+.middle {
+    vertical-align: middle;
+ }
+
+ .myDiv {
+    border: 5px outset red;
+    background-color: lightblue;
+    text-align: center;
+  }
+
+  section {
+    display: table;
+  }
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+    max-width: 600px;
+  }
+  
+  .example-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+button{
+  margin-right: 1vw;
+  background: #4285F4;
+  color: white;
+  font-size: 18px;
+  line-height: 6px;
+  height: auto;
+  width: auto;
+  font-family: sans-serif;
+	font-weight: 100;
+}
+
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	background-color:#ffffff;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:14px 35px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+	background-color:#f6f6f6;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+
+html,
+body {
+	height: 100%;
+  min-height:1500px;
+}
+
+body {
+	background: linear-gradient(45deg, #49a09d, #5f2c82);
+  background-size:100% 100%;
+  size: 100% 100%;
+	font-family: sans-serif;
+	font-weight: 100;
+  height: auto;
+}
+
+
+
+table {
+	width: 1000px;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);  
+  align-items: center;
+}
+
+th,
+td {
+	padding: 15px;
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
+  align-items: center;
+  width: fit-content;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+th {
+	text-align: center;
+}
+
+tr {
+
+  text-align: center;
+}
+
+
+			
+		
+

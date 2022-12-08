@@ -1,26 +1,30 @@
+<html style="background-color:#ced3d6; font-family: Arial, Helvetica, sans-serif;">
+    <body style="background-color:#ced3d6; font-family: Arial, Helvetica, sans-serif;">
+
 <div class="container my-5">
   <h1 class="mb-3">Equipment</h1>
 
-  <table class="table" *ngIf="equipments && equipments.length > 0">
+  <table class="center" *ngIf="equipments && equipments.length > 0">
     <thead>
       <tr>
         <th>Equipment ID</th>
         <th>Equipment Name</th>
-        <th>Description</th>
         <th>Quantity On Hand</th>
         <th>Expected Quantity</th>
+        <th>Edit</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let equipment of equipments">
         <td>{{equipment.intEquipmentID}}</td>
         <td>{{equipment.strEquipmentName}}</td>
-        <td>{{equipment.strDescription}}</td>
         <td>{{equipment.intQuantityOnHand}}</td>
         <td>{{equipment.intExpectedQuantity}}</td>
-        <td><a [routerLink]="['/equipments', 'edit', equipment.intEquipmentID]">Edit</a></td>
+        <td><a [routerLink]="['/equipments', 'edit', equipment.intEquipmentID]"><button class="myButton">Edit</button></a></td>
       </tr>
     </tbody>
   </table>
   <p *ngIf="!equipments || equipments.length <= 0">No Equipment Found.</p>
 </div>
+</body>
+</html> 

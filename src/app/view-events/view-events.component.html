@@ -1,40 +1,6 @@
 <html style="background-color:#ced3d6; font-family: Arial, Helvetica, sans-serif;">
     <body style="background-color:#ced3d6; font-family: Arial, Helvetica, sans-serif;">
-    <div>
-        <h1>
-            View Events
-        </h1>
-        <div class="center">
-          <button class="my-class" mat-raised-button color="primary" onclick="location.href='events/add2'">Add Event</button>
-          <button class="my-class" mat-raised-button color="primary" onclick="location.href='ViewEvents/edit/:id'">View Edit Page</button>
 
-          <br>
-          <br>
-        <table mat-table [dataSource]="events3" matSort (matSortChange)="announceSortChange($event)"
-       class="mat-elevation-z8">
-
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
-      ID
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.intEventID}} </td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
-      Name
-    </th>
-    <td mat-cell *matCellDef="let element"><a href="/ViewEvents/edit/{{element.intEventID}}">{{element.strEventDescription}}</a> </td>
-  </ng-container>
-
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-</div>
-    </div>
 
     <div class="container my-5">
       <h1 class="mb-3">Events</h1>
@@ -43,40 +9,33 @@
         <thead>
           <tr>
             <th>Event ID</th>
+            <th>Event Name</th>
             <th>Event Type</th>
-            <th>Customer ID</th>
-            <th>Environment Type ID</th>
             <th>Start Date</th>
             <th>End Date</th>
-            <th>Event Name</th>
             <th>Start Time</th>
             <th>End Time</th>
-            <th>Setup Time</th>
-            <th>Description</th>
             <th>Inflatables Needed</th>
-            <th>Employee's For The Event</th>
             <th>Location</th>
+            <th>Edit</th>
+            <th>Add Equipment</th>
+            <th>Remove Equipment</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let event of events">
             <td>{{event.intEventID}}</td>
+            <td>{{event.intEventID}}</td>
             <td>{{event.strEventType}}</td>
-            <td>{{event.intCustomerID}}</td>
-            <td>{{event.intEnvironmentTypeID}}</td>
-            <td>{{event.dteEventStartDate}}</td>
-            <td>{{event.dteEventEndDate}}</td>
-            <td>{{event.strEventName}}</td>
+            <td>{{event.dteEventStartDate | date:'MM/dd/yyyy'}}</td>
+            <td>{{event.dteEventEndDate | date:'MM/dd/yyyy'}}</td>
             <td>{{event.strEventStartTime}}</td>
             <td>{{event.strEventEndTime}}</td>
-            <td>{{event.strEventSetupTime}}</td>
-            <td>{{event.strEventDescription}}</td>
             <td>{{event.intInflatablesNeeded}}</td>
-            <td>{{event.intEmployeesForTheEvent}}</td>
             <td>{{event.strLocation}}</td>
-            <td><a [routerLink]="['/events', 'edit2', event.intEventID]">Edit Event Information</a></td>
-            <td><a [routerLink]="['/events', 'stuff', event.intEventID]">Add Event Equipment</a></td>
-            <td><a [routerLink]="['/events','stuff', 'edit', event.intEventID]">View/Remove Event Equipment</a></td>
+            <td><a [routerLink]="['/events', 'edit2', event.intEventID]"><button class="myButton">Edit</button></a></td>
+            <td><a [routerLink]="['/events', 'stuff', event.intEventID]"><button class="myButton">Add</button></a></td>
+            <td><a [routerLink]="['/events','stuff', 'edit', event.intEventID]"><button class="myButton">Remove</button></a></td>
           </tr>
         </tbody>
       </table>

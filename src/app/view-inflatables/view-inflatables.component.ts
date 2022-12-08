@@ -41,6 +41,7 @@ export class ViewInflatablesComponent implements AfterViewInit {
   bounceHouses: any = [];
   bounceHouses2: any = [];
   bounceHouses3: any = [];
+  header = '';
   ngOnInit(): void {
 
     this.route.paramMap.subscribe({
@@ -50,6 +51,27 @@ export class ViewInflatablesComponent implements AfterViewInit {
 
       //alert(this.intInflatableTypeID);
       }})
+
+      if (this.intInflatableTypeID == 1){
+
+        this.header = 'Bounce Houses';
+
+      }else if (this.intInflatableTypeID == 2){
+
+        this.header = 'Giant Slides';
+      }else if (this.intInflatableTypeID == 3){
+
+        this.header = 'Combos';
+      }else if (this.intInflatableTypeID == 4){
+
+        this.header = 'Midway Rush Games';
+      }else if (this.intInflatableTypeID == 2){
+
+        this.header = 'Fun & Games';
+      }else{
+
+        this.header = 'Obstacles';
+      }
 
 
 
