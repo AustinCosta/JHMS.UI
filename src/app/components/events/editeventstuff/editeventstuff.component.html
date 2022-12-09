@@ -167,9 +167,27 @@
                                   </tr>
                                 </tbody>
                               </table>
-                        
+
                         </div>
                       </div>
+                      <div class="form-group focused">
+
+                        <label class="form-control-label" for="input-name">Employees</label>
+                        <br>
+                        <br>
+                        <div>
+                          <table class="table" *ngIf="availableEmployees && availableEmployees.length > 0">
+                            <tbody>
+                              <tr *ngFor="let employee of availableEmployees">
+                                <td>{{employee.strFirstName}} {{employee.strLastName}}</td>
+                                <td><button type="button" class="btn btn-primary"
+                                  (click)="addEventEmployee(employee.intEmployeeID)">Add</button></td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                    </div>
+                  </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
