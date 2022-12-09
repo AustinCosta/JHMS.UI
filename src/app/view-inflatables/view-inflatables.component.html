@@ -3,13 +3,13 @@
 
 <div class="container my-5">
   <h1 class="mb-3">{{header}} </h1>
+  <div style="padding-bottom: 20px; padding-left: 330px" class = "">
+    <a [routerLink]="['/bouncehouses', 'add']"><button  class = "myButton">Add Inflatable</button></a>
+  </div>
 
 
   <table class="center" *ngIf="bounceHouses3 && bounceHouses3.length > 0">
     <thead>
-      <div style="padding-bottom: 20px">
-        <a [routerLink]="['/bouncehouses', 'add']"><button  class = "myButton">Add Inflatable</button></a>
-      </div>
       <tr>
         <th>Inflatable ID</th>
         <th>Inflatable Name</th>

@@ -3,12 +3,14 @@
 
 <div class="container my-5">
   <h1 class="mb-3">Customers</h1>
+  <div style="padding-bottom: 20px; padding-left: 150px" class = "">
+    <a [routerLink]="['/customers', 'add']"><button  class = "myButton">New</button></a>
+  </div>
 
   <table class="center" *ngIf="customers && customers.length > 0">
+
     <thead>
-      <div style="padding-bottom: 20px">
-        <a [routerLink]="['/customers', 'add']"><button  class = "myButton">New</button></a>
-      </div>
+
       <tr>
         <th>First Name</th>
         <th>Last Name</th>
