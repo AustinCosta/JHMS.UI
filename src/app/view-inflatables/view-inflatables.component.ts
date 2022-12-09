@@ -65,12 +65,15 @@ export class ViewInflatablesComponent implements AfterViewInit {
       }else if (this.intInflatableTypeID == 4){
 
         this.header = 'Midway Rush Games';
-      }else if (this.intInflatableTypeID == 2){
+      }else if (this.intInflatableTypeID == 5){
 
         this.header = 'Fun & Games';
-      }else{
+      }else if (this.intInflatableTypeID == 6){
 
         this.header = 'Obstacles';
+      }else{
+
+        this.header = 'Inflatables';
       }
 
 

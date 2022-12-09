@@ -1,14 +1,15 @@
 <html style="background-color:#ced3d6; font-family: Arial, Helvetica, sans-serif;">
     <body style="background-color:#ced3d6; font-family: Arial, Helvetica, sans-serif;">
 
-      <button class="myButton"><a [routerLink]="['/customers', 'add']">Add Customer</a></button>
 <div class="container my-5">
   <h1 class="mb-3">Customers</h1>
 
   <table class="center" *ngIf="customers && customers.length > 0">
     <thead>
+      <div style="padding-bottom: 20px">
+        <a [routerLink]="['/customers', 'add']"><button  class = "myButton">New</button></a>
+      </div>
       <tr>
-        <th>Customer ID</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Address</th>
@@ -21,7 +22,6 @@
     </thead>
     <tbody>
       <tr *ngFor="let customer of customers">
-        <td>{{customer.intCustomerID}}</td>
         <td>{{customer.strFirstName}}</td>
         <td>{{customer.strLastName}}</td>
         <td>{{customer.strAddress}}</td>

@@ -4,24 +4,26 @@
 <div class="container my-5">
   <h1 class="mb-3">{{header}} </h1>
 
+
   <table class="center" *ngIf="bounceHouses3 && bounceHouses3.length > 0">
     <thead>
+      <div style="padding-bottom: 20px">
+        <a [routerLink]="['/bouncehouses', 'add']"><button  class = "myButton">Add Inflatable</button></a>
+      </div>
       <tr>
         <th>Inflatable ID</th>
         <th>Inflatable Name</th>
         <th>Edit</th>
-        
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let bounceHouse of bounceHouses3">
         <td>{{bounceHouse.intBounceHouseID}}</td>
         <td>{{bounceHouse.strBounceHouseName}}</td>
-        <td><a [routerLink]="['/ViewInflatables', 'edit', bounceHouse.intBounceHouseID]"><button class="myButton">Edit</button></a></td>
+        <td><a [routerLink]="['/bouncehouses', 'edit', bounceHouse.intBounceHouseID]"><button class="myButton">Edit</button></a></td>
       </tr>
     </tbody>
   </table>
-  <p *ngIf="!bounceHouses3 || bounceHouses3.length <= 0">No Events Found.</p>
 </div>
 </body>
 </html>

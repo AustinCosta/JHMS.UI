@@ -6,6 +6,9 @@
 
   <table class="table" *ngIf="employees && employees.length > 0">
     <thead>
+      <div style="padding-bottom: 20px">
+        <a [routerLink]="['/employees', 'add']"><button  class = "myButton">Add</button></a>
+      </div>
       <tr>
         <th>Employee ID</th>
         <th>First Name</th>
@@ -19,6 +22,8 @@
         <th>Email</th>
         <th>Driving Status</th>
         <th>Employment Title</th>
+        <th>Edit</th>
+
       </tr>
     </thead>
     <tbody>
@@ -35,7 +40,7 @@
         <td>{{employee.strEmail}}</td>
         <td>{{employee.strDrivingStatus}}</td>
         <td>{{employee.strEmploymentTitle}}</td>
-        <td><a [routerLink]="['/employees', 'edit', employee.intEmployeeID]">Edit</a></td>
+        <td><a [routerLink]="['/employees', 'edit', employee.intEmployeeID]"><button class="myButton">Edit</button></a></td>
       </tr>
     </tbody>
   </table>

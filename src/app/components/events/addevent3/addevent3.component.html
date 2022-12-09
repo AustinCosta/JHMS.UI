@@ -1,20 +1,13 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <body>
-  <div class="main-content">
+  <div class="main-content" >
     <!-- Header -->
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://user-images.githubusercontent.com/79421698/204444597-27384cc7-f53c-48f1-8644-01e5712d1dfa.jpg); background-size: cover; background-position: center top;">
       <!-- Mask -->
       <span class="mask bg-gradient-default opacity-8"></span>
       <!-- Header container -->
-      <div class="container-fluid d-flex align-items-center">
-        <div class="row">
-          <div class="col-xlg-7 col-md-10" *ngIf="addEventRequest.dteEventStartDate != null"> <!--Only show event if selected-->
-            <h1 class="display-2 text-white" style="text-align: center; vertical-align: top;">Event on {{ addEventRequest.dteEventStartDate | date:'MM/dd/yyyy'}} - {{ addEventRequest.dteEventEndDate | date:'MM/dd/yyyy' }} </h1>
-          </div>
-        </div>
-    </div>
     <!-- Page content -->
-        <div class="col-xl-8 order-xl-1">
+        <div class="col-xl-8 order-xl-1" style="border: 0px; width:800px; margin:0 auto;">
           <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
