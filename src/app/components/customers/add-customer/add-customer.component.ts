@@ -16,6 +16,7 @@ export class AddCustomerComponent implements OnInit {
     strCity: '',
     strState: '',
     strZip: '',
+    strPhoneNumber: '',
     strEmail: '',
   };
 

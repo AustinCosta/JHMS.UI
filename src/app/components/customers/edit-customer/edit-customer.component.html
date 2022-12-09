@@ -58,12 +58,17 @@
                   name="strZip" [(ngModel)]="customerDetails.strZip"> <!--Bind to property in ts file-->
                 </div>
                 <div class="mb-3">
+                  <label for="strPhoneNumber" class="form-label">Phone Number</label>
+                  <input type="email" class="form-control" id="strPhoneNumber"
+                  name="strPhoneNumber" [(ngModel)]="customerDetails.strPhoneNumber"> <!--Bind to property in ts file-->
+                </div>
+                <div class="mb-3">
                   <label for="strEmail" class="form-label">Email</label>
                   <input type="email" class="form-control" id="strEmail"
                   name="strEmail" [(ngModel)]="customerDetails.strEmail"> <!--Bind to property in ts file-->
                 </div>
-        
-        
+
+
                 <button type="submit" class="btn btn-primary mr-5">Save</button>
                 <button type="button" class="btn btn-danger"
                 (click)="deleteCustomer(customerDetails.intCustomerID)">Delete</button>

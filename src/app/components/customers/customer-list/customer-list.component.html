@@ -16,6 +16,7 @@
         <th>City</th>
         <th>State</th>
         <th>Zip</th>
+        <th>Phone Number</th>
         <th>Email</th>
         <th>Edit</th>
       </tr>
@@ -28,6 +29,7 @@
         <td>{{customer.strCity}}</td>
         <td>{{customer.strState}}</td>
         <td>{{customer.strZip}}</td>
+        <td>{{customer.strPhoneNumber}}</td>
         <td>{{customer.strEmail}}</td>
         <td><a [routerLink]="['/customers', 'edit', customer.intCustomerID]"><button class="myButton">Edit</button></a></td>
       </tr>
