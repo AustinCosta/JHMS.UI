@@ -103,7 +103,7 @@ export class EditeventstuffComponent implements OnInit {
               //-------------------------------//
               //  Get available slides
               //-------------------------------//
-              this.eventsService.getAvailableSlides(this.eventDetails.strEventStartDate, this.eventDetails.strEventEndDate)
+              this.eventsService.getAvailableSlides(this.eventDetails.dteEventStartDate, this.eventDetails.dteEventEndDate)
               .subscribe({
                 next: (response) => {
                   this.availableSlides = response;
