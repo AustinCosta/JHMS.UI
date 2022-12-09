@@ -17,7 +17,7 @@ export class FirebaseService {
   forgotPassword(email : string) {
     this.firebaseAuth.sendPasswordResetEmail(email).then(() => {
       this.router.navigate(['/Home']);
-      alert('   We send a link to Reset your Password by email. Please check your email anastasiia@gmail.com');
+      alert('   We send a link to Reset your Password by email. Please check your email rpryor13@gmail.com');
     }, err => {
       alert('Something went wrong');
     })

@@ -78,6 +78,6 @@ this.loginForm = this.formBuilder.group({
   // }
 
     forgotPassword() {
-    this.firebaseService.forgotPassword("nastkaefff@mail.ru");
+    this.firebaseService.forgotPassword("rpryor13@gmail.com");
   }
 }
